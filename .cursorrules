@@ -1,0 +1,121 @@
+You are working on a mobile-first tourist fare estimation app for tricycles in Siquijor, Philippines.
+
+IMPORTANT CONTEXT:
+This is NOT a generic maps app.
+This is NOT a generic Uber clone.
+This is a geographically constrained transport estimation tool.
+
+PRIMARY GOAL:
+Help tourists estimate fair tricycle pricing BEFORE entering a tricycle.
+
+CORE PRODUCT PRINCIPLES:
+
+- transparency over fake precision
+- believable estimates over perfect simulation
+- lightweight infrastructure
+- low operational cost
+- mobile-first UX
+- intuitive interaction
+
+TECH STACK:
+
+- React
+- TypeScript
+- Vite
+- React Leaflet
+- Fuse.js
+- OpenStreetMap
+- OSRM
+
+IMPORTANT CONSTRAINTS:
+
+- avoid paid APIs
+- avoid Google APIs
+- routing must use road distance
+- NEVER use straight-line distance for fares
+- preserve modular service-layer architecture
+
+ARCHITECTURE RULES:
+Maintain separation between:
+
+- geocoding
+- routing
+- fare engine
+- UI
+
+Do NOT tightly couple:
+
+- map rendering to business logic
+- fare calculation to UI
+- routing providers to components
+
+SEARCH METHODOLOGY:
+
+- local searchable datasets
+- Fuse.js fuzzy search
+- Siquijor-only destination scope
+
+ROUTING METHODOLOGY:
+
+- OSRM route engine
+- road-based distance calculations
+- route polyline rendering
+
+FARE ENGINE METHODOLOGY:
+Fare estimates follow layered confidence:
+
+1. Exact official fare match
+2. Reverse route match
+3. Nearby official route interpolation
+4. Distance fallback estimate
+
+Do NOT collapse this into a single simplistic formula.
+
+PRODUCT PHILOSOPHY:
+The app should NOT pretend to know exact negotiated real-world pricing.
+
+Instead:
+
+- show confidence
+- distinguish official vs estimated
+- remain transparent
+
+PREFERRED UX:
+“Official Fare”
+“Estimated Fare”
+“Approximate Tourist Fare”
+
+NOT:
+false precision.
+
+CURRENT IMPORTANT TODOs:
+
+- attach real route distances to official fare routes
+- improve interpolation calibration
+- add fare confidence UI
+- add route caching
+- improve search ranking
+- add aliases/categories
+- prepare for PWA support
+
+PERFORMANCE NOTES:
+
+- keep frontend datasets lightweight
+- avoid unnecessary rerenders
+- mobile performance matters
+- avoid heavy dependencies unless justified
+
+WHEN IMPLEMENTING FEATURES:
+Prefer:
+
+- reusable services
+- typed utility layers
+- modular architecture
+- composable components
+
+Avoid:
+
+- giant React components
+- duplicated logic
+- tightly coupled state
+- hidden business logic inside UI

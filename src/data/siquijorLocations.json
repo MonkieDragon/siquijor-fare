@@ -1,0 +1,4289 @@
+[
+  {
+    "name": "Cangbagsa",
+    "lon": 123.5830212,
+    "lat": 9.2449256
+  },
+  {
+    "name": "Nonoc",
+    "lon": 123.5736954,
+    "lat": 9.2400979
+  },
+  {
+    "name": "Cang-allas",
+    "lon": 123.5886202,
+    "lat": 9.2274683
+  },
+  {
+    "name": "Calunasan",
+    "lon": 123.6004431,
+    "lat": 9.2344158
+  },
+  {
+    "name": "Basac",
+    "lon": 123.614576,
+    "lat": 9.2196316
+  },
+  {
+    "name": "Canlasog",
+    "lon": 123.6164812,
+    "lat": 9.2318874
+  },
+  {
+    "name": "Catamboan",
+    "lon": 123.6112454,
+    "lat": 9.2061536
+  },
+  {
+    "name": "Candigum",
+    "lon": 123.5959025,
+    "lat": 9.212143
+  },
+  {
+    "name": "Sabang",
+    "lon": 123.5699931,
+    "lat": 9.2367015
+  },
+  {
+    "name": "Cangmunag",
+    "lon": 123.5545296,
+    "lat": 9.112535
+  },
+  {
+    "name": "Cansayang",
+    "lon": 123.5216961,
+    "lat": 9.1616871
+  },
+  {
+    "name": "Candura",
+    "lon": 123.5169513,
+    "lat": 9.169095
+  },
+  {
+    "name": "Poblacion",
+    "lon": 123.4925811,
+    "lat": 9.1610894
+  },
+  {
+    "name": "Lala-o",
+    "lon": 123.4877478,
+    "lat": 9.1641166
+  },
+  {
+    "name": "Paliton",
+    "lon": 123.4692115,
+    "lat": 9.1793078
+  },
+  {
+    "name": "Tambisan",
+    "lon": 123.4629802,
+    "lat": 9.188611
+  },
+  {
+    "name": "Sabang — Larena",
+    "lon": 123.5773344,
+    "lat": 9.2242732
+  },
+  {
+    "name": "Banban",
+    "lon": 123.5604974,
+    "lat": 9.2259181
+  },
+  {
+    "name": "Olo",
+    "lon": 123.5544177,
+    "lat": 9.2238507
+  },
+  {
+    "name": "Pili",
+    "lon": 123.5619824,
+    "lat": 9.2167927
+  },
+  {
+    "name": "Canghunoghunog",
+    "lon": 123.5666864,
+    "lat": 9.2003278
+  },
+  {
+    "name": "Cang-isad",
+    "lon": 123.5439842,
+    "lat": 9.2106541
+  },
+  {
+    "name": "Tacloban",
+    "lon": 123.548949,
+    "lat": 9.2235592
+  },
+  {
+    "name": "Candanay Sur",
+    "lon": 123.5299719,
+    "lat": 9.2212496
+  },
+  {
+    "name": "Candanay Norte",
+    "lon": 123.5401084,
+    "lat": 9.2226085
+  },
+  {
+    "name": "Panlautan",
+    "lon": 123.5314823,
+    "lat": 9.2079854
+  },
+  {
+    "name": "Ibabao",
+    "lon": 123.5281458,
+    "lat": 9.2073382
+  },
+  {
+    "name": "Pangi",
+    "lon": 123.5211873,
+    "lat": 9.2165874
+  },
+  {
+    "name": "Cang-asa",
+    "lon": 123.5603897,
+    "lat": 9.1454608
+  },
+  {
+    "name": "Ponong",
+    "lon": 123.5528633,
+    "lat": 9.1612266
+  },
+  {
+    "name": "Tebjong",
+    "lon": 123.5499013,
+    "lat": 9.177699
+  },
+  {
+    "name": "Lambojon",
+    "lon": 123.5255558,
+    "lat": 9.1773252
+  },
+  {
+    "name": "Tacdog",
+    "lon": 123.5190946,
+    "lat": 9.2116181
+  },
+  {
+    "name": "Polangyuta",
+    "lon": 123.5106864,
+    "lat": 9.2054612
+  },
+  {
+    "name": "Canal",
+    "lon": 123.5111668,
+    "lat": 9.2121693
+  },
+  {
+    "name": "Caitican",
+    "lon": 123.5033694,
+    "lat": 9.1916462
+  },
+  {
+    "name": "Caitican Day Care Center",
+    "lon": 123.5037274,
+    "lat": 9.1918212
+  },
+  {
+    "name": "Bolos",
+    "lon": 123.5074917,
+    "lat": 9.1914884
+  },
+  {
+    "name": "Songculan",
+    "lon": 123.5110743,
+    "lat": 9.1869207
+  },
+  {
+    "name": "Songculan Day Care Center",
+    "lon": 123.5109777,
+    "lat": 9.1867796
+  },
+  {
+    "name": "Cangmohao",
+    "lon": 123.5118601,
+    "lat": 9.1816064
+  },
+  {
+    "name": "Cang-adieng",
+    "lon": 123.4917002,
+    "lat": 9.1874243
+  },
+  {
+    "name": "Caipilan",
+    "lon": 123.4879584,
+    "lat": 9.20098
+  },
+  {
+    "name": "Dumanhog",
+    "lon": 123.4913439,
+    "lat": 9.2098495
+  },
+  {
+    "name": "Tinago",
+    "lon": 123.4754235,
+    "lat": 9.2138527
+  },
+  {
+    "name": "Tongo",
+    "lon": 123.4730119,
+    "lat": 9.2226492
+  },
+  {
+    "name": "Cang-alwang",
+    "lon": 123.4699611,
+    "lat": 9.2161081
+  },
+  {
+    "name": "Pasihagon",
+    "lon": 123.4660941,
+    "lat": 9.2032089
+  },
+  {
+    "name": "RumBar",
+    "lon": 123.4864517,
+    "lat": 9.1641228
+  },
+  {
+    "name": "Tagbalayon Lodging House",
+    "lon": 123.509753,
+    "lat": 9.1446948
+  },
+  {
+    "name": "Salagdoong Forest",
+    "lon": 123.6744095,
+    "lat": 9.2179315
+  },
+  {
+    "name": "Treasure Island Beach Bungalows",
+    "lon": 123.478995,
+    "lat": 9.1701883
+  },
+  {
+    "name": "Sand 1 Hostel",
+    "lon": 123.4867201,
+    "lat": 9.16416
+  },
+  {
+    "name": "Casa Paliton",
+    "lon": 123.4715332,
+    "lat": 9.1775002
+  },
+  {
+    "name": "Wonderland",
+    "lon": 123.4637608,
+    "lat": 9.1830413
+  },
+  {
+    "name": "Giosh Cafe and Food Haus",
+    "lon": 123.6260995,
+    "lat": 9.1380053
+  },
+  {
+    "name": "Dive Point Siquijor",
+    "lon": 123.4981373,
+    "lat": 9.1527056
+  },
+  {
+    "name": "Iglesia Ni Cristo, Lokal ng Siquijor",
+    "lon": 123.5328689,
+    "lat": 9.2215442
+  },
+  {
+    "name": "La Familia",
+    "lon": 123.4938724,
+    "lat": 9.2136324
+  },
+  {
+    "name": "Larich Korean Grill House",
+    "lon": 123.4955053,
+    "lat": 9.1560095
+  },
+  {
+    "name": "The Bangka Bar Restaurant and Guesthouse",
+    "lon": 123.6593948,
+    "lat": 9.2387383
+  },
+  {
+    "name": "thornton s sea view",
+    "lon": 123.5252312,
+    "lat": 9.2083495
+  },
+  {
+    "name": "Kylie & Shaun’s restobar",
+    "lon": 123.6259287,
+    "lat": 9.1402936
+  },
+  {
+    "name": "Candavoc Seventh Day Adventist Church",
+    "lon": 123.5711196,
+    "lat": 9.1189022
+  },
+  {
+    "name": "MLBH",
+    "lon": 123.5417041,
+    "lat": 9.223901
+  },
+  {
+    "name": "JesAnn Cave",
+    "lon": 123.657579,
+    "lat": 9.2082773
+  },
+  {
+    "name": "Bucafe",
+    "lon": 123.5235211,
+    "lat": 9.1660255
+  },
+  {
+    "name": "Lazi Ferry Terminal",
+    "lon": 123.6382205,
+    "lat": 9.122571
+  },
+  {
+    "name": "Three Brothers Pharmacy",
+    "lon": 123.5911669,
+    "lat": 9.2475142
+  },
+  {
+    "name": "MRB Drugcenter",
+    "lon": 123.5912988,
+    "lat": 9.2475225
+  },
+  {
+    "name": "Daisy Food House",
+    "lon": 123.6619554,
+    "lat": 9.166065
+  },
+  {
+    "name": "Caticugan Marine Sanctuary",
+    "lon": 123.4868941,
+    "lat": 9.2186697
+  },
+  {
+    "name": "Shaka",
+    "lon": 123.4898303,
+    "lat": 9.1609039,
+    "displayName": "Lala-o · San Juan"
+  },
+  {
+    "name": "Y-Road Restaurant",
+    "lon": 123.629996,
+    "lat": 9.1317583
+  },
+  {
+    "name": "Cang-agong",
+    "lon": 123.5868812,
+    "lat": 9.2092463
+  },
+  {
+    "name": "Tag-ibo",
+    "lon": 123.531493,
+    "lat": 9.1345392
+  },
+  {
+    "name": "Caticugan",
+    "lon": 123.4868528,
+    "lat": 9.2088743
+  },
+  {
+    "name": "Tambisan — San Juan",
+    "lon": 123.4616505,
+    "lat": 9.1932979
+  },
+  {
+    "name": "Tubod",
+    "lon": 123.5082504,
+    "lat": 9.1450092
+  },
+  {
+    "name": "Olang",
+    "lon": 123.6645804,
+    "lat": 9.2135904
+  },
+  {
+    "name": "Bintangan",
+    "lon": 123.6148497,
+    "lat": 9.2277607
+  },
+  {
+    "name": "Logucan",
+    "lon": 123.6500832,
+    "lat": 9.1532499
+  },
+  {
+    "name": "Lilo-an",
+    "lon": 123.6848547,
+    "lat": 9.1445871
+  },
+  {
+    "name": "Tulapos",
+    "lon": 123.6384935,
+    "lat": 9.2818889
+  },
+  {
+    "name": "Calalinan",
+    "lon": 123.5002874,
+    "lat": 9.2135341
+  },
+  {
+    "name": "Maite",
+    "lon": 123.5004033,
+    "lat": 9.1507263
+  },
+  {
+    "name": "Cang-apa",
+    "lon": 123.6026124,
+    "lat": 9.1970363
+  },
+  {
+    "name": "Luyang",
+    "lon": 123.5680916,
+    "lat": 9.2299345
+  },
+  {
+    "name": "Campalanas",
+    "lon": 123.5780727,
+    "lat": 9.1211273
+  },
+  {
+    "name": "Bonga",
+    "lon": 123.6375456,
+    "lat": 9.2139088
+  },
+  {
+    "name": "Catamboan — Lazi",
+    "lon": 123.6287788,
+    "lat": 9.1236406
+  },
+  {
+    "name": "Sandugan",
+    "lon": 123.6004398,
+    "lat": 9.291752
+  },
+  {
+    "name": "Solangon",
+    "lon": 123.4783689,
+    "lat": 9.171046
+  },
+  {
+    "name": "Bitaug",
+    "lon": 123.6188675,
+    "lat": 9.2968154
+  },
+  {
+    "name": "Pitogo Cliff Nature Park (30PHP)",
+    "lon": 123.5238588,
+    "lat": 9.1346042
+  },
+  {
+    "name": "Stella'z Guest House",
+    "lon": 123.5011455,
+    "lat": 9.1505966
+  },
+  {
+    "name": "Genevieve Guest House",
+    "lon": 123.6830225,
+    "lat": 9.1595353
+  },
+  {
+    "name": "Mr Crepe",
+    "lon": 123.4943016,
+    "lat": 9.15782
+  },
+  {
+    "name": "Nakabalo Guesthouse & Restaurant",
+    "lon": 123.5092141,
+    "lat": 9.1533142
+  },
+  {
+    "name": "CoombsGuestHouse",
+    "lon": 123.5184296,
+    "lat": 9.2150531
+  },
+  {
+    "name": "Mad Monkey Siquijor",
+    "lon": 123.5958054,
+    "lat": 9.132703
+  },
+  {
+    "name": "Wieser Residence - WNT‘S",
+    "lon": 123.5052618,
+    "lat": 9.2141744
+  },
+  {
+    "name": "Barefoot Backpackers",
+    "lon": 123.4652574,
+    "lat": 9.1857067
+  },
+  {
+    "name": "Tambisan Port",
+    "lon": 123.4521087,
+    "lat": 9.1931767
+  },
+  {
+    "name": "OceanBowls",
+    "lon": 123.4652953,
+    "lat": 9.1857705
+  },
+  {
+    "name": "WNT‘S Food Hub",
+    "lon": 123.5052377,
+    "lat": 9.2138379
+  },
+  {
+    "name": "Tugkaran Food Stuffs",
+    "lon": 123.5049813,
+    "lat": 9.1476302
+  },
+  {
+    "name": "Voodoo House",
+    "lon": 123.4836354,
+    "lat": 9.1667839
+  },
+  {
+    "name": "Coco Rico",
+    "lon": 123.484801,
+    "lat": 9.165698
+  },
+  {
+    "name": "Stations of the cross (1st station)",
+    "lon": 123.6478069,
+    "lat": 9.2356118
+  },
+  {
+    "name": "Tipsy Bar",
+    "lon": 123.4837537,
+    "lat": 9.1670114
+  },
+  {
+    "name": "Jungle KingDomes Cafe and Bar",
+    "lon": 123.5078645,
+    "lat": 9.1618922
+  },
+  {
+    "name": "Locong Falls",
+    "lon": 123.6192873,
+    "lat": 9.1287755
+  },
+  {
+    "name": "Lambojon Terraces La Canopée",
+    "lon": 123.5241989,
+    "lat": 9.1767423,
+    "displayName": "Lambojon"
+  },
+  {
+    "name": "Tugas",
+    "lon": 123.4858185,
+    "lat": 9.2124929
+  },
+  {
+    "name": "Mai Tai Beach Bar",
+    "lon": 123.4762087,
+    "lat": 9.1721831
+  },
+  {
+    "name": "Candura VAW Desk",
+    "lon": 123.5169437,
+    "lat": 9.1691966
+  },
+  {
+    "name": "Kimba Barangay Health Station",
+    "lon": 123.5834,
+    "lat": 9.148971
+  },
+  {
+    "name": "Kimba VAW Desk",
+    "lon": 123.5812785,
+    "lat": 9.1500431
+  },
+  {
+    "name": "Can-asagan VAW Desk",
+    "lon": 123.4968503,
+    "lat": 9.1709973
+  },
+  {
+    "name": "Solangon VAW Desk",
+    "lon": 123.4785151,
+    "lat": 9.1707371,
+    "displayName": "Solangon"
+  },
+  {
+    "name": "Banban VAW Desk",
+    "lon": 123.5604946,
+    "lat": 9.225828,
+    "displayName": "Banban"
+  },
+  {
+    "name": "Pili VAW Desk",
+    "lon": 123.5618464,
+    "lat": 9.2168674
+  },
+  {
+    "name": "Bitaug VAW Desk",
+    "lon": 123.6188192,
+    "lat": 9.2963202
+  },
+  {
+    "name": "Lomangcapan VAW Desk",
+    "lon": 123.6279273,
+    "lat": 9.2912533
+  },
+  {
+    "name": "Cang-alwang VAW Desk",
+    "lon": 123.4695764,
+    "lat": 9.2160198
+  },
+  {
+    "name": "Tinago VAW Desk",
+    "lon": 123.4750119,
+    "lat": 9.2138448
+  },
+  {
+    "name": "Caticugan VAW Desk",
+    "lon": 123.4869574,
+    "lat": 9.2085709
+  },
+  {
+    "name": "Dumanhog VAW Desk",
+    "lon": 123.4912761,
+    "lat": 9.2096649
+  },
+  {
+    "name": "Bayog",
+    "lon": 123.4939992,
+    "lat": 9.1964215
+  },
+  {
+    "name": "Caitican VAW Desk",
+    "lon": 123.5036485,
+    "lat": 9.1918353
+  },
+  {
+    "name": "Songculan VAW Desk",
+    "lon": 123.5110601,
+    "lat": 9.1868478
+  },
+  {
+    "name": "Caimito",
+    "lon": 123.4616277,
+    "lat": 9.1810061
+  },
+  {
+    "name": "Purok 1",
+    "lon": 123.5247374,
+    "lat": 9.1765841
+  },
+  {
+    "name": "Tag-ibo VAW Desk",
+    "lon": 123.5301351,
+    "lat": 9.1330869
+  },
+  {
+    "name": "Tubod Barangay Health Station",
+    "lon": 123.5077174,
+    "lat": 9.1450319
+  },
+  {
+    "name": "Ponong VAW Desk",
+    "lon": 123.5528395,
+    "lat": 9.1613069
+  },
+  {
+    "name": "Fortune",
+    "lon": 123.5697073,
+    "lat": 9.1605588
+  },
+  {
+    "name": "Timbaon VAW Desk",
+    "lon": 123.5554755,
+    "lat": 9.1159011
+  },
+  {
+    "name": "Candavoc",
+    "lon": 123.5683849,
+    "lat": 9.1176507
+  },
+  {
+    "name": "Campalanas VAW Desk",
+    "lon": 123.5787161,
+    "lat": 9.1212739,
+    "displayName": "Campalanas"
+  },
+  {
+    "name": "Catulayan VAW Desk",
+    "lon": 123.537525,
+    "lat": 9.1250954
+  },
+  {
+    "name": "Balogo",
+    "lon": 123.5732971,
+    "lat": 9.1024128
+  },
+  {
+    "name": "Cambalaguio",
+    "lon": 123.5637281,
+    "lat": 9.1028563
+  },
+  {
+    "name": "Talayong VAW Desk",
+    "lon": 123.6060904,
+    "lat": 9.1041556
+  },
+  {
+    "name": "Purok 2",
+    "lon": 123.5614166,
+    "lat": 9.1858137
+  },
+  {
+    "name": "Cangclaran VAW Desk",
+    "lon": 123.6074306,
+    "lat": 9.1471647
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Ibabao",
+    "lon": 123.5282175,
+    "lat": 9.2075035
+  },
+  {
+    "name": "Ibabao Barangay Health Station",
+    "lon": 123.5282624,
+    "lat": 9.2075345
+  },
+  {
+    "name": "Tigbawan VAW Desk",
+    "lon": 123.6364065,
+    "lat": 9.1265353
+  },
+  {
+    "name": "Siquijor Maritime Law Enforcement Team",
+    "lon": 123.5144656,
+    "lat": 9.2140301
+  },
+  {
+    "name": "Candanay Norte Barangay Health Station",
+    "lon": 123.5406244,
+    "lat": 9.2224069,
+    "displayName": "Candanay Norte"
+  },
+  {
+    "name": "Candanay Norte VAW Desk",
+    "lon": 123.5404578,
+    "lat": 9.2224069,
+    "displayName": "Candanay Norte"
+  },
+  {
+    "name": "Candigum VAW Desk",
+    "lon": 123.5954955,
+    "lat": 9.2119556
+  },
+  {
+    "name": "Luyang VAW Desk",
+    "lon": 123.5678001,
+    "lat": 9.2297868
+  },
+  {
+    "name": "Bontod VAW Desk",
+    "lon": 123.5947463,
+    "lat": 9.2426482
+  },
+  {
+    "name": "Taculing VAW Desk",
+    "lon": 123.5999809,
+    "lat": 9.2728005
+  },
+  {
+    "name": "Bolot VAW Desk",
+    "lon": 123.6443256,
+    "lat": 9.2672758
+  },
+  {
+    "name": "Camogao VAW Desk",
+    "lon": 123.6509563,
+    "lat": 9.2644126
+  },
+  {
+    "name": "Pari-an VAW Desk",
+    "lon": 123.6435148,
+    "lat": 9.2564735
+  },
+  {
+    "name": "Libo VAW Desk",
+    "lon": 123.6527492,
+    "lat": 9.2555339
+  },
+  {
+    "name": "Cangmangki VAW Desk",
+    "lon": 123.65595,
+    "lat": 9.2454505
+  },
+  {
+    "name": "Bogo Barangay Health Station",
+    "lon": 123.6628832,
+    "lat": 9.2329226
+  },
+  {
+    "name": "Lotloton Barangay Health Station",
+    "lon": 123.6597088,
+    "lat": 9.2358758
+  },
+  {
+    "name": "Lotloton VAW Desk",
+    "lon": 123.6603215,
+    "lat": 9.2370093
+  },
+  {
+    "name": "Basac Barangay Health Station",
+    "lon": 123.6163455,
+    "lat": 9.2179575
+  },
+  {
+    "name": "Basac VAW Desk",
+    "lon": 123.6156227,
+    "lat": 9.2190605
+  },
+  {
+    "name": "Saguing VAW Desk",
+    "lon": 123.6651656,
+    "lat": 9.1413831
+  },
+  {
+    "name": "Olang VAW Desk",
+    "lon": 123.6645019,
+    "lat": 9.2135264
+  },
+  {
+    "name": "Minalulan VAW Desk",
+    "lon": 123.6758222,
+    "lat": 9.1235924
+  },
+  {
+    "name": "Cabal-asan VAW Desk",
+    "lon": 123.6518849,
+    "lat": 9.2077837
+  },
+  {
+    "name": "Calunasan Barangay Health Station",
+    "lon": 123.6359144,
+    "lat": 9.1894405
+  },
+  {
+    "name": "Catamboan VAW Desk",
+    "lon": 123.6110022,
+    "lat": 9.2061475
+  },
+  {
+    "name": "Simacolong VAW Desk",
+    "lon": 123.6551302,
+    "lat": 9.123616
+  },
+  {
+    "name": "Tambayanan",
+    "lon": 123.5144414,
+    "lat": 9.1403924
+  },
+  {
+    "name": "San Juan Street Food area",
+    "lon": 123.4931585,
+    "lat": 9.1575182
+  },
+  {
+    "name": "Casa Juan Del Barrio",
+    "lon": 123.4972201,
+    "lat": 9.1540591
+  },
+  {
+    "name": "Habagat hideaway Bar & Restaurant",
+    "lon": 123.4894787,
+    "lat": 9.1611388
+  },
+  {
+    "name": "Maria",
+    "lon": 123.6551893,
+    "lat": 9.1962369
+  },
+  {
+    "name": "San Juan",
+    "lon": 123.4934406,
+    "lat": 9.1583523
+  },
+  {
+    "name": "Lazi",
+    "lon": 123.6338696,
+    "lat": 9.1284365
+  },
+  {
+    "name": "Larena",
+    "lon": 123.5910019,
+    "lat": 9.2488946
+  },
+  {
+    "name": "Enrique Villanueva",
+    "lon": 123.6471289,
+    "lat": 9.2762125
+  },
+  {
+    "name": "Siquijor",
+    "lon": 123.5138212,
+    "lat": 9.2155864
+  },
+  {
+    "name": "Old Enchanted Balete Tree",
+    "lon": 123.5754886,
+    "lat": 9.1209443
+  },
+  {
+    "name": "Siquijor Ferry Terminal",
+    "lon": 123.5120436,
+    "lat": 9.2189098
+  },
+  {
+    "name": "Bay View Guest House",
+    "lon": 123.5982243,
+    "lat": 9.2918386
+  },
+  {
+    "name": "Cantabon Cave",
+    "lon": 123.5639922,
+    "lat": 9.1877428
+  },
+  {
+    "name": "Carlsson Guest House",
+    "lon": 123.5972728,
+    "lat": 9.2884583
+  },
+  {
+    "name": "Healers Festival",
+    "lon": 123.5845237,
+    "lat": 9.1903601
+  },
+  {
+    "name": "Healers",
+    "lon": 123.5842409,
+    "lat": 9.1901166
+  },
+  {
+    "name": "Flora's Dive & Resort",
+    "lon": 123.58411,
+    "lat": 9.24672
+  },
+  {
+    "name": "Sea Breeze Lodge",
+    "lon": 123.5920394,
+    "lat": 9.2503
+  },
+  {
+    "name": "Treasure Island",
+    "lon": 123.4774802,
+    "lat": 9.1719381
+  },
+  {
+    "name": "Villa Marmarine",
+    "lon": 123.5333453,
+    "lat": 9.2246951
+  },
+  {
+    "name": "D'Barkads Food Haus",
+    "lon": 123.4762355,
+    "lat": 9.1734288
+  },
+  {
+    "name": "The Bruce",
+    "lon": 123.4757866,
+    "lat": 9.1732098
+  },
+  {
+    "name": "The Sylva",
+    "lon": 123.4760581,
+    "lat": 9.1740711
+  },
+  {
+    "name": "Mount Malabahoc",
+    "lon": 123.5827777,
+    "lat": 9.1877775
+  },
+  {
+    "name": "Metrobank",
+    "lon": 123.5148222,
+    "lat": 9.2127651
+  },
+  {
+    "name": "Paliton Catholic Parish Chruch",
+    "lon": 123.4694086,
+    "lat": 9.1789524,
+    "displayName": "Paliton · San Juan"
+  },
+  {
+    "name": "Cortes Pharmacy",
+    "lon": 123.5145151,
+    "lat": 9.2123881
+  },
+  {
+    "name": "TGP",
+    "lon": 123.5133294,
+    "lat": 9.2131986
+  },
+  {
+    "name": "The Big Belly Restaurant",
+    "lon": 123.5140665,
+    "lat": 9.215812
+  },
+  {
+    "name": "Joan's Native Delicacies",
+    "lon": 123.6427475,
+    "lat": 9.2099334
+  },
+  {
+    "name": "TGP — Larena",
+    "lon": 123.5910654,
+    "lat": 9.2471842
+  },
+  {
+    "name": "Sun Porch Bed and Breakfast",
+    "lon": 123.5912531,
+    "lat": 9.2470386
+  },
+  {
+    "name": "U Super Service Center",
+    "lon": 123.5915572,
+    "lat": 9.2471711
+  },
+  {
+    "name": "Shakes and Burgers",
+    "lon": 123.5910687,
+    "lat": 9.2470768
+  },
+  {
+    "name": "Lazi Fire Station",
+    "lon": 123.6335257,
+    "lat": 9.1285494
+  },
+  {
+    "name": "San Juan Fire Station",
+    "lon": 123.493667,
+    "lat": 9.1634363,
+    "displayName": "San Juan"
+  },
+  {
+    "name": "M's Place",
+    "lon": 123.5150926,
+    "lat": 9.214518
+  },
+  {
+    "name": "Joel's Lechon Manok",
+    "lon": 123.5134167,
+    "lat": 9.2145597
+  },
+  {
+    "name": "Das Traum Restaurant",
+    "lon": 123.5134644,
+    "lat": 9.2163916
+  },
+  {
+    "name": "Sr Pedro's Lechon Manok",
+    "lon": 123.5140999,
+    "lat": 9.2157575
+  },
+  {
+    "name": "Poblacion Day Care Center",
+    "lon": 123.514245,
+    "lat": 9.2145506
+  },
+  {
+    "name": "PHLPost",
+    "lon": 123.5139459,
+    "lat": 9.2139298
+  },
+  {
+    "name": "Atong Botica",
+    "lon": 123.5135718,
+    "lat": 9.2141694
+  },
+  {
+    "name": "Boulevard",
+    "lon": 123.5100739,
+    "lat": 9.2142645
+  },
+  {
+    "name": "Isla Inn",
+    "lon": 123.4967757,
+    "lat": 9.212329
+  },
+  {
+    "name": "Camp Bandilaan",
+    "lon": 123.5811468,
+    "lat": 9.1864557
+  },
+  {
+    "name": "Cortez Dental Clinic",
+    "lon": 123.5150534,
+    "lat": 9.2131111
+  },
+  {
+    "name": "End of the World",
+    "lon": 123.4865849,
+    "lat": 9.1639905
+  },
+  {
+    "name": "JJ's Backpackers Village",
+    "lon": 123.4820057,
+    "lat": 9.1682846,
+    "displayName": "Solangon · San Juan"
+  },
+  {
+    "name": "Last Frontier Dive",
+    "lon": 123.5006196,
+    "lat": 9.1500219
+  },
+  {
+    "name": "Tori's Paradise",
+    "lon": 123.4940901,
+    "lat": 9.2138802
+  },
+  {
+    "name": "Palmtree Guesthouse",
+    "lon": 123.6014837,
+    "lat": 9.294953
+  },
+  {
+    "name": "Tori's Backpacker's Paradise",
+    "lon": 123.5056923,
+    "lat": 9.1470295
+  },
+  {
+    "name": "Fuego Cantina & Grill Restobar",
+    "lon": 123.5127177,
+    "lat": 9.1418086
+  },
+  {
+    "name": "Xylla Guesthouse",
+    "lon": 123.5940499,
+    "lat": 9.1327574
+  },
+  {
+    "name": "bdo",
+    "lon": 123.6479621,
+    "lat": 9.3486551
+  },
+  {
+    "name": "Palm Village",
+    "lon": 123.4874505,
+    "lat": 9.1630934
+  },
+  {
+    "name": "Development Bank of the Philippines",
+    "lon": 123.5131166,
+    "lat": 9.2147658
+  },
+  {
+    "name": "Café El Monte",
+    "lon": 123.6357283,
+    "lat": 9.1249996
+  },
+  {
+    "name": "Tumanak Lodge",
+    "lon": 123.513693,
+    "lat": 9.2166688
+  },
+  {
+    "name": "E and R Pharmacy",
+    "lon": 123.5145793,
+    "lat": 9.2130354
+  },
+  {
+    "name": "Minalulan",
+    "lon": 123.6756141,
+    "lat": 9.1235124
+  },
+  {
+    "name": "Sea pearl Divers",
+    "lon": 123.4892599,
+    "lat": 9.1615151,
+    "displayName": "Lala-o · San Juan"
+  },
+  {
+    "name": "U.story",
+    "lon": 123.529317,
+    "lat": 9.1309153
+  },
+  {
+    "name": "U Story",
+    "lon": 123.5294837,
+    "lat": 9.131555
+  },
+  {
+    "name": "Chekesh Bar-B-Q",
+    "lon": 123.5093012,
+    "lat": 9.1449237
+  },
+  {
+    "name": "White Food Court & Mini Bar",
+    "lon": 123.5060053,
+    "lat": 9.1472463
+  },
+  {
+    "name": "Cantabon",
+    "lon": 123.5614614,
+    "lat": 9.1859551
+  },
+  {
+    "name": "Garden Cocktail Bar",
+    "lon": 123.5092149,
+    "lat": 9.1435794
+  },
+  {
+    "name": "Sunset Restaurant",
+    "lon": 123.5087484,
+    "lat": 9.1437665
+  },
+  {
+    "name": "Lugnason Falls",
+    "lon": 123.5341373,
+    "lat": 9.1480493
+  },
+  {
+    "name": "Cang-inte",
+    "lon": 123.5602308,
+    "lat": 9.1982218
+  },
+  {
+    "name": "Bell View Restaurant",
+    "lon": 123.51354,
+    "lat": 9.2145809
+  },
+  {
+    "name": "Dastraum Guesthouse",
+    "lon": 123.5188636,
+    "lat": 9.2200115
+  },
+  {
+    "name": "La Villa Alta",
+    "lon": 123.60507,
+    "lat": 9.2998423
+  },
+  {
+    "name": "Dagsa",
+    "lon": 123.4762263,
+    "lat": 9.1731923
+  },
+  {
+    "name": "Laga-an Falls",
+    "lon": 123.6136027,
+    "lat": 9.1345718
+  },
+  {
+    "name": "Ang Dapog ni Nanay Carmen",
+    "lon": 123.6322232,
+    "lat": 9.1291253
+  },
+  {
+    "name": "Ga-ay",
+    "lon": 123.4860717,
+    "lat": 9.1644995
+  },
+  {
+    "name": "Belle's",
+    "lon": 123.5007133,
+    "lat": 9.1498099
+  },
+  {
+    "name": "Canteen",
+    "lon": 123.5146283,
+    "lat": 9.2142532
+  },
+  {
+    "name": "Rendevoo Island",
+    "lon": 123.501748,
+    "lat": 9.1505327
+  },
+  {
+    "name": "Marco Polo Pasta & Pizza",
+    "lon": 123.4951659,
+    "lat": 9.156052
+  },
+  {
+    "name": "C zar  's place",
+    "lon": 123.5060736,
+    "lat": 9.1612385
+  },
+  {
+    "name": "Horizon",
+    "lon": 123.5132949,
+    "lat": 9.2161417
+  },
+  {
+    "name": "Diamond de Siquijor",
+    "lon": 123.5038348,
+    "lat": 9.2142538
+  },
+  {
+    "name": "Rastaman Grill",
+    "lon": 123.495728,
+    "lat": 9.1558832
+  },
+  {
+    "name": "HAPPYTANAN SNACK & SOUVENIR",
+    "lon": 123.6128734,
+    "lat": 9.1274275
+  },
+  {
+    "name": "Kiwi Dive Resort",
+    "lon": 123.6008526,
+    "lat": 9.2977667
+  },
+  {
+    "name": "Tropicasa Siquijor",
+    "lon": 123.4811909,
+    "lat": 9.1689101
+  },
+  {
+    "name": "Twenty4 Burger Bar",
+    "lon": 123.6349919,
+    "lat": 9.1262454
+  },
+  {
+    "name": "Legends",
+    "lon": 123.5290059,
+    "lat": 9.1314939
+  },
+  {
+    "name": "Roch Cuisine",
+    "lon": 123.4849022,
+    "lat": 9.1655603
+  },
+  {
+    "name": "Dalahikan grill masters",
+    "lon": 123.4863984,
+    "lat": 9.1644318
+  },
+  {
+    "name": "Aloha's Grill",
+    "lon": 123.4862489,
+    "lat": 9.1643452
+  },
+  {
+    "name": "Larena Tourist Post",
+    "lon": 123.5916354,
+    "lat": 9.2505271
+  },
+  {
+    "name": "Good Vibes",
+    "lon": 123.4867159,
+    "lat": 9.1638645
+  },
+  {
+    "name": "Mother Mary",
+    "lon": 123.5133929,
+    "lat": 9.2151854
+  },
+  {
+    "name": "Belfry",
+    "lon": 123.5133995,
+    "lat": 9.2149894
+  },
+  {
+    "name": "Mango Tango",
+    "lon": 123.4726714,
+    "lat": 9.1752904
+  },
+  {
+    "name": "M's Place — Siquijor",
+    "lon": 123.5150588,
+    "lat": 9.2130477
+  },
+  {
+    "name": "Santa Rita and the Skull Head",
+    "lon": 123.6551032,
+    "lat": 9.1971147
+  },
+  {
+    "name": "Divine Providence Pharmacy",
+    "lon": 123.6556325,
+    "lat": 9.1966432
+  },
+  {
+    "name": "Cambugahay Falls",
+    "lon": 123.6267445,
+    "lat": 9.1400762
+  },
+  {
+    "name": "White Villas Resort",
+    "lon": 123.4752437,
+    "lat": 9.1729787
+  },
+  {
+    "name": "Cecilia's guest house and restaurant",
+    "lon": 123.4798124,
+    "lat": 9.2127498
+  },
+  {
+    "name": "Lookout track",
+    "lon": 123.61654,
+    "lat": 9.281111
+  },
+  {
+    "name": "Oceanlife Explorers Resort, Dive and Research Center",
+    "lon": 123.4622338,
+    "lat": 9.1978844,
+    "displayName": "Tambisan · Siquijor"
+  },
+  {
+    "name": "Monkey business",
+    "lon": 123.4763347,
+    "lat": 9.1728469
+  },
+  {
+    "name": "Sant'Aixandre",
+    "lon": 123.5114948,
+    "lat": 9.2138055
+  },
+  {
+    "name": "Kanheron",
+    "lon": 123.5552458,
+    "lat": 9.2227549
+  },
+  {
+    "name": "NB 7js hotel and restaurant",
+    "lon": 123.636375,
+    "lat": 9.1292965
+  },
+  {
+    "name": "Escape to paradise",
+    "lon": 123.5529972,
+    "lat": 9.1150765
+  },
+  {
+    "name": "Amber's Homestay",
+    "lon": 123.4735104,
+    "lat": 9.2051383
+  },
+  {
+    "name": "Espace to paradise",
+    "lon": 123.5240856,
+    "lat": 9.223157
+  },
+  {
+    "name": "Banahaw Cave",
+    "lon": 123.6286163,
+    "lat": 9.1492586
+  },
+  {
+    "name": "Napoli Caffé",
+    "lon": 123.4952351,
+    "lat": 9.1561805
+  },
+  {
+    "name": "Aventura B&B",
+    "lon": 123.4939914,
+    "lat": 9.1583434
+  },
+  {
+    "name": "Bakhawan Sutukil",
+    "lon": 123.5117231,
+    "lat": 9.2140062
+  },
+  {
+    "name": "Quesol view",
+    "lon": 123.6018202,
+    "lat": 9.1944299
+  },
+  {
+    "name": "Daydream",
+    "lon": 123.479299,
+    "lat": 9.1701297
+  },
+  {
+    "name": "Molmol Pizzeria",
+    "lon": 123.5918395,
+    "lat": 9.2481803,
+    "displayName": "Larena"
+  },
+  {
+    "name": "Lacosta",
+    "lon": 123.5967638,
+    "lat": 9.2837499
+  },
+  {
+    "name": "Jo’S Chicken Ranch",
+    "lon": 123.5908332,
+    "lat": 9.2487544
+  },
+  {
+    "name": "Rastaman Grill — Lazi",
+    "lon": 123.5610752,
+    "lat": 9.1155068
+  },
+  {
+    "name": "Vangie Guesthouse",
+    "lon": 123.499882,
+    "lat": 9.1920515
+  },
+  {
+    "name": "Oceanlife restaurant",
+    "lon": 123.4624239,
+    "lat": 9.1982261
+  },
+  {
+    "name": "Luca Loko",
+    "lon": 123.4972316,
+    "lat": 9.1543747
+  },
+  {
+    "name": "Rooftop Bar",
+    "lon": 123.4837145,
+    "lat": 9.1666134,
+    "displayName": "Solangon · San Juan"
+  },
+  {
+    "name": "Gapnod Guesthouse",
+    "lon": 123.490125,
+    "lat": 9.1604335
+  },
+  {
+    "name": "Tubod Marine Sanctuary",
+    "lon": 123.5083865,
+    "lat": 9.1428502
+  },
+  {
+    "name": "Waterfront Villa",
+    "lon": 123.6013005,
+    "lat": 9.2987211
+  },
+  {
+    "name": "Jungle of Peace",
+    "lon": 123.532769,
+    "lat": 9.1348369
+  },
+  {
+    "name": "Bar and Restaurant",
+    "lon": 123.5324896,
+    "lat": 9.1345983
+  },
+  {
+    "name": "Karaoke (KTV)",
+    "lon": 123.4937595,
+    "lat": 9.1572589
+  },
+  {
+    "name": "Kawasan Falls and Cave",
+    "lon": 123.6175267,
+    "lat": 9.1329085
+  },
+  {
+    "name": "Residenzia Diosa",
+    "lon": 123.5054432,
+    "lat": 9.1471542
+  },
+  {
+    "name": "Marelle's Restaurant",
+    "lon": 123.5081898,
+    "lat": 9.1455432
+  },
+  {
+    "name": "Cangmalalag",
+    "lon": 123.600034,
+    "lat": 9.2766035
+  },
+  {
+    "name": "One sunset view",
+    "lon": 123.4816504,
+    "lat": 9.1685424,
+    "displayName": "Solangon · San Juan"
+  },
+  {
+    "name": "Saki",
+    "lon": 123.5634137,
+    "lat": 9.209065
+  },
+  {
+    "name": "Day Dream Guest House",
+    "lon": 123.537614,
+    "lat": 9.1268793
+  },
+  {
+    "name": "Ayan‘s Place",
+    "lon": 123.6032901,
+    "lat": 9.2975132
+  },
+  {
+    "name": "Siquijor Divers",
+    "lon": 123.5024713,
+    "lat": 9.1488353
+  },
+  {
+    "name": "PNB",
+    "lon": 123.5908557,
+    "lat": 9.247279,
+    "displayName": "Larena"
+  },
+  {
+    "name": "Landbank",
+    "lon": 123.5910478,
+    "lat": 9.247589
+  },
+  {
+    "name": "Island Butterfly Garden",
+    "lon": 123.6025869,
+    "lat": 9.191814
+  },
+  {
+    "name": "Salamandas",
+    "lon": 123.5110229,
+    "lat": 9.1417397
+  },
+  {
+    "name": "Kawayan Holiday Divers",
+    "lon": 123.5593848,
+    "lat": 9.1022492
+  },
+  {
+    "name": "Go Dive Siquijor",
+    "lon": 123.4937043,
+    "lat": 9.214435
+  },
+  {
+    "name": "Maria Food Court",
+    "lon": 123.6558136,
+    "lat": 9.1965253
+  },
+  {
+    "name": "Carenderia de Seanlhyan",
+    "lon": 123.5097868,
+    "lat": 9.1446513
+  },
+  {
+    "name": "Canghunog Cave",
+    "lon": 123.5646878,
+    "lat": 9.1973807
+  },
+  {
+    "name": "Laguerta Kuzina",
+    "lon": 123.6640865,
+    "lat": 9.1627613
+  },
+  {
+    "name": "Republika",
+    "lon": 123.5021917,
+    "lat": 9.1491385
+  },
+  {
+    "name": "Tulawog Cave",
+    "lon": 123.5554512,
+    "lat": 9.1692251
+  },
+  {
+    "name": "Sunset Viewpoint",
+    "lon": 123.5324266,
+    "lat": 9.1346022
+  },
+  {
+    "name": "Dolce Amore",
+    "lon": 123.4708031,
+    "lat": 9.1785063
+  },
+  {
+    "name": "Island Casitas",
+    "lon": 123.4899815,
+    "lat": 9.1608261
+  },
+  {
+    "name": "Annabells",
+    "lon": 123.4921706,
+    "lat": 9.1595136
+  },
+  {
+    "name": "mad viewpoint",
+    "lon": 123.6060071,
+    "lat": 9.2049316
+  },
+  {
+    "name": "Sambulawan Underground River Reception Area",
+    "lon": 123.6381811,
+    "lat": 9.1470399
+  },
+  {
+    "name": "Hidden valley",
+    "lon": 123.576955,
+    "lat": 9.1158194
+  },
+  {
+    "name": "Best sunset viewpoint",
+    "lon": 123.5769384,
+    "lat": 9.1156887
+  },
+  {
+    "name": "Sambulawan Underground River Entrance",
+    "lon": 123.6388417,
+    "lat": 9.1477581
+  },
+  {
+    "name": "Sofing rusina",
+    "lon": 123.5982922,
+    "lat": 9.2736265
+  },
+  {
+    "name": "Cafe Jose",
+    "lon": 123.6526053,
+    "lat": 9.2612627
+  },
+  {
+    "name": "Secret beach",
+    "lon": 123.6862354,
+    "lat": 9.1603056
+  },
+  {
+    "name": "Ice cream shop",
+    "lon": 123.5151338,
+    "lat": 9.2157898
+  },
+  {
+    "name": "Love Shack Hostel",
+    "lon": 123.4671069,
+    "lat": 9.1769342
+  },
+  {
+    "name": "Javil's home stay",
+    "lon": 123.4949629,
+    "lat": 9.1566148
+  },
+  {
+    "name": "café gosé",
+    "lon": 123.6525549,
+    "lat": 9.2611917
+  },
+  {
+    "name": "Casa de Casi",
+    "lon": 123.4760915,
+    "lat": 9.1734023
+  },
+  {
+    "name": "GO GUESTHOUSE",
+    "lon": 123.5240305,
+    "lat": 9.223246
+  },
+  {
+    "name": "ChillOut Hostel & Bistro",
+    "lon": 123.5876401,
+    "lat": 9.2489873
+  },
+  {
+    "name": "Sunset viewpoint",
+    "lon": 123.526739,
+    "lat": 9.2060032
+  },
+  {
+    "name": "Beach Access Ba",
+    "lon": 123.6613813,
+    "lat": 9.2074941
+  },
+  {
+    "name": "Aussie Accommodation",
+    "lon": 123.6542846,
+    "lat": 9.1334513
+  },
+  {
+    "name": "Fidy's Bibingka",
+    "lon": 123.6590067,
+    "lat": 9.179855
+  },
+  {
+    "name": "Sea Tree Internet Cafe",
+    "lon": 123.6350077,
+    "lat": 9.1265626
+  },
+  {
+    "name": "Blessed Internet Cafe",
+    "lon": 123.6349539,
+    "lat": 9.1266784
+  },
+  {
+    "name": "Skynet Internet Cafe",
+    "lon": 123.6350326,
+    "lat": 9.1261621
+  },
+  {
+    "name": "Noy-Noy's Eatery",
+    "lon": 123.6357098,
+    "lat": 9.125361
+  },
+  {
+    "name": "LCCJ Eatery",
+    "lon": 123.6353464,
+    "lat": 9.1256431
+  },
+  {
+    "name": "First Babybyte",
+    "lon": 123.6351922,
+    "lat": 9.1258907
+  },
+  {
+    "name": "Sierras Pharmacy",
+    "lon": 123.6356696,
+    "lat": 9.1260204
+  },
+  {
+    "name": "Krisha Pharmacy",
+    "lon": 123.6352709,
+    "lat": 9.1261349
+  },
+  {
+    "name": "Cabugsayan Falls",
+    "lon": 123.6125322,
+    "lat": 9.1383003
+  },
+  {
+    "name": "Capalasanan Barangay Health Station",
+    "lon": 123.6167631,
+    "lat": 9.1643729
+  },
+  {
+    "name": "San Antonio",
+    "lon": 123.5427637,
+    "lat": 9.18294
+  },
+  {
+    "name": "Enrico's Guest House",
+    "lon": 123.4961798,
+    "lat": 9.1551346,
+    "displayName": "Maite · San Juan"
+  },
+  {
+    "name": "Cangomantong",
+    "lon": 123.5882648,
+    "lat": 9.1701225
+  },
+  {
+    "name": "Talaytay",
+    "lon": 123.5858727,
+    "lat": 9.1712712
+  },
+  {
+    "name": "Po-o",
+    "lon": 123.6106109,
+    "lat": 9.1627897
+  },
+  {
+    "name": "Capalasanan",
+    "lon": 123.6195622,
+    "lat": 9.1668793
+  },
+  {
+    "name": "Tagmanocan",
+    "lon": 123.6313202,
+    "lat": 9.1463381
+  },
+  {
+    "name": "Simacolong",
+    "lon": 123.6547809,
+    "lat": 9.1236846
+  },
+  {
+    "name": "Nagerong",
+    "lon": 123.6484295,
+    "lat": 9.1375401
+  },
+  {
+    "name": "Tigbawan",
+    "lon": 123.6362694,
+    "lat": 9.1264692
+  },
+  {
+    "name": "Gabayan",
+    "lon": 123.6214143,
+    "lat": 9.1149304
+  },
+  {
+    "name": "Talayong",
+    "lon": 123.6061086,
+    "lat": 9.104396
+  },
+  {
+    "name": "Tignao",
+    "lon": 123.6049455,
+    "lat": 9.1315128
+  },
+  {
+    "name": "Kinamandagan",
+    "lon": 123.6002535,
+    "lat": 9.1460126
+  },
+  {
+    "name": "Kimba",
+    "lon": 123.5812836,
+    "lat": 9.1499372
+  },
+  {
+    "name": "Upper Cabangcalan",
+    "lon": 123.5847517,
+    "lat": 9.1260988
+  },
+  {
+    "name": "Ytaya",
+    "lon": 123.5790145,
+    "lat": 9.1324134
+  },
+  {
+    "name": "Cangclaran",
+    "lon": 123.6190558,
+    "lat": 9.1371299
+  },
+  {
+    "name": "Lower Cabangcalan",
+    "lon": 123.587662,
+    "lat": 9.1021932
+  },
+  {
+    "name": "Ilihan",
+    "lon": 123.6666768,
+    "lat": 9.1201216
+  },
+  {
+    "name": "Cantabon Cave Tourism Office",
+    "lon": 123.5612845,
+    "lat": 9.185828,
+    "displayName": "Cantabon"
+  },
+  {
+    "name": "Travis Post Homestay",
+    "lon": 123.5442097,
+    "lat": 9.1229134
+  },
+  {
+    "name": "Sandugan Marine Sanctuary",
+    "lon": 123.6003708,
+    "lat": 9.2984427
+  },
+  {
+    "name": "Canghailing Cave",
+    "lon": 123.5485158,
+    "lat": 9.1397236
+  },
+  {
+    "name": "Mt. Bandilaan National Park",
+    "lon": 123.5841521,
+    "lat": 9.1904601
+  },
+  {
+    "name": "Cabugsayan falls",
+    "lon": 123.6154594,
+    "lat": 9.1334787
+  },
+  {
+    "name": "TUBOD MARINE SANCTUARY",
+    "lon": 123.5097062,
+    "lat": 9.1401214
+  },
+  {
+    "name": "Island Vibes",
+    "lon": 123.4740499,
+    "lat": 9.1752868
+  },
+  {
+    "name": "Beach Bad and Smoothies",
+    "lon": 123.4899071,
+    "lat": 9.160876,
+    "displayName": "Lala-o · San Juan"
+  },
+  {
+    "name": "Rogelio's Beach Bar and Restaurant",
+    "lon": 123.4886705,
+    "lat": 9.16187,
+    "displayName": "Lala-o · San Juan"
+  },
+  {
+    "name": "Nipa Hut",
+    "lon": 123.5691268,
+    "lat": 9.1790178
+  },
+  {
+    "name": "XYCAINE Drugstore",
+    "lon": 123.6353396,
+    "lat": 9.1260047
+  },
+  {
+    "name": "D'Blue Moon",
+    "lon": 123.4979052,
+    "lat": 9.1533061
+  },
+  {
+    "name": "Kwarto's",
+    "lon": 123.5104742,
+    "lat": 9.1455344
+  },
+  {
+    "name": "Dream star hostel and restaurant",
+    "lon": 123.462748,
+    "lat": 9.1813758
+  },
+  {
+    "name": "Serbad Guesthouse",
+    "lon": 123.4902856,
+    "lat": 9.1607358
+  },
+  {
+    "name": "EM's Seaside Inn",
+    "lon": 123.4950391,
+    "lat": 9.2131946
+  },
+  {
+    "name": "Coco",
+    "lon": 123.5102365,
+    "lat": 9.1428854
+  },
+  {
+    "name": "Sascha's Place",
+    "lon": 123.4665266,
+    "lat": 9.2210404
+  },
+  {
+    "name": "Siquijor Holidays Beach Front",
+    "lon": 123.4960009,
+    "lat": 9.1553789
+  },
+  {
+    "name": "Monkey Beach",
+    "lon": 123.6953134,
+    "lat": 9.1342186
+  },
+  {
+    "name": "Aeneas",
+    "lon": 123.4956078,
+    "lat": 9.1559783
+  },
+  {
+    "name": "Tawhay",
+    "lon": 123.4892965,
+    "lat": 9.1617348,
+    "displayName": "Lala-o · San Juan"
+  },
+  {
+    "name": "Juliet's Guesthouse",
+    "lon": 123.4843395,
+    "lat": 9.1663793
+  },
+  {
+    "name": "Upper Boulevard",
+    "lon": 123.5235812,
+    "lat": 9.1660598
+  },
+  {
+    "name": "Kobe’s Beachfront haven",
+    "lon": 123.5001775,
+    "lat": 9.1505176
+  },
+  {
+    "name": "Dive Point DC",
+    "lon": 123.500931,
+    "lat": 9.1496878
+  },
+  {
+    "name": "Luzong",
+    "lon": 123.5730817,
+    "lat": 9.1671255
+  },
+  {
+    "name": "Cangmatnog",
+    "lon": 123.5697211,
+    "lat": 9.1608772
+  },
+  {
+    "name": "Cang-atuyom",
+    "lon": 123.5728251,
+    "lat": 9.1499642
+  },
+  {
+    "name": "Monkey Republic",
+    "lon": 123.4957985,
+    "lat": 9.1558358
+  },
+  {
+    "name": "Tawhay Cafe",
+    "lon": 123.4891576,
+    "lat": 9.1616688,
+    "displayName": "Lala-o · San Juan"
+  },
+  {
+    "name": "Bitaug Day Care Center",
+    "lon": 123.6187256,
+    "lat": 9.2963565
+  },
+  {
+    "name": "San Roque Chapel",
+    "lon": 123.6175149,
+    "lat": 9.2968195
+  },
+  {
+    "name": "San Vicente Chapel",
+    "lon": 123.6260413,
+    "lat": 9.2931272
+  },
+  {
+    "name": "Tulapos Day Care Center",
+    "lon": 123.635995,
+    "lat": 9.285261
+  },
+  {
+    "name": "Poblacion Day Care Center — Enrique Villanueva",
+    "lon": 123.644045,
+    "lat": 9.2771171
+  },
+  {
+    "name": "Poblacion Barangay Hall",
+    "lon": 123.644165,
+    "lat": 9.2770409
+  },
+  {
+    "name": "Our Lady of Mount Carmel Convent",
+    "lon": 123.646815,
+    "lat": 9.2760086
+  },
+  {
+    "name": "Enrique Villanueva Municipal Hall",
+    "lon": 123.6469491,
+    "lat": 9.2766042
+  },
+  {
+    "name": "Enrique Villanueva Multi Purpose Building",
+    "lon": 123.6468158,
+    "lat": 9.2765221
+  },
+  {
+    "name": "Enrique Villanueva Social Center",
+    "lon": 123.6472737,
+    "lat": 9.2759397
+  },
+  {
+    "name": "Enrique Villanueva Multi Purpose Hall",
+    "lon": 123.6472093,
+    "lat": 9.2760827
+  },
+  {
+    "name": "Enrique Villanueva ECCD Center",
+    "lon": 123.6469008,
+    "lat": 9.2756062
+  },
+  {
+    "name": "Commercial Building 2",
+    "lon": 123.6469893,
+    "lat": 9.2757306
+  },
+  {
+    "name": "Commercial Building 1",
+    "lon": 123.6470484,
+    "lat": 9.275638
+  },
+  {
+    "name": "Public Market Stall",
+    "lon": 123.6480783,
+    "lat": 9.2753865
+  },
+  {
+    "name": "Wet Market",
+    "lon": 123.6483697,
+    "lat": 9.2753848
+  },
+  {
+    "name": "Fish Landing",
+    "lon": 123.6483921,
+    "lat": 9.2752171
+  },
+  {
+    "name": "Bino-ongan Day Care Center",
+    "lon": 123.6485477,
+    "lat": 9.2737638
+  },
+  {
+    "name": "Bolot Day Care Center",
+    "lon": 123.64446,
+    "lat": 9.2675826
+  },
+  {
+    "name": "Tulapos Barangay Hall",
+    "lon": 123.6382728,
+    "lat": 9.2818441
+  },
+  {
+    "name": "Poblacion Multi Purpose Hall",
+    "lon": 123.6441148,
+    "lat": 9.2770752
+  },
+  {
+    "name": "Santa Barbara Cooperative",
+    "lon": 123.6465619,
+    "lat": 9.2758386
+  },
+  {
+    "name": "Enrique Villanueva Crisis Center",
+    "lon": 123.6468602,
+    "lat": 9.2757064
+  },
+  {
+    "name": "United Church of Christ in the Philippines",
+    "lon": 123.6475376,
+    "lat": 9.2747295
+  },
+  {
+    "name": "Santa Rosa De Lima Chapel",
+    "lon": 123.6449141,
+    "lat": 9.2614944
+  },
+  {
+    "name": "Santo Niño Chapel",
+    "lon": 123.6556812,
+    "lat": 9.245361
+  },
+  {
+    "name": "Birhen sa Pilar Chapel",
+    "lon": 123.6224866,
+    "lat": 9.2696329
+  },
+  {
+    "name": "San Pedro Calungsod Chapel",
+    "lon": 123.6331414,
+    "lat": 9.2519626
+  },
+  {
+    "name": "Santo Niño Chapel — Enrique Villanueva",
+    "lon": 123.6428617,
+    "lat": 9.2766127
+  },
+  {
+    "name": "Cangmangki Day Care Center",
+    "lon": 123.6560105,
+    "lat": 9.2455178
+  },
+  {
+    "name": "Libo Training Center",
+    "lon": 123.6527304,
+    "lat": 9.2557037
+  },
+  {
+    "name": "Libo Day Care Center",
+    "lon": 123.6530746,
+    "lat": 9.2540257
+  },
+  {
+    "name": "True Christian Church",
+    "lon": 123.6503046,
+    "lat": 9.2615468
+  },
+  {
+    "name": "Lotloton Day Care Center",
+    "lon": 123.6603731,
+    "lat": 9.2370971
+  },
+  {
+    "name": "Lotloton Multi Purpose Building",
+    "lon": 123.6605474,
+    "lat": 9.2371076
+  },
+  {
+    "name": "San Vicente Chapel — Enrique Villanueva",
+    "lon": 123.659739,
+    "lat": 9.237784
+  },
+  {
+    "name": "Enrique Villanueva New Police Station",
+    "lon": 123.6443418,
+    "lat": 9.2782778
+  },
+  {
+    "name": "Enrique Villanueva Fire Station",
+    "lon": 123.64388,
+    "lat": 9.2795568
+  },
+  {
+    "name": "Sta. Cruz Chapel",
+    "lon": 123.6369189,
+    "lat": 9.2785466
+  },
+  {
+    "name": "Pari-an Training Center",
+    "lon": 123.6435146,
+    "lat": 9.2564659
+  },
+  {
+    "name": "Olave Day Care Center",
+    "lon": 123.6336371,
+    "lat": 9.2520416
+  },
+  {
+    "name": "Olave Barangay Hall",
+    "lon": 123.6336052,
+    "lat": 9.2519438
+  },
+  {
+    "name": "Balolong Barangay Hall",
+    "lon": 123.6231782,
+    "lat": 9.2629841
+  },
+  {
+    "name": "Balolong Day Care Center",
+    "lon": 123.6231836,
+    "lat": 9.2630662
+  },
+  {
+    "name": "Manan-ao Day Care Center",
+    "lon": 123.629861,
+    "lat": 9.271943
+  },
+  {
+    "name": "Manan-ao Multi Purpose Hall",
+    "lon": 123.629678,
+    "lat": 9.2719582
+  },
+  {
+    "name": "Iglesia sa Diyos Espirito Santo",
+    "lon": 123.6344564,
+    "lat": 9.2839768
+  },
+  {
+    "name": "Lotloton",
+    "lon": 123.6599019,
+    "lat": 9.2372816
+  },
+  {
+    "name": "Cangmangki",
+    "lon": 123.6557767,
+    "lat": 9.2452503
+  },
+  {
+    "name": "Libo",
+    "lon": 123.652322,
+    "lat": 9.2550745
+  },
+  {
+    "name": "Olave",
+    "lon": 123.6337946,
+    "lat": 9.2516171
+  },
+  {
+    "name": "Pari-an",
+    "lon": 123.6430255,
+    "lat": 9.2562472
+  },
+  {
+    "name": "Balolong",
+    "lon": 123.6243466,
+    "lat": 9.2644286
+  },
+  {
+    "name": "Camogao",
+    "lon": 123.6518942,
+    "lat": 9.2630719
+  },
+  {
+    "name": "Bino-ongan",
+    "lon": 123.6497658,
+    "lat": 9.2709764
+  },
+  {
+    "name": "Bolot",
+    "lon": 123.6443344,
+    "lat": 9.2678422
+  },
+  {
+    "name": "Manan-ao",
+    "lon": 123.629652,
+    "lat": 9.2720776
+  },
+  {
+    "name": "Lomangcapan",
+    "lon": 123.6281298,
+    "lat": 9.2915457
+  },
+  {
+    "name": "Holy Mountain",
+    "lon": 123.6442115,
+    "lat": 9.2346887
+  },
+  {
+    "name": "Carmelite Collegr of Siquijor, Inc.",
+    "lon": 123.4802007,
+    "lat": 9.2135596
+  },
+  {
+    "name": "pinaliran ug dagom",
+    "lon": 123.5904213,
+    "lat": 9.1658408
+  },
+  {
+    "name": "Napo",
+    "lon": 123.5280495,
+    "lat": 9.14642
+  },
+  {
+    "name": "Yellow Creek",
+    "lon": 123.5980877,
+    "lat": 9.2821384
+  },
+  {
+    "name": "Larena Ferry Terminal",
+    "lon": 123.590423,
+    "lat": 9.2512876
+  },
+  {
+    "name": "Timbaon",
+    "lon": 123.5555211,
+    "lat": 9.1160008
+  },
+  {
+    "name": "Catulayan",
+    "lon": 123.5374752,
+    "lat": 9.1254591
+  },
+  {
+    "name": "Can-asagan",
+    "lon": 123.496886,
+    "lat": 9.1710262
+  },
+  {
+    "name": "Minalulan Point",
+    "lon": 123.6800735,
+    "lat": 9.1209624
+  },
+  {
+    "name": "Poblacion — Siquijor",
+    "lon": 123.5139207,
+    "lat": 9.2137022
+  },
+  {
+    "name": "LightHaus",
+    "lon": 123.4616486,
+    "lat": 9.196055,
+    "displayName": "Tambisan · Siquijor"
+  },
+  {
+    "name": "Asisi Hotel",
+    "lon": 123.5133892,
+    "lat": 9.215696
+  },
+  {
+    "name": "Sikijor Express",
+    "lon": 123.513734,
+    "lat": 9.2156778
+  },
+  {
+    "name": "Cadoldolan",
+    "lon": 123.5679849,
+    "lat": 9.108007
+  },
+  {
+    "name": "Olang Day Care Center",
+    "lon": 123.6644562,
+    "lat": 9.2134531,
+    "displayName": "Olang"
+  },
+  {
+    "name": "Poblacion Norte",
+    "lon": 123.6573566,
+    "lat": 9.1985769
+  },
+  {
+    "name": "Poblacion Sur",
+    "lon": 123.6515049,
+    "lat": 9.1966736
+  },
+  {
+    "name": "Looc",
+    "lon": 123.6552842,
+    "lat": 9.191798
+  },
+  {
+    "name": "Bogo",
+    "lon": 123.6631474,
+    "lat": 9.2330738
+  },
+  {
+    "name": "Lico-an",
+    "lon": 123.6454433,
+    "lat": 9.2177506
+  },
+  {
+    "name": "Cabal-asan",
+    "lon": 123.6517948,
+    "lat": 9.2078479
+  },
+  {
+    "name": "Pisong A",
+    "lon": 123.6443997,
+    "lat": 9.2021833
+  },
+  {
+    "name": "Pisong B",
+    "lon": 123.6216089,
+    "lat": 9.2046341
+  },
+  {
+    "name": "Saguing",
+    "lon": 123.6650713,
+    "lat": 9.1413718
+  },
+  {
+    "name": "Nabutay",
+    "lon": 123.6749243,
+    "lat": 9.1517578
+  },
+  {
+    "name": "Candaping B",
+    "lon": 123.6658726,
+    "lat": 9.1592307
+  },
+  {
+    "name": "Candaping A",
+    "lon": 123.6580503,
+    "lat": 9.1704049
+  },
+  {
+    "name": "Sawang",
+    "lon": 123.661276,
+    "lat": 9.1763469
+  },
+  {
+    "name": "Cantaroc B",
+    "lon": 123.6575169,
+    "lat": 9.1814399
+  },
+  {
+    "name": "Cantaroc A",
+    "lon": 123.6559658,
+    "lat": 9.1876713
+  },
+  {
+    "name": "Cantugbas",
+    "lon": 123.6302782,
+    "lat": 9.1769537
+  },
+  {
+    "name": "Calunasan — Maria",
+    "lon": 123.6496207,
+    "lat": 9.1921433
+  },
+  {
+    "name": "Cabulihan",
+    "lon": 123.6117506,
+    "lat": 9.2844347
+  },
+  {
+    "name": "Taculing",
+    "lon": 123.5999094,
+    "lat": 9.2728956
+  },
+  {
+    "name": "Canlambo",
+    "lon": 123.5998863,
+    "lat": 9.2649801
+  },
+  {
+    "name": "Bagacay",
+    "lon": 123.5975163,
+    "lat": 9.2588893
+  },
+  {
+    "name": "Helen",
+    "lon": 123.5950222,
+    "lat": 9.2533821
+  },
+  {
+    "name": "North Poblacion",
+    "lon": 123.5912499,
+    "lat": 9.2498684
+  },
+  {
+    "name": "South Poblacion",
+    "lon": 123.5907985,
+    "lat": 9.2462433
+  },
+  {
+    "name": "Balolang",
+    "lon": 123.6183442,
+    "lat": 9.2586533
+  },
+  {
+    "name": "Ponong — Larena",
+    "lon": 123.615809,
+    "lat": 9.267838
+  },
+  {
+    "name": "Bontod",
+    "lon": 123.5948742,
+    "lat": 9.2425111
+  },
+  {
+    "name": "San Juan Public Market",
+    "lon": 123.4937159,
+    "lat": 9.1573397
+  },
+  {
+    "name": "Danish Lagoon",
+    "lon": 123.4690561,
+    "lat": 9.176269
+  },
+  {
+    "name": "Lazi Beach Club",
+    "lon": 123.6021739,
+    "lat": 9.0986878
+  },
+  {
+    "name": "Czar's",
+    "lon": 123.4999018,
+    "lat": 9.1520291
+  },
+  {
+    "name": "Goldsky Seaview",
+    "lon": 123.4985018,
+    "lat": 9.1527212
+  },
+  {
+    "name": "Isla de Paz",
+    "lon": 123.5057934,
+    "lat": 9.1461297
+  },
+  {
+    "name": "Coral Cay",
+    "lon": 123.4766801,
+    "lat": 9.1719622
+  },
+  {
+    "name": "Chell's Guesthouse",
+    "lon": 123.4728292,
+    "lat": 9.1764201
+  },
+  {
+    "name": "Get Wrecked Beach & Sports Bar",
+    "lon": 123.4931446,
+    "lat": 9.1578348
+  },
+  {
+    "name": "Eastside",
+    "lon": 123.5019579,
+    "lat": 9.1503294
+  },
+  {
+    "name": "Blackbelt Grill",
+    "lon": 123.4858103,
+    "lat": 9.1647131
+  },
+  {
+    "name": "Royal Cliff Resort",
+    "lon": 123.5032044,
+    "lat": 9.148461
+  },
+  {
+    "name": "San Juan Integrated School",
+    "lon": 123.4988819,
+    "lat": 9.1535053,
+    "displayName": "Maite"
+  },
+  {
+    "name": "Talayong Day Care Center",
+    "lon": 123.6060636,
+    "lat": 9.1042084
+  },
+  {
+    "name": "Talayong Barangay Health Center",
+    "lon": 123.6060447,
+    "lat": 9.1042812
+  },
+  {
+    "name": "Bonga Day Care Center",
+    "lon": 123.6380533,
+    "lat": 9.2140736
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Olang",
+    "lon": 123.6644895,
+    "lat": 9.2134965,
+    "displayName": "Olang"
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Minalulan",
+    "lon": 123.6758261,
+    "lat": 9.1235597
+  },
+  {
+    "name": "Maria Municipal Police Station",
+    "lon": 123.6546489,
+    "lat": 9.1963843
+  },
+  {
+    "name": "Looc Barangay Hall",
+    "lon": 123.6551684,
+    "lat": 9.191845
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Cabal-asan",
+    "lon": 123.6518624,
+    "lat": 9.2077844,
+    "displayName": "Cabal-asan"
+  },
+  {
+    "name": "Saguing Day Care Center",
+    "lon": 123.6652849,
+    "lat": 9.1412431
+  },
+  {
+    "name": "Nabutay Elementary School",
+    "lon": 123.6741675,
+    "lat": 9.1514546,
+    "displayName": "Nabutay"
+  },
+  {
+    "name": "Nabutay Barangay Hall",
+    "lon": 123.6747303,
+    "lat": 9.1519283
+  },
+  {
+    "name": "Candaping B Barangay Hall",
+    "lon": 123.6661009,
+    "lat": 9.1590755
+  },
+  {
+    "name": "Bintangan Barangay Hall",
+    "lon": 123.6147777,
+    "lat": 9.2278388
+  },
+  {
+    "name": "Bagacay Barangay Hall",
+    "lon": 123.5972262,
+    "lat": 9.2588716
+  },
+  {
+    "name": "Ponong Elementary School",
+    "lon": 123.617301,
+    "lat": 9.2680597
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Bontod",
+    "lon": 123.5947759,
+    "lat": 9.2426027
+  },
+  {
+    "name": "Cangbagsa Barangay Hall",
+    "lon": 123.5831237,
+    "lat": 9.2450192
+  },
+  {
+    "name": "Canlasog Barangay Hall",
+    "lon": 123.6162237,
+    "lat": 9.2317472
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Catamboan",
+    "lon": 123.6109935,
+    "lat": 9.2061156
+  },
+  {
+    "name": "Candigum Barangay Hall",
+    "lon": 123.5954634,
+    "lat": 9.2119938
+  },
+  {
+    "name": "Candigum Elementary School",
+    "lon": 123.5962072,
+    "lat": 9.2119064
+  },
+  {
+    "name": "Sabang Barangay Hall",
+    "lon": 123.5699128,
+    "lat": 9.2366046
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Tag-ibo",
+    "lon": 123.530105,
+    "lat": 9.1331189,
+    "displayName": "Tag-ibo"
+  },
+  {
+    "name": "Napo Barangay Hall",
+    "lon": 123.5280824,
+    "lat": 9.1462322
+  },
+  {
+    "name": "Solangon Barangay Hall",
+    "lon": 123.4785468,
+    "lat": 9.1707199,
+    "displayName": "Solangon"
+  },
+  {
+    "name": "Candura Gym",
+    "lon": 123.5168479,
+    "lat": 9.1691942
+  },
+  {
+    "name": "Candura Barangay Hall",
+    "lon": 123.5169235,
+    "lat": 9.1692007
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Paliton",
+    "lon": 123.4691588,
+    "lat": 9.1790392,
+    "displayName": "Paliton · San Juan"
+  },
+  {
+    "name": "Tambisan Barangay Hall",
+    "lon": 123.4629388,
+    "lat": 9.1888938
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Luyang",
+    "lon": 123.5678183,
+    "lat": 9.2297274,
+    "displayName": "Luyang"
+  },
+  {
+    "name": "Luyang Barangay Health Station",
+    "lon": 123.5677204,
+    "lat": 9.2298446
+  },
+  {
+    "name": "Cang-inte Barangay Health Station",
+    "lon": 123.56045,
+    "lat": 9.1978095
+  },
+  {
+    "name": "Cantabon Barangay Hall",
+    "lon": 123.5612977,
+    "lat": 9.1857114
+  },
+  {
+    "name": "Luzong Market",
+    "lon": 123.5732355,
+    "lat": 9.1671973
+  },
+  {
+    "name": "Luzong Barangay Hall",
+    "lon": 123.573156,
+    "lat": 9.1674193
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Calalinan",
+    "lon": 123.5001439,
+    "lat": 9.2137328,
+    "displayName": "Calalinan · Siquijor"
+  },
+  {
+    "name": "Tambisan Barangay Hall · Siquijor Circumferential Road",
+    "lon": 123.4617247,
+    "lat": 9.1930825
+  },
+  {
+    "name": "Banban Barangay Hall",
+    "lon": 123.5605728,
+    "lat": 9.2258123,
+    "displayName": "Banban"
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Pili",
+    "lon": 123.5618857,
+    "lat": 9.2168505
+  },
+  {
+    "name": "Cang-isad Evacuation Center",
+    "lon": 123.5439911,
+    "lat": 9.2103992
+  },
+  {
+    "name": "Tacloban Barangay Hall",
+    "lon": 123.5489843,
+    "lat": 9.2239391
+  },
+  {
+    "name": "Candanay Sur Barangay Hall",
+    "lon": 123.5300621,
+    "lat": 9.2209942
+  },
+  {
+    "name": "Candanay Sur Day Care Center",
+    "lon": 123.5299128,
+    "lat": 9.2209778
+  },
+  {
+    "name": "Siquijor Provincial Hospital",
+    "lon": 123.5172399,
+    "lat": 9.219917,
+    "displayName": "Siquijor"
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Ponong",
+    "lon": 123.5528394,
+    "lat": 9.1613276
+  },
+  {
+    "name": "Tacdog Barangay Hall",
+    "lon": 123.5190901,
+    "lat": 9.211463
+  },
+  {
+    "name": "Canal Barangay Hall",
+    "lon": 123.5109556,
+    "lat": 9.2121398
+  },
+  {
+    "name": "Caitican Barangay Health Station",
+    "lon": 123.5033245,
+    "lat": 9.1913904
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Caitican",
+    "lon": 123.5036937,
+    "lat": 9.1918292
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Songculan",
+    "lon": 123.51105,
+    "lat": 9.18681
+  },
+  {
+    "name": "Cang-adieng Barangay Hall",
+    "lon": 123.4917603,
+    "lat": 9.1874543
+  },
+  {
+    "name": "New Corregidor Elementary School",
+    "lon": 123.5992727,
+    "lat": 9.2315089
+  },
+  {
+    "name": "Cantugbas Elementary School",
+    "lon": 123.6296939,
+    "lat": 9.1756365
+  },
+  {
+    "name": "Eagle's Nest",
+    "lon": 123.6151284,
+    "lat": 9.2814099
+  },
+  {
+    "name": "Saguing Barangay Health Station",
+    "lon": 123.6658289,
+    "lat": 9.1432942
+  },
+  {
+    "name": "Cabulihan Integrated School",
+    "lon": 123.5983269,
+    "lat": 9.2780582
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Catulayan",
+    "lon": 123.5375527,
+    "lat": 9.1250599
+  },
+  {
+    "name": "Candanay Norte Barangay Hall",
+    "lon": 123.5404942,
+    "lat": 9.2223709,
+    "displayName": "Candanay Norte"
+  },
+  {
+    "name": "Cang-agong Barangay Hall",
+    "lon": 123.5867547,
+    "lat": 9.2095618
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Pisong B",
+    "lon": 123.6218374,
+    "lat": 9.2047886
+  },
+  {
+    "name": "Calalinan Barangay Health Station",
+    "lon": 123.5003102,
+    "lat": 9.2137304,
+    "displayName": "Calalinan · Siquijor"
+  },
+  {
+    "name": "Cangmangki Barangay Health Station",
+    "lon": 123.6510594,
+    "lat": 9.2468982
+  },
+  {
+    "name": "Olave Barangay Health Station",
+    "lon": 123.6371017,
+    "lat": 9.2525423
+  },
+  {
+    "name": "Enrique Villanueva Rural Health Unit",
+    "lon": 123.6467147,
+    "lat": 9.2754824
+  },
+  {
+    "name": "Tulapos Marine Sanctuary",
+    "lon": 123.6432085,
+    "lat": 9.2842074
+  },
+  {
+    "name": "Manan-ao Barangay Health Station",
+    "lon": 123.6304636,
+    "lat": 9.2724332
+  },
+  {
+    "name": "Manan-ao Barangay Hall",
+    "lon": 123.6298259,
+    "lat": 9.2719617
+  },
+  {
+    "name": "San Juan Municipal Police Station",
+    "lon": 123.4938753,
+    "lat": 9.1630567,
+    "displayName": "San Juan"
+  },
+  {
+    "name": "Cang-inte Barangay Hall",
+    "lon": 123.5603819,
+    "lat": 9.1979331
+  },
+  {
+    "name": "Kahoy Cottages",
+    "lon": 123.4861913,
+    "lat": 9.2138524
+  },
+  {
+    "name": "Cansayang Barangay Health Station",
+    "lon": 123.5222209,
+    "lat": 9.1617212
+  },
+  {
+    "name": "Kinamandagan Barangay Health Station",
+    "lon": 123.6006903,
+    "lat": 9.1456711
+  },
+  {
+    "name": "Cang-atuyom Barangay Health Station",
+    "lon": 123.5748827,
+    "lat": 9.1521948
+  },
+  {
+    "name": "Banban Barangay Health Station",
+    "lon": 123.5608099,
+    "lat": 9.2259216
+  },
+  {
+    "name": "San Roque Chapel — Maria",
+    "lon": [
+      [
+        123.6175149,
+        9.2968195
+      ],
+      [
+        123.6175149,
+        9.2968195
+      ]
+    ]
+  },
+  {
+    "name": "San Roque Chapel — Enrique Villanueva",
+    "lon": 123.6175387,
+    "lat": 9.2967559
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Bitaug",
+    "lon": 123.6188383,
+    "lat": 9.2962993
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Lomangcapan",
+    "lon": 123.6279362,
+    "lat": 9.2912265
+  },
+  {
+    "name": "Lomangcapan Day Care Center",
+    "lon": 123.6278865,
+    "lat": 9.2914024
+  },
+  {
+    "name": "Lomangcapan Barangay Health Station",
+    "lon": 123.6279291,
+    "lat": 9.2914714
+  },
+  {
+    "name": "Siquijor District Jail",
+    "lon": 123.4846591,
+    "lat": 9.203567
+  },
+  {
+    "name": "Caipilan Barangay Health Station",
+    "lon": 123.487913,
+    "lat": 9.2011929
+  },
+  {
+    "name": "Tinago Barangay Health Station",
+    "lon": 123.4752986,
+    "lat": 9.2138625
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Tinago",
+    "lon": 123.47501,
+    "lat": 9.2138008
+  },
+  {
+    "name": "Cang-alwang Barangay Health Station",
+    "lon": 123.4694902,
+    "lat": 9.2158022
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Cang-alwang",
+    "lon": 123.4695861,
+    "lat": 9.2159794
+  },
+  {
+    "name": "Tongo Barangay Health Station",
+    "lon": 123.4695022,
+    "lat": 9.2182067
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Dumanhog",
+    "lon": 123.491243,
+    "lat": 9.2096345
+  },
+  {
+    "name": "SEE-KEE-HOR Cafe and Hostel",
+    "lon": 123.4616675,
+    "lat": 9.1812289,
+    "displayName": "Tambisan"
+  },
+  {
+    "name": "Cangbusyo Beach",
+    "lon": 123.4627962,
+    "lat": 9.1768244
+  },
+  {
+    "name": "Paliton Barangay Health Station",
+    "lon": 123.4691729,
+    "lat": 9.1793243
+  },
+  {
+    "name": "San Antonio Barangay Health Station",
+    "lon": 123.5423272,
+    "lat": 9.1834356
+  },
+  {
+    "name": "Secret Lagoon",
+    "lon": 123.5494801,
+    "lat": 9.1856653
+  },
+  {
+    "name": "Tag-ibo Barangay Health Station",
+    "lon": 123.5302241,
+    "lat": 9.1333604
+  },
+  {
+    "name": "Ponong Barangay Health Station",
+    "lon": 123.5539067,
+    "lat": 9.1574613
+  },
+  {
+    "name": "Timbaon Barangay Health Station",
+    "lon": 123.5555499,
+    "lat": 9.115967
+  },
+  {
+    "name": "Cang-agong Barangay Health Station",
+    "lon": 123.5834196,
+    "lat": 9.2089017
+  },
+  {
+    "name": "San Jose Chapel",
+    "lon": 123.6234224,
+    "lat": 9.2626011
+  },
+  {
+    "name": "Balolong Barangay Health Station",
+    "lon": 123.6249268,
+    "lat": 9.2633894
+  },
+  {
+    "name": "San Vicente Chapel — Enrique Villanueva (2)",
+    "lon": 123.644611,
+    "lat": 9.2680838
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Bolot",
+    "lon": 123.6443592,
+    "lat": 9.2672539
+  },
+  {
+    "name": "Bolot Barangay Health Station",
+    "lon": 123.6408921,
+    "lat": 9.2686431
+  },
+  {
+    "name": "Camogao Day Care Center",
+    "lon": 123.6511617,
+    "lat": 9.264516
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Camogao",
+    "lon": 123.6509815,
+    "lat": 9.264383
+  },
+  {
+    "name": "Santo Niño Chapel — Enrique Villanueva (2)",
+    "lon": 123.6426564,
+    "lat": 9.2562402
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Pari-an",
+    "lon": 123.6435307,
+    "lat": 9.2564602
+  },
+  {
+    "name": "Pari-an Barangay Health Station",
+    "lon": 123.6436897,
+    "lat": 9.2566511
+  },
+  {
+    "name": "Pari-an Day Care Center",
+    "lon": 123.6435514,
+    "lat": 9.2566779
+  },
+  {
+    "name": "Libo Barangay Health Station",
+    "lon": 123.6530256,
+    "lat": 9.2540509
+  },
+  {
+    "name": "San Lorenzo Ruiz Chapel",
+    "lon": 123.6504819,
+    "lat": 9.2544087
+  },
+  {
+    "name": "Libo Reading Center",
+    "lon": 123.6493289,
+    "lat": 9.2540555
+  },
+  {
+    "name": "San Nicholas Chapel",
+    "lon": 123.6535552,
+    "lat": 9.2477413
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Lotloton",
+    "lon": 123.6603232,
+    "lat": 9.2370449
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Basac",
+    "lon": 123.6156482,
+    "lat": 9.2190959
+  },
+  {
+    "name": "Bogo Barangay Health Station — Maria",
+    "lon": 123.6676659,
+    "lat": 9.2270594
+  },
+  {
+    "name": "Minalulan Barangay Health Station",
+    "lon": 123.6757194,
+    "lat": 9.1236326
+  },
+  {
+    "name": "Cabal-asan Barangay Health Station",
+    "lon": 123.6515835,
+    "lat": 9.2073266
+  },
+  {
+    "name": "St Clare Monastery",
+    "lon": 123.6573189,
+    "lat": 9.1963659
+  },
+  {
+    "name": "Cang-apa Barangay Health Station",
+    "lon": 123.6058168,
+    "lat": 9.2021034
+  },
+  {
+    "name": "Catamboan Barangay Health Station",
+    "lon": 123.6110729,
+    "lat": 9.2059097
+  },
+  {
+    "name": "Nabutay Barangay Health Station",
+    "lon": 123.6659537,
+    "lat": 9.1516195
+  },
+  {
+    "name": "Lilo-an Barangay Health Station",
+    "lon": 123.6850942,
+    "lat": 9.144399
+  },
+  {
+    "name": "Bulakaw Forest Reservation",
+    "lon": 123.5460508,
+    "lat": 9.1425248
+  },
+  {
+    "name": "Kagusua Beach",
+    "lon": 123.6880119,
+    "lat": 9.1263732
+  },
+  {
+    "name": "Guiwanon Spring Park",
+    "lon": 123.5657608,
+    "lat": 9.2318213
+  },
+  {
+    "name": "Mangrove Reserve Area",
+    "lon": 123.5652699,
+    "lat": 9.2312196
+  },
+  {
+    "name": "Solangon Beach",
+    "lon": 123.4771839,
+    "lat": 9.1710444
+  },
+  {
+    "name": "Island Seashell Museum & Souvenir Shop",
+    "lon": 123.6118632,
+    "lat": 9.2983387,
+    "displayName": "Bitaug"
+  },
+  {
+    "name": "Julie's",
+    "lon": 123.5914923,
+    "lat": 9.2474566
+  },
+  {
+    "name": "Fishmarket",
+    "lon": 123.5684076,
+    "lat": 9.2355799
+  },
+  {
+    "name": "Olang Arts Park",
+    "lon": 123.6700766,
+    "lat": 9.2190327
+  },
+  {
+    "name": "Baha Bar",
+    "lon": 123.4991946,
+    "lat": 9.1517468
+  },
+  {
+    "name": "Paliton Beach",
+    "lon": 123.4612927,
+    "lat": 9.1783615
+  },
+  {
+    "name": "Siquijor Police Station",
+    "lon": 123.51533,
+    "lat": 9.2150205
+  },
+  {
+    "name": "Assisi High School",
+    "lon": 123.5130832,
+    "lat": 9.2157177
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Tigbawan",
+    "lon": 123.6363687,
+    "lat": 9.1265495
+  },
+  {
+    "name": "Lazi Convent",
+    "lon": 123.6328828,
+    "lat": 9.1274054
+  },
+  {
+    "name": "Lazi Social Center",
+    "lon": 123.6333552,
+    "lat": 9.128268
+  },
+  {
+    "name": "Lazi Municipal Hall",
+    "lon": 123.6337661,
+    "lat": 9.1285966
+  },
+  {
+    "name": "Lazi Church",
+    "lon": 123.6338131,
+    "lat": 9.1278771
+  },
+  {
+    "name": "Lazi National Agricultural School",
+    "lon": 123.6337683,
+    "lat": 9.1316544
+  },
+  {
+    "name": "Public Market Building № 2",
+    "lon": 123.5133096,
+    "lat": 9.213536
+  },
+  {
+    "name": "Siquijor Fire Station",
+    "lon": 123.5140672,
+    "lat": 9.2143442
+  },
+  {
+    "name": "Siquijor Integrated School - Poblacion Campus",
+    "lon": 123.5145481,
+    "lat": 9.2145896
+  },
+  {
+    "name": "Siquijor Church",
+    "lon": 123.5139504,
+    "lat": 9.2150965
+  },
+  {
+    "name": "Tagmanocan Church",
+    "lon": 123.6312387,
+    "lat": 9.1466853
+  },
+  {
+    "name": "Can-asagan Elementary School",
+    "lon": 123.500078,
+    "lat": 9.1684817,
+    "displayName": "San Juan"
+  },
+  {
+    "name": "Bulwagang Barangay ng Can-asagan",
+    "lon": 123.4968003,
+    "lat": 9.1710223
+  },
+  {
+    "name": "Metrobank · Mabini Street",
+    "lon": 123.5147539,
+    "lat": 9.2128259
+  },
+  {
+    "name": "Petron",
+    "lon": 123.5142821,
+    "lat": 9.2119809
+  },
+  {
+    "name": "San Juan Municipal Hall",
+    "lon": 123.4935805,
+    "lat": 9.1583269,
+    "displayName": "Poblacion · San Juan"
+  },
+  {
+    "name": "Mediterrano Restaurant",
+    "lon": 123.492164,
+    "lat": 9.1590552
+  },
+  {
+    "name": "Lazy Lizard",
+    "lon": 123.4854657,
+    "lat": 9.1704048
+  },
+  {
+    "name": "SunnySide Up",
+    "lon": 123.4836717,
+    "lat": 9.1665804
+  },
+  {
+    "name": "Casa Miranda",
+    "lon": 123.4841138,
+    "lat": 9.166235
+  },
+  {
+    "name": "Larena Church",
+    "lon": 123.5913548,
+    "lat": 9.24888,
+    "displayName": "Larena"
+  },
+  {
+    "name": "Larena Municipal Hall",
+    "lon": 123.591306,
+    "lat": 9.2482928,
+    "displayName": "Larena"
+  },
+  {
+    "name": "Maria Public Market",
+    "lon": 123.6556734,
+    "lat": 9.1963232
+  },
+  {
+    "name": "Our Lady of Divine Providence Church",
+    "lon": 123.6551042,
+    "lat": 9.1970253
+  },
+  {
+    "name": "Siquijor State College",
+    "lon": 123.5894715,
+    "lat": 9.2493415,
+    "displayName": "Larena"
+  },
+  {
+    "name": "Larena Public Market",
+    "lon": 123.5906558,
+    "lat": 9.2475531,
+    "displayName": "Larena"
+  },
+  {
+    "name": "Mystic Divers",
+    "lon": 123.5000893,
+    "lat": 9.1506985
+  },
+  {
+    "name": "J. Pharmacy",
+    "lon": 123.5901833,
+    "lat": 9.2489386
+  },
+  {
+    "name": "Larena Passenger Terminal Building",
+    "lon": 123.5904033,
+    "lat": 9.2510612
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Saguing",
+    "lon": 123.6652285,
+    "lat": 9.141377
+  },
+  {
+    "name": "Maria Rural Health Unit",
+    "lon": 123.6549781,
+    "lat": 9.1958682
+  },
+  {
+    "name": "Maria Municipal Hall",
+    "lon": 123.6548119,
+    "lat": 9.1959566
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Caticugan",
+    "lon": 123.4869384,
+    "lat": 9.208556
+  },
+  {
+    "name": "Cangmalalag Barangay Health Station",
+    "lon": 123.5980153,
+    "lat": 9.2775823
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Taculing",
+    "lon": 123.600003,
+    "lat": 9.2727575
+  },
+  {
+    "name": "Our Lady of Mount Carmel Church",
+    "lon": 123.646531,
+    "lat": 9.2760807
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Cangmangki",
+    "lon": 123.6559682,
+    "lat": 9.2454937,
+    "displayName": "Cangmangki"
+  },
+  {
+    "name": "Cantabon Barangay Health Station",
+    "lon": 123.5613283,
+    "lat": 9.1857725,
+    "displayName": "Cantabon"
+  },
+  {
+    "name": "Siquijor Integrated School",
+    "lon": 123.5129168,
+    "lat": 9.2068594,
+    "displayName": "Polangyuta"
+  },
+  {
+    "name": "Polangyuta Barangay Hall",
+    "lon": 123.5109457,
+    "lat": 9.2053563
+  },
+  {
+    "name": "St. John High School",
+    "lon": 123.4944381,
+    "lat": 9.1596628,
+    "displayName": "Poblacion · San Juan"
+  },
+  {
+    "name": "Nagerong Day Care Center",
+    "lon": 123.6486556,
+    "lat": 9.1376205
+  },
+  {
+    "name": "Lazi Medicare Community Hospital",
+    "lon": 123.6570662,
+    "lat": 9.1373821
+  },
+  {
+    "name": "Tagmanocan Elementary School",
+    "lon": 123.6352095,
+    "lat": 9.1489484
+  },
+  {
+    "name": "Bino-ongan Barangay Hall",
+    "lon": 123.6496656,
+    "lat": 9.2709959
+  },
+  {
+    "name": "JAC's Gas Station",
+    "lon": 123.6327528,
+    "lat": 9.126106
+  },
+  {
+    "name": "Campalanas National High School",
+    "lon": 123.5770073,
+    "lat": 9.1222853,
+    "displayName": "Campalanas"
+  },
+  {
+    "name": "Campalanas Elementary School",
+    "lon": 123.576471,
+    "lat": 9.1214069,
+    "displayName": "Campalanas"
+  },
+  {
+    "name": "Simacolong Elementary School",
+    "lon": 123.6505998,
+    "lat": 9.1305155,
+    "displayName": "Simacolong"
+  },
+  {
+    "name": "Po-o Elementary School",
+    "lon": 123.6131999,
+    "lat": 9.1610712
+  },
+  {
+    "name": "Leon Parami High School",
+    "lon": 123.6112054,
+    "lat": 9.1627338
+  },
+  {
+    "name": "Kinamandagan Elementary School",
+    "lon": 123.6023645,
+    "lat": 9.1467718
+  },
+  {
+    "name": "Gabayan Elementary School",
+    "lon": 123.6163405,
+    "lat": 9.103562
+  },
+  {
+    "name": "Dapdap Elementary School",
+    "lon": 123.5957657,
+    "lat": 9.0967889,
+    "displayName": "Lazi"
+  },
+  {
+    "name": "Cadoldolan Elementary School",
+    "lon": 123.5663351,
+    "lat": 9.1067005,
+    "displayName": "Campalanas"
+  },
+  {
+    "name": "Tignao Elementary School",
+    "lon": 123.606267,
+    "lat": 9.1276364,
+    "displayName": "Tignao"
+  },
+  {
+    "name": "Iglesia Ni Cristo",
+    "lon": 123.6313132,
+    "lat": 9.13216,
+    "displayName": "Tigbawan · Lazi"
+  },
+  {
+    "name": "Banban National High School",
+    "lon": 123.560089,
+    "lat": 9.2245774,
+    "displayName": "Banban"
+  },
+  {
+    "name": "Banban Church",
+    "lon": 123.5605927,
+    "lat": 9.2247538
+  },
+  {
+    "name": "Banban Elementary School",
+    "lon": 123.5643616,
+    "lat": 9.2287666,
+    "displayName": "Luyang"
+  },
+  {
+    "name": "Jenoshanise",
+    "lon": 123.6354579,
+    "lat": 9.1246887
+  },
+  {
+    "name": "First Consolidated Bank - Lazi Branch",
+    "lon": 123.635937,
+    "lat": 9.12521
+  },
+  {
+    "name": "Mac Moloys Restaurant",
+    "lon": 123.634931,
+    "lat": 9.1253423
+  },
+  {
+    "name": "Lazi Police Station",
+    "lon": 123.6333238,
+    "lat": 9.1288837
+  },
+  {
+    "name": "Philippine Independent Church",
+    "lon": 123.6343106,
+    "lat": 9.1286368
+  },
+  {
+    "name": "Kingdom's Church",
+    "lon": 123.636958,
+    "lat": 9.127024
+  },
+  {
+    "name": "Quezon Memorial Institute of Siquijor",
+    "lon": 123.5134073,
+    "lat": 9.2111839
+  },
+  {
+    "name": "Siquijor State College - Lazi Campus",
+    "lon": 123.6336216,
+    "lat": 9.1288992
+  },
+  {
+    "name": "Cang-alwang Elementary School",
+    "lon": 123.4727752,
+    "lat": 9.2160783
+  },
+  {
+    "name": "Cang-alwang National High School",
+    "lon": 123.4729189,
+    "lat": 9.2171938
+  },
+  {
+    "name": "Ytaya Elementary School",
+    "lon": 123.5769121,
+    "lat": 9.1327465
+  },
+  {
+    "name": "Saint Barbara Church",
+    "lon": 123.5775974,
+    "lat": 9.1215351
+  },
+  {
+    "name": "Campalanas Public Market",
+    "lon": 123.5781772,
+    "lat": 9.121378
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Campalanas",
+    "lon": 123.5787184,
+    "lat": 9.121225,
+    "displayName": "Campalanas"
+  },
+  {
+    "name": "Campalanas Barangay Health Station",
+    "lon": 123.5808929,
+    "lat": 9.1219138
+  },
+  {
+    "name": "Simacolong Barangay Health Station",
+    "lon": 123.6514634,
+    "lat": 9.1310215
+  },
+  {
+    "name": "Capalasanan Elementary School",
+    "lon": 123.6217187,
+    "lat": 9.1675361
+  },
+  {
+    "name": "Kimba Elementary School",
+    "lon": 123.5851648,
+    "lat": 9.1496498
+  },
+  {
+    "name": "Saint Isidore the Farmer Catholic School",
+    "lon": 123.6326689,
+    "lat": 9.1278273
+  },
+  {
+    "name": "Enrique Villanueva Police Station",
+    "lon": 123.6470434,
+    "lat": 9.2764953
+  },
+  {
+    "name": "Enrique Villanueva National High School",
+    "lon": 123.6407234,
+    "lat": 9.2793561,
+    "displayName": "Enrique Villanueva"
+  },
+  {
+    "name": "Candaping National High School",
+    "lon": 123.6628796,
+    "lat": 9.1622237,
+    "displayName": "Maria"
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Simacolong",
+    "lon": 123.6551277,
+    "lat": 9.1235938
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Talayong",
+    "lon": 123.6060824,
+    "lat": 9.1041265
+  },
+  {
+    "name": "Ytaya Barangay Hall",
+    "lon": 123.5825603,
+    "lat": 9.1269891
+  },
+  {
+    "name": "Upper Cabangcalan Barangay Hall",
+    "lon": 123.5845425,
+    "lat": 9.1258866
+  },
+  {
+    "name": "Kinamandagan High School",
+    "lon": 123.6030799,
+    "lat": 9.1469917
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Canglaran",
+    "lon": 123.6074428,
+    "lat": 9.1471898
+  },
+  {
+    "name": "Lazi Primary Care Facility",
+    "lon": 123.6345008,
+    "lat": 9.1272301
+  },
+  {
+    "name": "San Antonio Elementary School",
+    "lon": 123.5404846,
+    "lat": 9.1814486
+  },
+  {
+    "name": "San Antonio National High School",
+    "lon": 123.5408971,
+    "lat": 9.1819893
+  },
+  {
+    "name": "Catulayan National High School",
+    "lon": 123.5448879,
+    "lat": 9.1228322,
+    "displayName": "Catulayan · San Juan"
+  },
+  {
+    "name": "Catulayan Elementary School",
+    "lon": 123.5414005,
+    "lat": 9.1247004,
+    "displayName": "Catulayan · San Juan"
+  },
+  {
+    "name": "Nonoc Elementary School",
+    "lon": 123.5733268,
+    "lat": 9.2397049,
+    "displayName": "Nonoc"
+  },
+  {
+    "name": "Tag-ibo Elementary School",
+    "lon": 123.5311334,
+    "lat": 9.1319578,
+    "displayName": "Tag-ibo"
+  },
+  {
+    "name": "Lilo-an Elementary School",
+    "lon": 123.6917182,
+    "lat": 9.143163
+  },
+  {
+    "name": "Solangon Elementary School",
+    "lon": 123.4776912,
+    "lat": 9.1714411,
+    "displayName": "Solangon"
+  },
+  {
+    "name": "Timbaon Elementary School",
+    "lon": 123.5570652,
+    "lat": 9.1172204,
+    "displayName": "Timbaon"
+  },
+  {
+    "name": "Tambisan Elementary School",
+    "lon": 123.4597991,
+    "lat": 9.1919786,
+    "displayName": "Tambisan"
+  },
+  {
+    "name": "Cangmunag Elementary School",
+    "lon": 123.5555854,
+    "lat": 9.1116582,
+    "displayName": "Cangmunag"
+  },
+  {
+    "name": "Cangclaran Elementary School",
+    "lon": 123.6204298,
+    "lat": 9.1362897
+  },
+  {
+    "name": "Ponong Elementary School — San Juan",
+    "lon": 123.5542177,
+    "lat": 9.1586728
+  },
+  {
+    "name": "Ponong High School",
+    "lon": 123.5543999,
+    "lat": 9.1581552
+  },
+  {
+    "name": "Pangi Elementary School",
+    "lon": 123.5212991,
+    "lat": 9.2197103
+  },
+  {
+    "name": "Candanay Elementary School",
+    "lon": 123.5401291,
+    "lat": 9.221994,
+    "displayName": "Candanay Norte"
+  },
+  {
+    "name": "Bolos Elementary School",
+    "lon": 123.5046459,
+    "lat": 9.1912963
+  },
+  {
+    "name": "Siquijor Provincial Science High School",
+    "lon": 123.4847283,
+    "lat": 9.2073394,
+    "displayName": "Caipilan"
+  },
+  {
+    "name": "Logucan Elementary School",
+    "lon": 123.6505336,
+    "lat": 9.1531666
+  },
+  {
+    "name": "Minalulan Elementary School",
+    "lon": 123.6700635,
+    "lat": 9.1353082
+  },
+  {
+    "name": "Cang-agong Elementary School",
+    "lon": 123.5872904,
+    "lat": 9.2087691,
+    "displayName": "Cang-agong · Siquijor"
+  },
+  {
+    "name": "Enrique Villanueva Central Elementary School",
+    "lon": 123.6397127,
+    "lat": 9.2802494
+  },
+  {
+    "name": "New Bataan Elementary School",
+    "lon": 123.6056932,
+    "lat": 9.1966467
+  },
+  {
+    "name": "Tambisan National High School",
+    "lon": 123.4635923,
+    "lat": 9.189042,
+    "displayName": "Tambisan"
+  },
+  {
+    "name": "Caipilan Elementary School",
+    "lon": 123.4879932,
+    "lat": 9.2003726
+  },
+  {
+    "name": "Cantabon Elementary School",
+    "lon": 123.5610084,
+    "lat": 9.1854874,
+    "displayName": "Cantabon"
+  },
+  {
+    "name": "Cang-asa Elementary School",
+    "lon": 123.5603172,
+    "lat": 9.1439215
+  },
+  {
+    "name": "Cangomantong Elementary School",
+    "lon": 123.5850525,
+    "lat": 9.1711756,
+    "displayName": "Lazi"
+  },
+  {
+    "name": "Bitaug Elementary School",
+    "lon": 123.6212446,
+    "lat": 9.2956018,
+    "displayName": "Bitaug"
+  },
+  {
+    "name": "BIT International School",
+    "lon": 123.5147144,
+    "lat": 9.2105138
+  },
+  {
+    "name": "Napo Elementary School",
+    "lon": 123.5280121,
+    "lat": 9.1457083
+  },
+  {
+    "name": "Ibabao Elementary School",
+    "lon": 123.530541,
+    "lat": 9.2051226
+  },
+  {
+    "name": "Basac Elementary School",
+    "lon": 123.6149348,
+    "lat": 9.2216046
+  },
+  {
+    "name": "Larena Integrated School",
+    "lon": 123.5934872,
+    "lat": 9.2535685,
+    "displayName": "Helen · Larena"
+  },
+  {
+    "name": "Lico-an Elementary School",
+    "lon": 123.6465227,
+    "lat": 9.2143777
+  },
+  {
+    "name": "Roxas Elementary School",
+    "lon": 123.6549152,
+    "lat": 9.2401403
+  },
+  {
+    "name": "Bogo Elementary School",
+    "lon": 123.6670958,
+    "lat": 9.2283525,
+    "displayName": "Bogo"
+  },
+  {
+    "name": "Maria Integrated School",
+    "lon": 123.6557257,
+    "lat": 9.1988117
+  },
+  {
+    "name": "Ave Maria Academy",
+    "lon": 123.657201,
+    "lat": 9.1976345
+  },
+  {
+    "name": "Candaping Elementary School",
+    "lon": 123.6647638,
+    "lat": 9.1621793,
+    "displayName": "Maria"
+  },
+  {
+    "name": "Seventh-day Adventist Church",
+    "lon": 123.6442737,
+    "lat": 9.1269294
+  },
+  {
+    "name": "Luzong Elementary School",
+    "lon": 123.5740925,
+    "lat": 9.1668397
+  },
+  {
+    "name": "Basac National High School",
+    "lon": 123.6158779,
+    "lat": 9.2228348
+  },
+  {
+    "name": "Cantaroc Elementary School",
+    "lon": 123.6569285,
+    "lat": 9.1813061,
+    "displayName": "Maria"
+  },
+  {
+    "name": "Lazi Technical Institute",
+    "lon": 123.632503,
+    "lat": 9.1321563
+  },
+  {
+    "name": "San Antonio Catholic Church",
+    "lon": 123.5400131,
+    "lat": 9.1817282
+  },
+  {
+    "name": "Cang-inte Barangay Hall — Siquijor",
+    "lon": 123.5559036,
+    "lat": 9.1951571
+  },
+  {
+    "name": "Gabayan Barangay Health Station",
+    "lon": 123.6154343,
+    "lat": 9.1034337
+  },
+  {
+    "name": "Lower Cabangcalan Barangay Health Station",
+    "lon": 123.5855078,
+    "lat": 9.0992386
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Timbaon",
+    "lon": 123.555492,
+    "lat": 9.1158663
+  },
+  {
+    "name": "Po-o Barangay Hall",
+    "lon": 123.6103277,
+    "lat": 9.1626256
+  },
+  {
+    "name": "Petron — Maria",
+    "lon": 123.6537271,
+    "lat": 9.1975573
+  },
+  {
+    "name": "Petron — Larena",
+    "lon": 123.5903001,
+    "lat": 9.2488936
+  },
+  {
+    "name": "Petron — Larena (2)",
+    "lon": 123.5784285,
+    "lat": 9.2423527
+  },
+  {
+    "name": "Petron — Siquijor",
+    "lon": 123.5232788,
+    "lat": 9.2182475
+  },
+  {
+    "name": "Petron · Siquijor Circumferential Road",
+    "lon": 123.4937659,
+    "lat": 9.1582444
+  },
+  {
+    "name": "Seashell Museum",
+    "lon": 123.5082153,
+    "lat": 9.1454896
+  },
+  {
+    "name": "Rea’s Kitchenette",
+    "lon": 123.509721,
+    "lat": 9.1448032
+  },
+  {
+    "name": "Helen Barangay Hall",
+    "lon": 123.5946805,
+    "lat": 9.2497805
+  },
+  {
+    "name": "Siquijor Rural Health Unit",
+    "lon": 123.5146261,
+    "lat": 9.2141404
+  },
+  {
+    "name": "Bulwagang Bayan ng Siquijor",
+    "lon": 123.513921,
+    "lat": 9.2140178
+  },
+  {
+    "name": "Jollibee",
+    "lon": 123.5151877,
+    "lat": 9.2127952
+  },
+  {
+    "name": "Enrique Villanueva Evacuation Center",
+    "lon": 123.6521416,
+    "lat": 9.2552131,
+    "displayName": "Libo"
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Libo",
+    "lon": 123.6527701,
+    "lat": 9.2555044,
+    "displayName": "Libo"
+  },
+  {
+    "name": "Seventh day Adventist Church",
+    "lon": 123.6447329,
+    "lat": 9.278642
+  },
+  {
+    "name": "Lazi Celebration Christian Worship Center Inc.",
+    "lon": 123.6433805,
+    "lat": 9.1266107
+  },
+  {
+    "name": "Larena Triad Restaurant & Bakeshop",
+    "lon": 123.5837622,
+    "lat": 9.2392744
+  },
+  {
+    "name": "Tagmanocan Barangay Hall",
+    "lon": 123.6313964,
+    "lat": 9.1462935
+  },
+  {
+    "name": "Cangomantong Day Care Center",
+    "lon": 123.5886364,
+    "lat": 9.1701034
+  },
+  {
+    "name": "Cangomantong Barangay Hall",
+    "lon": 123.5885689,
+    "lat": 9.1700708
+  },
+  {
+    "name": "Lazage Refilling Station",
+    "lon": 123.6466483,
+    "lat": 9.128012
+  },
+  {
+    "name": "Bahay Pamahalaan ng Barangay Kimba",
+    "lon": 123.5812921,
+    "lat": 9.1500195
+  },
+  {
+    "name": "EcoOil",
+    "lon": 123.5748889,
+    "lat": 9.1202661
+  },
+  {
+    "name": "Skydive Greater Siquijor",
+    "lon": 123.4718142,
+    "lat": 9.2151641
+  },
+  {
+    "name": "Lazi Public Market",
+    "lon": 123.6361423,
+    "lat": 9.1260795
+  },
+  {
+    "name": "Cansayang Elementary School",
+    "lon": 123.5225826,
+    "lat": 9.161366
+  },
+  {
+    "name": "Pisong B Elementary School",
+    "lon": 123.6199849,
+    "lat": 9.2038135,
+    "displayName": "Maria"
+  },
+  {
+    "name": "Pisong A Elementary School",
+    "lon": 123.6438232,
+    "lat": 9.2034032
+  },
+  {
+    "name": "Cang-atuyom Elementary School",
+    "lon": 123.5740409,
+    "lat": 9.1506348
+  },
+  {
+    "name": "Libo Elementary School",
+    "lon": 123.6486424,
+    "lat": 9.2548913
+  },
+  {
+    "name": "Tigbawan Barangay Health Station",
+    "lon": 123.634696,
+    "lat": 9.1273294
+  },
+  {
+    "name": "Daquit",
+    "lon": 123.6882234,
+    "lat": 9.2586007
+  },
+  {
+    "name": "Siquijor Provincial Hospital · Castin Street",
+    "lon": 123.48451,
+    "lat": 9.2059245
+  },
+  {
+    "name": "Larena Municipal Police Station",
+    "lon": 123.5950014,
+    "lat": 9.249367
+  },
+  {
+    "name": "Larena Fire Station",
+    "lon": 123.5950749,
+    "lat": 9.2495064
+  }
+]
