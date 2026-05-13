@@ -15,6 +15,7 @@ import { useGeolocation } from "../../hooks/useGeolocation";
 import { pickLocationAtCoordinates } from "../../services/geocoding/pickLocationAtCoordinates";
 import { routeStopIcon, userLocationIcon } from "../../services/map/mapIcons";
 import { DEFAULT_ZOOM, SIQUIJOR_CENTER } from "../../services/map/mapConfig";
+import { isLatLonOnSiquijorIsland } from "../../services/map/siquijorIslandBounds";
 import type { Location } from "../../types/location";
 import type { RouteResult } from "../../types/route";
 import { calculateFare } from "../../services/fare/fareEngine";
@@ -66,6 +67,10 @@ export default function MapView() {
       return;
     }
 
+    if (!isLatLonOnSiquijorIsland(position.lat, position.lng)) {
+      return;
+    }
+
     queueMicrotask(() => {
       setOrigin((prev) => {
         if (prev) {
@@ -104,7 +109,11 @@ export default function MapView() {
       return [origin.lat, origin.lon];
     }
 
-    if (!isDesktop && position) {
+    if (
+      !isDesktop &&
+      position &&
+      isLatLonOnSiquijorIsland(position.lat, position.lng)
+    ) {
       return [position.lat, position.lng];
     }
 
