@@ -1,84 +1,151 @@
-import type { FareEstimate, FareRoute } from "./fareTypes";
-
-import { officialFareRoutes } from "./fareData";
-
-import { findExactFare } from "./exactFareMatcher";
-
 import { estimateDistanceFare } from "./distanceFare";
 
-import { interpolateFare } from "./interpolateFare";
+import { findExactOfficialLeg } from "./exactOfficialFare";
 
-import {
-  DEFAULT_FARE_HUB,
-  findInterpolationReference,
-} from "./interpolationReference";
+import { allOfficialLegsOrdered } from "./officialFareLegs";
 
-function isDirectExact(
-  route: FareRoute,
-  startName: string,
-  endName: string,
+import { findScalingReferenceLeg } from "./scalingReferenceFare";
+
+import type { FareEstimate } from "./fareTypes";
+
+import type { FareZoneResolution } from "./zoneTypes";
+
+const RATIO_MIN = 0.88;
+
+const RATIO_MAX = 1.28;
+
+function clamp(n: number, lo: number, hi: number): number {
+  return Math.min(hi, Math.max(lo, n));
+}
+
+function blendWeight(a: FareZoneResolution, b: FareZoneResolution): number {
+  const tiers = [a.tier, b.tier];
+
+  if (tiers.includes("unknown")) {
+    return 0.22;
+  }
+
+  if (tiers.includes("default_poblacion")) {
+    return 0.38;
+  }
+
+  if (tiers.every((t) => t === "polygon")) {
+    return 0.58;
+  }
+
+  return 0.42;
+}
+
+function shouldUsePureScaledOfficial(
+  a: FareZoneResolution,
+  b: FareZoneResolution,
 ): boolean {
   return (
-    route.from.toLowerCase() === startName.toLowerCase() &&
-    route.to.toLowerCase() === endName.toLowerCase()
+    a.tier !== "unknown" &&
+    b.tier !== "unknown" &&
+    a.tier !== "default_poblacion" &&
+    b.tier !== "default_poblacion"
   );
 }
 
-export function calculateFare(
-  startName: string,
-  endName: string,
-  distanceKm: number,
-): FareEstimate {
-  const exact = findExactFare(officialFareRoutes, startName, endName);
+function exactExplanation(match: {
+  leg: { table: string; toZoneId: string; fromZoneId: string };
 
-  if (exact) {
-    const direct = isDirectExact(exact, startName, endName);
+  isForward: boolean;
+}): string {
+  const tableLabel =
+    match.leg.table === "drop_off" ? "drop-off" : "special trip";
 
-    return {
-      fare: exact.fare,
-
-      method: direct ? "exact" : "reverse_exact",
-
-      confidence: 1,
-
-      explanation: direct
-        ? "Official LGU fare match"
-        : "Official LGU fare match (reverse direction)",
-    };
+  if (match.isForward) {
+    return `Official LGU ${tableLabel} fare match`;
   }
 
-  if (distanceKm > 0) {
-    const ref = findInterpolationReference(
-      officialFareRoutes,
+  return `Official LGU ${tableLabel} fare match (reverse direction)`;
+}
 
-      startName,
+export function calculateFare(
+  start: FareZoneResolution,
+  end: FareZoneResolution,
+  distanceKm: number,
+): FareEstimate {
+  const startId = start.zoneId;
 
-      endName,
+  const endId = end.zoneId;
 
-      DEFAULT_FARE_HUB,
+  if (startId && endId) {
+    const exact = findExactOfficialLeg(allOfficialLegsOrdered, startId, endId);
+
+    if (exact) {
+      return {
+        fare: exact.leg.farePhp,
+
+        method: exact.isForward ? "exact" : "reverse_exact",
+
+        confidence: 1,
+
+        explanation: exactExplanation(exact),
+
+        officialTable: exact.leg.table,
+      };
+    }
+  }
+
+  if (distanceKm > 0 && startId && endId) {
+    const refLeg = findScalingReferenceLeg(
+      allOfficialLegsOrdered,
+
+      startId,
+
+      endId,
+
+      distanceKm,
     );
 
-    const officialDist = ref?.approximateDistanceKm;
+    if (
+      refLeg != null &&
+      refLeg.referenceDistanceKm != null &&
+      refLeg.referenceDistanceKm > 0
+    ) {
+      const ratio = clamp(
+        distanceKm / refLeg.referenceDistanceKm,
 
-    if (ref && officialDist != null && officialDist > 0) {
-      const fare = interpolateFare(ref, distanceKm, officialDist);
+        RATIO_MIN,
 
-      const usedHub =
-        ref.from.toLowerCase() !== startName.toLowerCase() &&
-        ref.from.toLowerCase() === DEFAULT_FARE_HUB.toLowerCase();
+        RATIO_MAX,
+      );
 
-      const legLabel = `${ref.from} → ${ref.to}`;
+      const scaled = Math.round(refLeg.farePhp * ratio);
+
+      const tariff = estimateDistanceFare(distanceKm);
+
+      if (shouldUsePureScaledOfficial(start, end)) {
+        return {
+          fare: scaled,
+
+          method: "scaled_official",
+
+          confidence: 0.72,
+
+          explanation: `Estimated from official ${refLeg.table === "drop_off" ? "drop-off" : "special trip"} ${refLeg.fromZoneId} → ${refLeg.toZoneId} fare, scaled by road distance`,
+
+          officialTable: refLeg.table,
+        };
+      }
+
+      const w = blendWeight(start, end);
+
+      const blended = Math.round(w * scaled + (1 - w) * tariff);
 
       return {
-        fare,
+        fare: blended,
 
-        method: "interpolated",
+        method: "blended_official_distance",
 
-        confidence: 0.72,
+        confidence: 0.58,
 
-        explanation: usedHub
-          ? `Estimated by scaling official ${legLabel} fare to your route distance`
-          : `Estimated by scaling official ${legLabel} fare using your route distance`,
+        explanation: `Blend of distance-scaled official ${refLeg.fromZoneId} → ${refLeg.toZoneId} fare and distance-based estimate (weight ${Math.round(w * 100)}% official)`,
+
+        officialTable: refLeg.table,
       };
     }
   }
@@ -88,8 +155,11 @@ export function calculateFare(
 
     method: "distance_estimate",
 
-    confidence: 0.45,
+    confidence: startId && endId ? 0.45 : 0.35,
 
-    explanation: "Estimated using route distance",
+    explanation:
+      startId && endId
+        ? "No matching official route for these zones — estimated using route distance"
+        : "One or both places are outside mapped fare zones — estimated using route distance",
   };
 }

@@ -1,4 +1,4 @@
-import { officialFareRoutes } from "./fareData";
+import { calibrationOfficialFareRoutes } from "./fareData";
 
 import type { FareRoute } from "./fareTypes";
 
@@ -113,7 +113,7 @@ export function calibrateTariffFromRoutes(
   };
 }
 
-const tariff = calibrateTariffFromRoutes(officialFareRoutes);
+const tariff = calibrateTariffFromRoutes(calibrationOfficialFareRoutes);
 
 export function getCalibratedDistanceTariff(): {
   baseFare: number;

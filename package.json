@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build:fare-distances": "node scripts/buildOfficialFareDistances.mjs",
+    "build:fare-distances": "node scripts/fillOfficialFareLegDistances.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",

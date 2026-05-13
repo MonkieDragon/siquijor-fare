@@ -23,7 +23,9 @@ const officialFare: FareEstimate = {
 
   confidence: 1,
 
-  explanation: "Official LGU fare match",
+  explanation: "Official LGU special trip fare match",
+
+  officialTable: "special_trip",
 };
 
 describe("TripSheet", () => {
@@ -69,7 +71,7 @@ describe("TripSheet", () => {
     expect(screen.getByText(/300/)).toBeInTheDocument();
 
     expect(
-      screen.getByText("Official LGU fare match"),
+      screen.getByText(/Official LGU (special trip|drop-off) fare match/),
     ).toBeInTheDocument();
   });
 

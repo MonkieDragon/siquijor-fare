@@ -1,44 +1,29 @@
-import officialFareDistances from "../../data/officialFareDistances.json";
+import type { FareRoute, OfficialFareLeg } from "./fareTypes";
 
-import type { FareRoute } from "./fareTypes";
+import { allOfficialLegsOrdered } from "./officialFareLegs";
 
-function distanceKey(from: string, to: string): string {
-  return `${from}|${to}`;
+export function officialLegToFareRoute(leg: OfficialFareLeg): FareRoute {
+  return {
+    from: leg.fromZoneId,
+
+    to: leg.toZoneId,
+
+    fare: leg.farePhp,
+
+    approximateDistanceKm: leg.referenceDistanceKm,
+  };
 }
 
-const distances = officialFareDistances as Record<string, number>;
+/** All legs (drop-off first) for lookups and UI tooling. */
+export const officialFareRoutes: FareRoute[] = allOfficialLegsOrdered.map(
+  officialLegToFareRoute,
+);
 
-const baseRoutes: FareRoute[] = [
-  {
-    from: "San Juan",
-    to: "Siquijor",
-    fare: 300,
-  },
-
-  {
-    from: "San Juan",
-    to: "Larena",
-    fare: 600,
-  },
-
-  {
-    from: "San Juan",
-    to: "Campalanas",
-    fare: 300,
-  },
-
-  {
-    from: "San Juan",
-    to: "Lazi",
-    fare: 600,
-  },
-];
-
-export const officialFareRoutes: FareRoute[] = baseRoutes.map((route) => {
-  const key = distanceKey(route.from, route.to);
-  const approximateDistanceKm = distances[key];
-
-  return approximateDistanceKm != null
-    ? { ...route, approximateDistanceKm }
-    : route;
-});
+/** Legs with road reference distance — used to calibrate distance fallback. */
+export const calibrationOfficialFareRoutes: FareRoute[] =
+  allOfficialLegsOrdered
+    .filter(
+      (leg) =>
+        leg.referenceDistanceKm != null && leg.referenceDistanceKm > 0,
+    )
+    .map(officialLegToFareRoute);

@@ -1,0 +1,123 @@
+{
+  "specialTripLegs": [
+    {
+      "table": "special_trip",
+      "fromZoneId": "san_juan_poblacion",
+      "toZoneId": "siquijor_port",
+      "farePhp": 300,
+      "symmetric": true,
+      "lgSourceNote": "San Juan (Poblacion) to Siquijor — special trip",
+      "referenceDistanceKm": 6.8
+    },
+    {
+      "table": "special_trip",
+      "fromZoneId": "san_juan_poblacion",
+      "toZoneId": "larena",
+      "farePhp": 600,
+      "symmetric": true,
+      "lgSourceNote": "San Juan (Poblacion) to Larena — special trip",
+      "referenceDistanceKm": 16.51
+    },
+    {
+      "table": "special_trip",
+      "fromZoneId": "san_juan_poblacion",
+      "toZoneId": "campalanas",
+      "farePhp": 300,
+      "symmetric": true,
+      "lgSourceNote": "San Juan (Poblacion) to Campalanas — special trip",
+      "referenceDistanceKm": 12.56
+    },
+    {
+      "table": "special_trip",
+      "fromZoneId": "san_juan_poblacion",
+      "toZoneId": "lazi",
+      "farePhp": 600,
+      "symmetric": true,
+      "lgSourceNote": "San Juan (Poblacion) to Lazi — special trip",
+      "referenceDistanceKm": 20.14
+    }
+  ],
+  "dropOffLegs": [
+    {
+      "table": "drop_off",
+      "fromZoneId": "maite",
+      "toZoneId": "siquijor_port",
+      "farePhp": 60,
+      "symmetric": true,
+      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
+      "referenceDistanceKm": 8.41
+    },
+    {
+      "table": "drop_off",
+      "fromZoneId": "tubod",
+      "toZoneId": "siquijor_port",
+      "farePhp": 60,
+      "symmetric": true,
+      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
+      "referenceDistanceKm": 9.52
+    },
+    {
+      "table": "drop_off",
+      "fromZoneId": "paliton",
+      "toZoneId": "siquijor_port",
+      "farePhp": 100,
+      "symmetric": true,
+      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
+      "referenceDistanceKm": 8.54
+    },
+    {
+      "table": "drop_off",
+      "fromZoneId": "solangon",
+      "toZoneId": "siquijor_port",
+      "farePhp": 120,
+      "symmetric": true,
+      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
+      "referenceDistanceKm": 9.9
+    },
+    {
+      "table": "drop_off",
+      "fromZoneId": "tag_ibo",
+      "toZoneId": "siquijor_port",
+      "farePhp": 80,
+      "symmetric": true,
+      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
+      "referenceDistanceKm": 13.15
+    },
+    {
+      "table": "drop_off",
+      "fromZoneId": "candanay_norte",
+      "toZoneId": "siquijor_port",
+      "farePhp": 90,
+      "symmetric": true,
+      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
+      "referenceDistanceKm": 3.27
+    },
+    {
+      "table": "drop_off",
+      "fromZoneId": "calalinan",
+      "toZoneId": "siquijor_port",
+      "farePhp": 70,
+      "symmetric": true,
+      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
+      "referenceDistanceKm": 1.59
+    },
+    {
+      "table": "drop_off",
+      "fromZoneId": "tambisan_san_juan",
+      "toZoneId": "siquijor_port",
+      "farePhp": 110,
+      "symmetric": true,
+      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
+      "referenceDistanceKm": 6.73
+    },
+    {
+      "table": "drop_off",
+      "fromZoneId": "kawayan_holiday",
+      "toZoneId": "siquijor_port",
+      "farePhp": 95,
+      "symmetric": true,
+      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
+      "referenceDistanceKm": 17.97
+    }
+  ]
+}

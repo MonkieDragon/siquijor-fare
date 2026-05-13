@@ -18,7 +18,7 @@ import { DEFAULT_ZOOM, SIQUIJOR_CENTER } from "../../services/map/mapConfig";
 import type { Location } from "../../types/location";
 import type { RouteResult } from "../../types/route";
 import { calculateFare } from "../../services/fare/fareEngine";
-import { resolveFarePlaceName } from "../../services/fare/resolveFarePlaceName";
+import { resolveFareZone } from "../../services/fare/resolveFareZone";
 import { calculateRoute } from "../../services/routing/router";
 import TripSheet from "../trip/TripSheet";
 import FitRouteBounds from "./FitRouteBounds";
@@ -178,11 +178,11 @@ export default function MapView() {
 
     const distanceKm = route.distanceMeters / 1000;
 
-    const startName = resolveFarePlaceName(origin);
+    const startZone = resolveFareZone(origin);
 
-    const endName = resolveFarePlaceName(destination);
+    const endZone = resolveFareZone(destination);
 
-    return calculateFare(startName, endName, distanceKm);
+    return calculateFare(startZone, endZone, distanceKm);
   }, [route, origin, destination]);
 
   return (

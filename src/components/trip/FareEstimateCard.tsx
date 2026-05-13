@@ -28,12 +28,18 @@ export default function FareEstimateCard({ estimate }: Props) {
 
       <div style={styles.explanation}>{estimate.explanation}</div>
 
-      {(estimate.method === "interpolated" ||
-        estimate.method === "distance_estimate") && (
+      {(estimate.method === "scaled_official" ||
+        estimate.method === "blended_official_distance") && (
         <div style={styles.hint}>
-          {estimate.method === "interpolated"
-            ? "Scaled from a nearby official route using road distance."
-            : "Based on calibrated distance rates when no official route matches."}
+          {estimate.method === "scaled_official"
+            ? "Scaled from a published LGU route using your trip road distance."
+            : "Combines a scaled LGU reference fare with a distance-based estimate."}
+        </div>
+      )}
+
+      {estimate.method === "distance_estimate" && (
+        <div style={styles.hint}>
+          Based on calibrated distance rates when no official route matches.
         </div>
       )}
     </div>
