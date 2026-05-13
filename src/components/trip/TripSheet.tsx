@@ -75,7 +75,9 @@ export default function TripSheet({
   const bottomSummaryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!onChromeInsetsChange) {
+    const reportChromeInsets = onChromeInsetsChange;
+
+    if (!reportChromeInsets) {
       return;
     }
 
@@ -84,7 +86,7 @@ export default function TripSheet({
 
       const bottom = bottomSummaryRef.current?.offsetHeight ?? 0;
 
-      onChromeInsetsChange({ top, bottom });
+      reportChromeInsets?.({ top, bottom });
     }
 
     report();
