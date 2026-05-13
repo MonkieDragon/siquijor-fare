@@ -1,8 +1,13 @@
-import { estimateDistanceFare } from "./distanceFare";
+import { computeDistanceFareDetails, estimateDistanceFare } from "./distanceFare";
 
 import { findExactOfficialLeg } from "./exactOfficialFare";
 
 import { allOfficialLegsOrdered } from "./officialFareLegs";
+
+import {
+  tryCorridorExtrapolatedFare,
+  tryCorridorInterpolatedFare,
+} from "./poblacionCorridorInterpolation";
 
 import { findScalingReferenceLeg } from "./scalingReferenceFare";
 
@@ -63,10 +68,16 @@ function exactExplanation(match: {
   return `Official LGU ${tableLabel} fare match (reverse direction)`;
 }
 
+export type CalculateFareOptions = {
+  /** OSRM route as `[lat, lon][]` (see `RouteResult.coordinates`). */
+  routeCoordinates?: [number, number][];
+};
+
 export function calculateFare(
   start: FareZoneResolution,
   end: FareZoneResolution,
   distanceKm: number,
+  options?: CalculateFareOptions,
 ): FareEstimate {
   const startId = start.zoneId;
 
@@ -150,8 +161,42 @@ export function calculateFare(
     }
   }
 
+  const corridor = tryCorridorInterpolatedFare(
+    start,
+
+    end,
+
+    distanceKm,
+
+    options?.routeCoordinates ?? [],
+
+    allOfficialLegsOrdered,
+  );
+
+  if (corridor) {
+    return corridor;
+  }
+
+  const extrapolated = tryCorridorExtrapolatedFare(
+    start,
+
+    end,
+
+    distanceKm,
+
+    options?.routeCoordinates ?? [],
+
+    allOfficialLegsOrdered,
+  );
+
+  if (extrapolated) {
+    return extrapolated;
+  }
+
+  const distanceDetail = computeDistanceFareDetails(distanceKm);
+
   return {
-    fare: estimateDistanceFare(distanceKm),
+    fare: distanceDetail.fare,
 
     method: "distance_estimate",
 
@@ -159,7 +204,9 @@ export function calculateFare(
 
     explanation:
       startId && endId
-        ? "No matching official route for these zones — estimated using route distance"
-        : "One or both places are outside mapped fare zones — estimated using route distance",
+        ? "No matching official route for these zones — estimated using trip distance × median ₱/km from LGU reference routes"
+        : "Estimated using trip distance × median ₱/km from LGU reference routes (one or both stops are outside mapped fare zones)",
+
+    distanceDetail,
   };
 }

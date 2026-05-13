@@ -14,17 +14,29 @@ import { useDesktopSession } from "../../hooks/useDesktopSession";
 import { useGeolocation } from "../../hooks/useGeolocation";
 import { pickLocationAtCoordinates } from "../../services/geocoding/pickLocationAtCoordinates";
 import { routeStopIcon, userLocationIcon } from "../../services/map/mapIcons";
-import { DEFAULT_ZOOM, SIQUIJOR_CENTER } from "../../services/map/mapConfig";
+import {
+  DEFAULT_ZOOM,
+  ISLAND_OVERVIEW_MAX_ZOOM,
+  SIQUIJOR_CENTER,
+} from "../../services/map/mapConfig";
 import { isLatLonOnSiquijorIsland } from "../../services/map/siquijorIslandBounds";
 import type { Location } from "../../types/location";
 import type { RouteResult } from "../../types/route";
+import {
+  POBLACION_ZONE_ID,
+  SIQUIJOR_PORT_ZONE_ID,
+} from "../../data/fareZonesData";
 import { calculateFare } from "../../services/fare/fareEngine";
 import { resolveFareZone } from "../../services/fare/resolveFareZone";
 import { calculateRoute } from "../../services/routing/router";
 import TripSheet from "../trip/TripSheet";
+import FitIslandBounds, {
+  type MapChromePadding,
+} from "./FitIslandBounds";
 import FitRouteBounds from "./FitRouteBounds";
 import MapClickHandler from "./MapClickHandler";
 import MapFlyToBridge from "./MapFlyToBridge";
+import OfficialHubMarkers from "./OfficialHubMarkers";
 import RouteLayer from "./RouteLayer";
 
 type ActiveField = "pickup" | "destination";
@@ -58,6 +70,35 @@ export default function MapView() {
 
   const markerReverseAbortRef = useRef<AbortController | null>(null);
 
+  /** After explicit pickup clear, do not immediately refill from GPS until user picks again. */
+  const suppressAutoOriginUntilPickRef = useRef(false);
+
+  const [chromeOverlayHeights, setChromeOverlayHeights] = useState({
+    top: 260,
+
+    bottom: 140,
+  });
+
+  const mapChromePadding = useMemo((): MapChromePadding => {
+    return {
+      top: chromeOverlayHeights.top,
+
+      bottom: chromeOverlayHeights.bottom,
+
+      left: 16,
+
+      right: 16,
+    };
+  }, [chromeOverlayHeights.top, chromeOverlayHeights.bottom]);
+
+  const commitOrigin = useCallback((loc: Location | null) => {
+    if (loc) {
+      suppressAutoOriginUntilPickRef.current = false;
+    }
+
+    setOrigin(loc);
+  }, []);
+
   useEffect(() => {
     if (isDesktop) {
       return;
@@ -74,6 +115,10 @@ export default function MapView() {
     queueMicrotask(() => {
       setOrigin((prev) => {
         if (prev) {
+          return prev;
+        }
+
+        if (suppressAutoOriginUntilPickRef.current) {
           return prev;
         }
 
@@ -123,14 +168,24 @@ export default function MapView() {
   const handleMapPick = useCallback(
     (loc: Location) => {
       if (activeField === "pickup") {
-        setOrigin(loc);
+        commitOrigin(loc);
       } else {
         setDestination(loc);
       }
     },
 
-    [activeField],
+    [activeField, commitOrigin],
   );
+
+  const handleClearPickup = useCallback(() => {
+    suppressAutoOriginUntilPickRef.current = true;
+
+    commitOrigin(null);
+  }, [commitOrigin]);
+
+  const handleClearDestination = useCallback(() => {
+    setDestination(null);
+  }, []);
 
   const handleZoomToPickup = useCallback(() => {
     if (!origin) {
@@ -157,8 +212,8 @@ export default function MapView() {
 
     markerReverseAbortRef.current = ac;
 
-    void pickLocationAtCoordinates(ll.lat, ll.lng, ac.signal, setOrigin);
-  }, []);
+    void pickLocationAtCoordinates(ll.lat, ll.lng, ac.signal, commitOrigin);
+  }, [commitOrigin]);
 
   const handleDestinationDragEnd = useCallback((e: LeafletEvent) => {
     const ll = (e.target as LeafletMarker).getLatLng();
@@ -191,8 +246,20 @@ export default function MapView() {
 
     const endZone = resolveFareZone(destination);
 
-    return calculateFare(startZone, endZone, distanceKm);
+    return calculateFare(startZone, endZone, distanceKm, {
+      routeCoordinates: route.coordinates,
+    });
   }, [route, origin, destination]);
+
+  const showOfficialHubMarkers = useMemo(() => {
+    if (!origin) {
+      return false;
+    }
+
+    const z = resolveFareZone(origin).zoneId;
+
+    return z === POBLACION_ZONE_ID || z === SIQUIJOR_PORT_ZONE_ID;
+  }, [origin]);
 
   return (
     <div
@@ -211,6 +278,7 @@ export default function MapView() {
       <MapContainer
         center={mapCenter}
         zoom={DEFAULT_ZOOM}
+        maxZoom={ISLAND_OVERVIEW_MAX_ZOOM}
         style={{
           position: "absolute",
 
@@ -222,14 +290,33 @@ export default function MapView() {
         }}
         scrollWheelZoom
       >
-        <MapFlyToBridge flyToRef={flyToRef} />
+        <MapFlyToBridge
+          flyToRef={flyToRef}
+          chromePadding={mapChromePadding}
+        />
+
+        <FitIslandBounds
+          enabled={!route}
+          padding={mapChromePadding}
+        />
 
         <TileLayer
           attribution="&copy; OpenStreetMap contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          maxZoom={ISLAND_OVERVIEW_MAX_ZOOM}
+          maxNativeZoom={ISLAND_OVERVIEW_MAX_ZOOM}
         />
 
         <MapClickHandler onPickLocation={handleMapPick} />
+
+        <OfficialHubMarkers
+          visible={showOfficialHubMarkers}
+          onPickDestination={(loc) => {
+            setDestination(loc);
+
+            setActiveField("destination");
+          }}
+        />
 
         {showDeviceMarker && (
           <Marker
@@ -270,7 +357,12 @@ export default function MapView() {
 
         {route && <RouteLayer coordinates={route.coordinates} />}
 
-        {route && <FitRouteBounds coordinates={route.coordinates} />}
+        {route && (
+          <FitRouteBounds
+            coordinates={route.coordinates}
+            padding={mapChromePadding}
+          />
+        )}
       </MapContainer>
 
       <TripSheet
@@ -278,12 +370,15 @@ export default function MapView() {
         destination={destination}
         activeField={activeField}
         onActiveFieldChange={setActiveField}
-        onOriginSelect={setOrigin}
+        onOriginSelect={commitOrigin}
         onDestinationSelect={setDestination}
         onZoomToPickup={handleZoomToPickup}
         onZoomToDestination={handleZoomToDestination}
         route={route}
         fareEstimate={fareEstimate}
+        onClearPickup={handleClearPickup}
+        onClearDestination={handleClearDestination}
+        onChromeInsetsChange={setChromeOverlayHeights}
       />
     </div>
   );

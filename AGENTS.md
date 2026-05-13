@@ -118,11 +118,19 @@ AI agents should preserve this layered approach.
 
 # Official Fare Data
 
-Current official fare data exists in:
+Authoritative LGU tricycle fares and OSRM reference leg distances live in:
 
 ```txt
-siquijor_special_trip_fares.json
+src/data/officialFareLegs.json
 ```
+
+Canonical lat/lon per **zone id** (for OSRM `referenceDistanceKm` batching and alignment with fare zones) live in:
+
+```txt
+src/data/fareZoneCanonicals.json
+```
+
+Keep `fareZoneCanonicals.json` in sync with zone ids used in `officialFareLegs.json` and [`fareZonesData.ts`](src/data/fareZonesData.ts). Run `npm run build:fare-distances` after changing legs or canonical coordinates.
 
 This data is incomplete and sparse.
 

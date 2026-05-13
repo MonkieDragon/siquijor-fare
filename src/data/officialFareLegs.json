@@ -6,7 +6,7 @@
       "toZoneId": "siquijor_port",
       "farePhp": 300,
       "symmetric": true,
-      "lgSourceNote": "San Juan (Poblacion) to Siquijor — special trip",
+      "lgSourceNote": "San Juan LGU tricycle special trip — Poblacion to Siquijor (port)",
       "referenceDistanceKm": 6.8
     },
     {
@@ -15,7 +15,7 @@
       "toZoneId": "larena",
       "farePhp": 600,
       "symmetric": true,
-      "lgSourceNote": "San Juan (Poblacion) to Larena — special trip",
+      "lgSourceNote": "San Juan LGU tricycle special trip — Poblacion to Larena",
       "referenceDistanceKm": 16.51
     },
     {
@@ -24,7 +24,7 @@
       "toZoneId": "campalanas",
       "farePhp": 300,
       "symmetric": true,
-      "lgSourceNote": "San Juan (Poblacion) to Campalanas — special trip",
+      "lgSourceNote": "San Juan LGU tricycle special trip — Poblacion to Campalanas",
       "referenceDistanceKm": 12.56
     },
     {
@@ -33,7 +33,7 @@
       "toZoneId": "lazi",
       "farePhp": 600,
       "symmetric": true,
-      "lgSourceNote": "San Juan (Poblacion) to Lazi — special trip",
+      "lgSourceNote": "San Juan LGU tricycle special trip — Poblacion to Lazi",
       "referenceDistanceKm": 20.14
     }
   ],
@@ -42,73 +42,28 @@
       "table": "drop_off",
       "fromZoneId": "maite",
       "toZoneId": "siquijor_port",
-      "farePhp": 60,
+      "farePhp": 350,
       "symmetric": true,
-      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
+      "lgSourceNote": "San Juan LGU tricycle page 2 drop-off — Maite to Siquijor port",
       "referenceDistanceKm": 8.41
     },
     {
       "table": "drop_off",
       "fromZoneId": "tubod",
       "toZoneId": "siquijor_port",
-      "farePhp": 60,
+      "farePhp": 350,
       "symmetric": true,
-      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
+      "lgSourceNote": "San Juan LGU tricycle page 2 drop-off — Tubod to Siquijor port",
       "referenceDistanceKm": 9.52
-    },
-    {
-      "table": "drop_off",
-      "fromZoneId": "paliton",
-      "toZoneId": "siquijor_port",
-      "farePhp": 100,
-      "symmetric": true,
-      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
-      "referenceDistanceKm": 8.54
-    },
-    {
-      "table": "drop_off",
-      "fromZoneId": "solangon",
-      "toZoneId": "siquijor_port",
-      "farePhp": 120,
-      "symmetric": true,
-      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
-      "referenceDistanceKm": 9.9
     },
     {
       "table": "drop_off",
       "fromZoneId": "tag_ibo",
       "toZoneId": "siquijor_port",
-      "farePhp": 80,
+      "farePhp": 400,
       "symmetric": true,
-      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
+      "lgSourceNote": "San Juan LGU tricycle page 2 drop-off — Tag-ibo to Siquijor port",
       "referenceDistanceKm": 13.15
-    },
-    {
-      "table": "drop_off",
-      "fromZoneId": "candanay_norte",
-      "toZoneId": "siquijor_port",
-      "farePhp": 90,
-      "symmetric": true,
-      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
-      "referenceDistanceKm": 3.27
-    },
-    {
-      "table": "drop_off",
-      "fromZoneId": "calalinan",
-      "toZoneId": "siquijor_port",
-      "farePhp": 70,
-      "symmetric": true,
-      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
-      "referenceDistanceKm": 1.59
-    },
-    {
-      "table": "drop_off",
-      "fromZoneId": "tambisan_san_juan",
-      "toZoneId": "siquijor_port",
-      "farePhp": 110,
-      "symmetric": true,
-      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
-      "referenceDistanceKm": 6.73
     },
     {
       "table": "drop_off",
@@ -116,8 +71,35 @@
       "toZoneId": "siquijor_port",
       "farePhp": 95,
       "symmetric": true,
-      "lgSourceNote": "PLACEHOLDER fare — replace with LGU drop-off sheet value",
+      "lgSourceNote": "San Juan LGU tricycle page 2 drop-off — Kawayan Holiday to Siquijor port",
       "referenceDistanceKm": 17.97
+    },
+    {
+      "table": "drop_off",
+      "fromZoneId": "catulayan",
+      "toZoneId": "siquijor_port",
+      "farePhp": 450,
+      "symmetric": true,
+      "lgSourceNote": "San Juan LGU tricycle page 2 drop-off — Catulayan to Siquijor port",
+      "referenceDistanceKm": 13.64
+    },
+    {
+      "table": "drop_off",
+      "fromZoneId": "timbaon",
+      "toZoneId": "siquijor_port",
+      "farePhp": 500,
+      "symmetric": true,
+      "lgSourceNote": "San Juan LGU tricycle page 2 drop-off — Timbaon to Siquijor port",
+      "referenceDistanceKm": 15.9
+    },
+    {
+      "table": "drop_off",
+      "fromZoneId": "cangmunag",
+      "toZoneId": "siquijor_port",
+      "farePhp": 600,
+      "symmetric": true,
+      "lgSourceNote": "San Juan LGU tricycle page 2 drop-off — Cangmunag to Siquijor port",
+      "referenceDistanceKm": 16.51
     }
   ]
 }

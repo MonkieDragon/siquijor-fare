@@ -25,6 +25,9 @@ type Props = {
 
   /** False grays out the zoom control when there is nothing to fly to. */
   zoomEnabled: boolean;
+
+  /** Clears the field and related map state (pickup / destination). */
+  onClear?: () => void;
 };
 
 export default function LocationSearchField({
@@ -47,6 +50,8 @@ export default function LocationSearchField({
   onZoomClick,
 
   zoomEnabled,
+
+  onClear,
 }: Props) {
   const [query, setQuery] = useState(selected?.name ?? "");
 
@@ -121,32 +126,67 @@ export default function LocationSearchField({
     onMapPickClick?.();
   }
 
+  const showClear =
+    Boolean(onClear) && (query.trim().length > 0 || Boolean(selected));
+
+  function handleClear() {
+    setQuery("");
+
+    committedSelectionRef.current = null;
+
+    setResults([]);
+
+    setLoading(false);
+
+    onClear?.();
+  }
+
   return (
     <div style={styles.field}>
       <label style={styles.label}>{label}</label>
 
       <div style={styles.inputRow}>
-        <input
-          value={query}
-          onChange={(e) => {
-            const v = e.target.value;
+        <div style={styles.inputShell}>
+          <input
+            value={query}
+            onChange={(e) => {
+              const v = e.target.value;
 
-            setQuery(v);
+              setQuery(v);
 
-            const t = v.trim();
+              const t = v.trim();
 
-            const committed = committedSelectionRef.current;
+              const committed = committedSelectionRef.current;
 
-            if (committed !== null && t !== committed) {
-              committedSelectionRef.current = null;
-            }
-          }}
-          onFocus={onFocus}
-          placeholder={placeholder}
-          style={styles.input}
-          autoComplete="off"
-          aria-label={label}
-        />
+              if (committed !== null && t !== committed) {
+                committedSelectionRef.current = null;
+              }
+            }}
+            onFocus={onFocus}
+            placeholder={placeholder}
+            style={{
+              ...styles.input,
+
+              padding: showClear
+                ? "12px 40px 12px 14px"
+                : "12px 14px",
+            }}
+            autoComplete="off"
+            aria-label={label}
+          />
+
+          {showClear && (
+            <button
+              type="button"
+              style={styles.clearBtn}
+              onClick={handleClear}
+              aria-label={`Clear ${label}`}
+              title={`Clear ${label}`}
+            >
+              <ClearGlyph />
+            </button>
+          )}
+        </div>
 
         <div style={styles.trailing}>
           {onMapPickClick && (
@@ -230,6 +270,26 @@ function PinGlyph() {
   );
 }
 
+function ClearGlyph() {
+  return (
+    <svg
+      width={18}
+      height={18}
+      viewBox="0 0 24 24"
+      aria-hidden
+      style={{ display: "block" }}
+    >
+      <path
+        d="M6 6l12 12M18 6L6 18"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 function ZoomGlyph() {
   return (
     <svg
@@ -290,6 +350,18 @@ const styles: Record<string, React.CSSProperties> = {
     gap: 8,
   },
 
+  inputShell: {
+    position: "relative",
+
+    flex: 1,
+
+    minWidth: 0,
+
+    display: "flex",
+
+    alignItems: "stretch",
+  },
+
   input: {
     flex: 1,
 
@@ -297,7 +369,7 @@ const styles: Record<string, React.CSSProperties> = {
 
     minHeight: 48,
 
-    padding: "12px 14px",
+    padding: "12px 40px 12px 14px",
 
     borderRadius: 8,
 
@@ -314,6 +386,40 @@ const styles: Record<string, React.CSSProperties> = {
     colorScheme: "light",
 
     outline: "none",
+  },
+
+  clearBtn: {
+    position: "absolute",
+
+    right: 8,
+
+    top: "50%",
+
+    transform: "translateY(-50%)",
+
+    width: 36,
+
+    height: 36,
+
+    padding: 0,
+
+    display: "flex",
+
+    alignItems: "center",
+
+    justifyContent: "center",
+
+    border: "none",
+
+    borderRadius: 8,
+
+    background: "transparent",
+
+    color: "#6b7280",
+
+    cursor: "pointer",
+
+    boxSizing: "border-box",
   },
 
   trailing: {

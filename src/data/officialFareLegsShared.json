@@ -1,0 +1,39 @@
+{
+  "origin": "Poblacion",
+  "regularTricycleFares": [
+    {
+      "fare": 15,
+      "destinations": ["Lala-o", "Solangon", "Maite", "Can-asagan", "Tubod"]
+    },
+
+    {
+      "fare": 20,
+      "destinations": ["Paliton", "Tambisan", "Sawang", "Tubod"]
+    },
+
+    {
+      "fare": 25,
+      "destinations": ["Tag-ibo"]
+    },
+
+    {
+      "fare": 30,
+      "destinations": ["Catulayan"]
+    },
+
+    {
+      "fare": 40,
+      "destinations": ["Campo Uno", "Timbaon", "Proper"]
+    },
+
+    {
+      "fare": 45,
+      "destinations": ["Cangmunag Proper", "Sitio Libo", "Candavoc"]
+    },
+
+    {
+      "fare": 40,
+      "destinations": ["Poblacion to Siquijor"]
+    }
+  ]
+}

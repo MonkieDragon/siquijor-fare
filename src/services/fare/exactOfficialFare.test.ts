@@ -46,6 +46,6 @@ describe("findExactOfficialLeg", () => {
 
     expect(hit?.leg.table).toBe("drop_off");
 
-    expect(hit?.leg.farePhp).toBe(60);
+    expect(hit?.leg.farePhp).toBe(350);
   });
 });

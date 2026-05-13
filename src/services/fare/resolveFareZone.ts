@@ -1,6 +1,10 @@
 import type { Location } from "../../types/location";
 
-import { FARE_ZONE_DEFINITIONS, POBLACION_ZONE_ID } from "../../data/fareZonesData";
+import {
+  FARE_ZONE_DEFINITIONS,
+  POBLACION_ZONE_ID,
+  SAN_JUAN_POBLACION_GEOMETRY,
+} from "../../data/fareZonesData";
 
 import { pointInPolygon } from "./pointInPolygon";
 
@@ -116,12 +120,42 @@ export function resolveFareZone(
 ): FareZoneResolution {
   const { lat, lon } = location;
 
+  const dPobl = haversineKm(
+    lat,
+
+    lon,
+
+    SAN_JUAN_POBLACION_GEOMETRY.lat,
+
+    SAN_JUAN_POBLACION_GEOMETRY.lon,
+  );
+
+  if (dPobl <= SAN_JUAN_POBLACION_GEOMETRY.coreRadiusKm) {
+    return {
+      zoneId: POBLACION_ZONE_ID,
+
+      tier: "radius",
+
+      distanceToCanonicalKm: dPobl,
+    };
+  }
+
   for (const zone of zones) {
     const hit = matchZone(lat, lon, zone);
 
     if (hit) {
       return hit;
     }
+  }
+
+  if (dPobl <= SAN_JUAN_POBLACION_GEOMETRY.extendedRadiusKm) {
+    return {
+      zoneId: POBLACION_ZONE_ID,
+
+      tier: "radius",
+
+      distanceToCanonicalKm: dPobl,
+    };
   }
 
   if (textSuggestsCoarseSanJuan(location)) {
@@ -135,9 +169,9 @@ export function resolveFareZone(
 
         lon,
 
-        9.1610894,
+        SAN_JUAN_POBLACION_GEOMETRY.lat,
 
-        123.4925811,
+        SAN_JUAN_POBLACION_GEOMETRY.lon,
       ),
     };
   }

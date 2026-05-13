@@ -2,123 +2,77 @@ import { calibrationOfficialFareRoutes } from "./fareData";
 
 import type { FareRoute } from "./fareTypes";
 
-const FALLBACK_BASE = 80;
-
-const FALLBACK_PER_KM = 18;
+/** When fewer than two published reference legs exist, or calibration fails. */
+export const FALLBACK_PER_KM = 18;
 
 const PER_KM_MIN = 10;
 
 const PER_KM_MAX = 40;
 
-type Point = { d: number; f: number };
+/**
+ * Optional floor: `fare = max(MINIMUM_FARE_PHP, round(km * perKm))`.
+ * Set to 0 for pure distance-only pricing.
+ */
+export const MINIMUM_FARE_PHP = 0;
 
-function computeOls(points: Point[]): { base: number; perKm: number } | null {
-  const n = points.length;
-
-  if (n < 2) {
-    return null;
+function median(numbers: number[]): number {
+  if (numbers.length === 0) {
+    return FALLBACK_PER_KM;
   }
 
-  let sD = 0;
+  const s = [...numbers].sort((a, b) => a - b);
 
-  let sF = 0;
+  const mid = Math.floor(s.length / 2);
 
-  let sD2 = 0;
-
-  let sDF = 0;
-
-  for (const { d, f } of points) {
-    sD += d;
-
-    sF += f;
-
-    sD2 += d * d;
-
-    sDF += d * f;
-  }
-
-  const denom = n * sD2 - sD * sD;
-
-  if (Math.abs(denom) < 1e-9) {
-    return null;
-  }
-
-  const perKm = (n * sDF - sD * sF) / denom;
-
-  const base = (sF - perKm * sD) / n;
-
-  return { base, perKm };
+  return s.length % 2 === 1
+    ? s[mid]!
+    : (s[mid - 1]! + s[mid]!) / 2;
 }
 
-function medianImpliedPerKm(
-  points: Point[],
-  fixedBase: number,
-): number | null {
-  const rates = points
-    .map(({ d, f }) => (f - fixedBase) / d)
-    .filter((r) => Number.isFinite(r));
-
-  if (rates.length === 0) {
-    return null;
-  }
-
-  rates.sort((a, b) => a - b);
-
-  return rates[Math.floor(rates.length / 2)]!;
-}
-
-export function calibrateTariffFromRoutes(
-  routes: FareRoute[],
-): { baseFare: number; perKm: number } {
-  const points: Point[] = routes
+/**
+ * Median implied ₱/km from official (fare, referenceDistanceKm) pairs — no intercept.
+ */
+export function calibrateFlatPerKmFromRoutes(routes: FareRoute[]): number {
+  const impliedRates = routes
     .filter(
       (r) =>
-        r.approximateDistanceKm != null && r.approximateDistanceKm > 0,
+        r.approximateDistanceKm != null &&
+        r.approximateDistanceKm > 0,
     )
-    .map((r) => ({ d: r.approximateDistanceKm!, f: r.fare }));
+    .map((r) => r.fare / r.approximateDistanceKm!)
+    .filter((r) => Number.isFinite(r));
 
-  if (points.length < 2) {
-    return { baseFare: FALLBACK_BASE, perKm: FALLBACK_PER_KM };
+  if (impliedRates.length < 2) {
+    return FALLBACK_PER_KM;
   }
 
-  const ols = computeOls(points);
+  const raw = median(impliedRates);
 
-  if (ols && ols.base >= 0 && ols.perKm > 0) {
-    const perKm = Math.min(
-      PER_KM_MAX,
-
-      Math.max(PER_KM_MIN, ols.perKm),
-    );
-
-    return {
-      baseFare: Math.round(ols.base * 100) / 100,
-
-      perKm: Math.round(perKm * 100) / 100,
-    };
-  }
-
-  const medianRate =
-    medianImpliedPerKm(points, FALLBACK_BASE) ?? FALLBACK_PER_KM;
-
-  const perKm = Math.min(
+  const clamped = Math.min(
     PER_KM_MAX,
 
-    Math.max(PER_KM_MIN, medianRate),
+    Math.max(PER_KM_MIN, raw),
   );
 
-  return {
-    baseFare: FALLBACK_BASE,
-
-    perKm: Math.round(perKm * 100) / 100,
-  };
+  return Math.round(clamped * 100) / 100;
 }
 
-const tariff = calibrateTariffFromRoutes(calibrationOfficialFareRoutes);
+const calibratedPerKm = calibrateFlatPerKmFromRoutes(
+  calibrationOfficialFareRoutes,
+);
 
-export function getCalibratedDistanceTariff(): {
-  baseFare: number;
+export function getFlatPerKmRate(): number {
+  return calibratedPerKm;
+}
 
+export function getFlatDistanceParams(): {
   perKm: number;
+
+  minimumFarePhp: number;
 } {
-  return tariff;
+  return {
+    perKm: calibratedPerKm,
+
+    minimumFarePhp: MINIMUM_FARE_PHP,
+  };
 }

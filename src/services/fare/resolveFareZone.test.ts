@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { FARE_ZONE_DEFINITIONS } from "../../data/fareZonesData";
+import { FARE_ZONE_DEFINITIONS, SAN_JUAN_POBLACION_GEOMETRY } from "../../data/fareZonesData";
 
 import { resolveFareZone } from "./resolveFareZone";
 
@@ -19,6 +19,26 @@ function loc(partial: Partial<Location> & Pick<Location, "lat" | "lon">): Locati
 }
 
 describe("resolveFareZone", () => {
+  it("resolves Poblacion hub to san_juan_poblacion before overlapping Maite polygon", () => {
+    expect(
+      resolveFareZone(
+        loc({
+          name: "Poblacion",
+
+          lat: SAN_JUAN_POBLACION_GEOMETRY.lat,
+
+          lon: SAN_JUAN_POBLACION_GEOMETRY.lon,
+        }),
+      ),
+    ).toEqual(
+      expect.objectContaining({
+        zoneId: "san_juan_poblacion",
+
+        tier: "radius",
+      }),
+    );
+  });
+
   it("resolves a point inside Maite polygon to maite", () => {
     expect(
       resolveFareZone(
@@ -39,20 +59,20 @@ describe("resolveFareZone", () => {
     );
   });
 
-  it("resolves Paliton Beach coordinates to paliton", () => {
+  it("resolves a point inside Timbaon polygon to timbaon", () => {
     expect(
       resolveFareZone(
         loc({
-          name: "Paliton Beach",
+          name: "Timbaon",
 
-          lat: 9.1783615,
+          lat: 9.1160008,
 
-          lon: 123.4612927,
+          lon: 123.5555211,
         }),
       ),
     ).toEqual(
       expect.objectContaining({
-        zoneId: "paliton",
+        zoneId: "timbaon",
 
         tier: "polygon",
       }),

@@ -1,6 +1,8 @@
-import type { RouteResult } from "../../types/route";
+import { useEffect, useRef } from "react";
 
 import type { FareEstimate } from "../../services/fare/fareTypes";
+
+import type { RouteResult } from "../../types/route";
 
 import type { Location as GeoLocation } from "../../types/location";
 
@@ -32,6 +34,13 @@ type Props = {
   route: RouteResult | null;
 
   fareEstimate: FareEstimate | null;
+
+  onClearPickup?: () => void;
+
+  onClearDestination?: () => void;
+
+  /** Reports measured overlay heights so the map can fit bounds to the visible pane. */
+  onChromeInsetsChange?: (sizes: { top: number; bottom: number }) => void;
 };
 
 export default function TripSheet({
@@ -54,11 +63,61 @@ export default function TripSheet({
   route,
 
   fareEstimate,
+
+  onClearPickup,
+
+  onClearDestination,
+
+  onChromeInsetsChange,
 }: Props) {
+  const topChromeRef = useRef<HTMLDivElement>(null);
+
+  const bottomSummaryRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!onChromeInsetsChange) {
+      return;
+    }
+
+    function report() {
+      const top = topChromeRef.current?.offsetHeight ?? 0;
+
+      const bottom = bottomSummaryRef.current?.offsetHeight ?? 0;
+
+      onChromeInsetsChange({ top, bottom });
+    }
+
+    report();
+
+    const ro = new ResizeObserver(report);
+
+    const topEl = topChromeRef.current;
+
+    const bottomEl = bottomSummaryRef.current;
+
+    if (topEl) {
+      ro.observe(topEl);
+    }
+
+    if (bottomEl) {
+      ro.observe(bottomEl);
+    }
+
+    return () => {
+      ro.disconnect();
+    };
+  }, [onChromeInsetsChange]);
+
   return (
     <>
-      <div style={styles.topChrome}>
-        <div style={styles.handle} aria-hidden />
+      <div ref={topChromeRef} style={styles.topChrome}>
+        <header style={styles.header}>
+          <h1 style={styles.title}>Siquijor Tricycle Fare Calculator</h1>
+          <p style={styles.subtitle}>
+            To see official LGU rates, select San Juan or Siquijor as pickup;
+            otherwise rates are estimated based on distance.
+          </p>
+        </header>
 
         <LocationSearchField
           key={
@@ -76,6 +135,7 @@ export default function TripSheet({
           zoomAriaLabel="Zoom map to pickup"
           onZoomClick={onZoomToPickup}
           zoomEnabled={Boolean(origin)}
+          onClear={onClearPickup}
         />
 
         <div style={{ height: 12 }} />
@@ -96,10 +156,11 @@ export default function TripSheet({
           zoomAriaLabel="Zoom map to destination"
           onZoomClick={onZoomToDestination}
           zoomEnabled={Boolean(destination)}
+          onClear={onClearDestination}
         />
       </div>
 
-      <div style={styles.bottomSummary}>
+      <div ref={bottomSummaryRef} style={styles.bottomSummary}>
         {route && (
           <div style={styles.routeMeta}>
             <span>
@@ -111,11 +172,13 @@ export default function TripSheet({
 
         {fareEstimate && <FareEstimateCard estimate={fareEstimate} />}
 
-        <div style={styles.hint} aria-live="polite">
-          {activeField === "pickup"
-            ? "Tap map to set pickup"
-            : "Tap map to set destination"}
-        </div>
+        {!fareEstimate && (
+          <div style={styles.hint} aria-live="polite">
+            {activeField === "pickup"
+              ? "Tap map to set pickup"
+              : "Tap map to set destination"}
+          </div>
+        )}
 
         <AttributionFooter />
       </div>
@@ -139,7 +202,7 @@ const styles: Record<string, React.CSSProperties> = {
 
     paddingRight: 16,
 
-    paddingTop: "calc(12px + env(safe-area-inset-top, 0px))",
+    paddingTop: "calc(22px + env(safe-area-inset-top, 0px))",
 
     paddingBottom: 12,
 
@@ -184,16 +247,34 @@ const styles: Record<string, React.CSSProperties> = {
     overflow: "visible",
   },
 
-  handle: {
-    width: 36,
+  header: {
+    marginBottom: 20,
 
-    height: 4,
+    textAlign: "center",
+  },
 
-    borderRadius: 2,
+  title: {
+    margin: "0 0 9px",
 
-    background: "#e5e7eb",
+    fontSize: 22,
 
-    margin: "0 auto 12px",
+    lineHeight: 1.15,
+
+    fontWeight: 700,
+
+    letterSpacing: "-0.02em",
+
+    color: "#111827",
+  },
+
+  subtitle: {
+    margin: 0,
+
+    fontSize: 12,
+
+    lineHeight: 1.4,
+
+    color: "#6b7280",
   },
 
   routeMeta: {

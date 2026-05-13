@@ -385,6 +385,8 @@ Estimated from nearby official routes
 
 - Overpass export processing
 - lightweight searchable datasets
+- `fareZoneCanonicals.json` is the single canonical lat/lon table for official fare leg endpoints (OSRM); keep it aligned with `officialFareLegs.json` and `fareZonesData.ts`, then run `npm run build:fare-distances` after leg or coordinate changes
+- `fareZoneCanonicals.json` is the single canonical lat/lon table for official fare leg endpoints (OSRM); keep it aligned with `officialFareLegs.json` and `fareZonesData.ts`, then run `npm run build:fare-distances` after leg or coordinate changes
 
 ---
 

@@ -17,9 +17,27 @@ function ringBox(
 }
 
 /**
- * Hybrid fare zones: tight polygons along San Juan west / interior anchors from
- * the local dataset; hub municipalities as point+radius. Poblacion uses the
- * Poblacion barangay centroid (LGU "San Juan" special-trip column = poblacion).
+ * Poblacion hub is matched separately in resolveFareZone (core then extended ring)
+ * so it wins over overlapping barangay bbox polygons (e.g. Maite) for LGU special trips.
+ */
+export const SAN_JUAN_POBLACION_GEOMETRY = {
+  lat: 9.1610894,
+
+  lon: 123.4925811,
+
+  /** Inside this radius: treat as LGU Poblacion before any barangay polygon. */
+  coreRadiusKm: 1.35,
+
+  /** Outer San Juan town area when no barangay polygon matched. */
+  extendedRadiusKm: 2.8,
+} as const;
+
+/** Upper bound for point_radius hubs tied to official LGU legs (tighter match for town pins). */
+export const OFFICIAL_HUB_MAX_RADIUS_KM = 2.5;
+
+/**
+ * Fare zones aligned with zone ids in officialFareLegs.json (special trip + drop-off).
+ * Poblacion is not listed here — see SAN_JUAN_POBLACION_GEOMETRY and resolveFareZone.
  */
 export const FARE_ZONE_DEFINITIONS: FareZoneDefinition[] = [
   {
@@ -40,49 +58,32 @@ export const FARE_ZONE_DEFINITIONS: FareZoneDefinition[] = [
     canonical: { lat: 9.1450092, lon: 123.5082504 },
   },
   {
-    id: "paliton",
-    label: "Paliton",
+    id: "catulayan",
+    label: "Catulayan",
     checkOrder: 12,
-    match: { type: "polygon" as const, exteriorRing: ringBox(9.1793078, 123.4692115, 0.014, 0.016) },
-    canonical: { lat: 9.1793078, lon: 123.4692115 },
+    match: { type: "polygon" as const, exteriorRing: ringBox(9.1254591, 123.5374752) },
+    canonical: { lat: 9.1254591, lon: 123.5374752 },
   },
   {
-    id: "solangon",
-    label: "Solangon",
+    id: "timbaon",
+    label: "Timbaon",
     checkOrder: 13,
-    match: { type: "polygon" as const, exteriorRing: ringBox(9.171046, 123.4783689) },
-    canonical: { lat: 9.171046, lon: 123.4783689 },
+    match: { type: "polygon" as const, exteriorRing: ringBox(9.1160008, 123.5555211) },
+    canonical: { lat: 9.1160008, lon: 123.5555211 },
+  },
+  {
+    id: "cangmunag",
+    label: "Cangmunag",
+    checkOrder: 14,
+    match: { type: "polygon" as const, exteriorRing: ringBox(9.112535, 123.5545296) },
+    canonical: { lat: 9.112535, lon: 123.5545296 },
   },
   {
     id: "tag_ibo",
     label: "Tag-ibo",
-    checkOrder: 14,
+    checkOrder: 15,
     match: { type: "polygon" as const, exteriorRing: ringBox(9.1345392, 123.531493) },
     canonical: { lat: 9.1345392, lon: 123.531493 },
-  },
-  {
-    id: "candanay_norte",
-    label: "Candanay Norte",
-    checkOrder: 15,
-    match: { type: "polygon" as const, exteriorRing: ringBox(9.2226085, 123.5401084) },
-    canonical: { lat: 9.2226085, lon: 123.5401084 },
-  },
-  {
-    id: "calalinan",
-    label: "Calalinan",
-    checkOrder: 16,
-    match: { type: "polygon" as const, exteriorRing: ringBox(9.2135341, 123.5002874) },
-    canonical: { lat: 9.2135341, lon: 123.5002874 },
-  },
-  {
-    id: "tambisan_san_juan",
-    label: "Tambisan (San Juan)",
-    checkOrder: 17,
-    match: {
-      type: "polygon" as const,
-      exteriorRing: ringBox(9.1932979, 123.4616505, 0.011, 0.012),
-    },
-    canonical: { lat: 9.1932979, lon: 123.4616505 },
   },
   {
     id: "kawayan_holiday",
@@ -97,26 +98,14 @@ export const FARE_ZONE_DEFINITIONS: FareZoneDefinition[] = [
     canonical: { lat: 9.1022492, lon: 123.5593848 },
   },
   {
-    id: "san_juan_poblacion",
-    label: "Poblacion (San Juan)",
-    checkOrder: 40,
-    match: {
-      type: "point_radius" as const,
-      lat: 9.1610894,
-      lon: 123.4925811,
-      maxRadiusKm: 2.8,
-    },
-    canonical: { lat: 9.1610894, lon: 123.4925811 },
-  },
-  {
     id: "siquijor_port",
-    label: "Siquijor (port / town)",
+    label: "Siquijor Town",
     checkOrder: 41,
     match: {
       type: "point_radius" as const,
       lat: 9.2155864,
       lon: 123.5138212,
-      maxRadiusKm: 2.6,
+      maxRadiusKm: OFFICIAL_HUB_MAX_RADIUS_KM,
     },
     canonical: { lat: 9.2155864, lon: 123.5138212 },
   },
@@ -128,7 +117,7 @@ export const FARE_ZONE_DEFINITIONS: FareZoneDefinition[] = [
       type: "point_radius" as const,
       lat: 9.2488946,
       lon: 123.5910019,
-      maxRadiusKm: 4.5,
+      maxRadiusKm: OFFICIAL_HUB_MAX_RADIUS_KM,
     },
     canonical: { lat: 9.2488946, lon: 123.5910019 },
   },
@@ -140,7 +129,7 @@ export const FARE_ZONE_DEFINITIONS: FareZoneDefinition[] = [
       type: "point_radius" as const,
       lat: 9.1284365,
       lon: 123.6338696,
-      maxRadiusKm: 5,
+      maxRadiusKm: OFFICIAL_HUB_MAX_RADIUS_KM,
     },
     canonical: { lat: 9.1284365, lon: 123.6338696 },
   },
@@ -152,7 +141,7 @@ export const FARE_ZONE_DEFINITIONS: FareZoneDefinition[] = [
       type: "point_radius" as const,
       lat: 9.1211273,
       lon: 123.5780727,
-      maxRadiusKm: 4,
+      maxRadiusKm: OFFICIAL_HUB_MAX_RADIUS_KM,
     },
     canonical: { lat: 9.1211273, lon: 123.5780727 },
   },

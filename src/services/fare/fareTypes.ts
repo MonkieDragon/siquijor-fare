@@ -5,6 +5,8 @@ export type FareMethod =
   | "reverse_exact"
   | "scaled_official"
   | "blended_official_distance"
+  | "corridor_interpolated"
+  | "corridor_extrapolated"
   | "distance_estimate";
 
 export type OfficialFareLeg = {
@@ -24,6 +26,21 @@ export type OfficialFareLeg = {
   lgSourceNote?: string;
 };
 
+/** Breakdown for flat ₱/km distance fallback (`distance_estimate` only). */
+export type DistanceFareDetail = {
+  distanceKm: number;
+
+  perKm: number;
+
+  linearFarePhp: number;
+
+  minimumFarePhp: number;
+
+  minimumApplied: boolean;
+
+  fare: number;
+};
+
 export type FareEstimate = {
   fare: number;
 
@@ -34,6 +51,8 @@ export type FareEstimate = {
   explanation: string;
 
   officialTable?: OfficialFareTable;
+
+  distanceDetail?: DistanceFareDetail;
 };
 
 export type FareRoute = {

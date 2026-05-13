@@ -1,12 +1,18 @@
 import { useEffect } from "react";
+
 import { useMap } from "react-leaflet";
+
 import L from "leaflet";
+
+import type { MapChromePadding } from "./FitIslandBounds";
 
 type Props = {
   coordinates: [number, number][];
+
+  padding: MapChromePadding;
 };
 
-export default function FitRouteBounds({ coordinates }: Props) {
+export default function FitRouteBounds({ coordinates, padding }: Props) {
   const map = useMap();
 
   useEffect(() => {
@@ -17,9 +23,13 @@ export default function FitRouteBounds({ coordinates }: Props) {
     const bounds = L.latLngBounds(coordinates);
 
     map.fitBounds(bounds, {
-      padding: [100, 48],
+      paddingTopLeft: L.point(padding.left, padding.top),
+
+      paddingBottomRight: L.point(padding.right, padding.bottom),
+
+      maxZoom: 18,
     });
-  }, [coordinates, map]);
+  }, [coordinates, map, padding]);
 
   return null;
 }
