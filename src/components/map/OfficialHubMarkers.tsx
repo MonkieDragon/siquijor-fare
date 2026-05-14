@@ -48,11 +48,16 @@ type HubEntry = {
 type Props = {
   visible: boolean;
 
+  /** Resolved pickup fare zone; hubs whose LGU destination is this zone are hidden. */
+  originFareZoneId: string | null;
+
   onPickDestination: (loc: Location) => void;
 };
 
 export default function OfficialHubMarkers({
   visible,
+
+  originFareZoneId,
 
   onPickDestination,
 }: Props) {
@@ -65,6 +70,10 @@ export default function OfficialHubMarkers({
         leg.fromZoneId !== POBLACION_ZONE_ID ||
         leg.referenceDistanceKm == null
       ) {
+        continue;
+      }
+
+      if (originFareZoneId != null && leg.toZoneId === originFareZoneId) {
         continue;
       }
 
@@ -92,7 +101,7 @@ export default function OfficialHubMarkers({
     }
 
     return out;
-  }, []);
+  }, [originFareZoneId]);
 
   if (!visible || hubs.length === 0) {
     return null;

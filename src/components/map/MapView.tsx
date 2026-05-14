@@ -261,6 +261,14 @@ export default function MapView() {
     return z === POBLACION_ZONE_ID || z === SIQUIJOR_PORT_ZONE_ID;
   }, [origin]);
 
+  const originFareZoneId = useMemo(() => {
+    if (!origin) {
+      return null;
+    }
+
+    return resolveFareZone(origin).zoneId;
+  }, [origin]);
+
   return (
     <div
       style={{
@@ -311,6 +319,7 @@ export default function MapView() {
 
         <OfficialHubMarkers
           visible={showOfficialHubMarkers}
+          originFareZoneId={originFareZoneId}
           onPickDestination={(loc) => {
             setDestination(loc);
 
