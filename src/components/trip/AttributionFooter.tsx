@@ -37,15 +37,15 @@ export default function AttributionFooter() {
 
 const styles: Record<string, React.CSSProperties> = {
   footer: {
-    marginTop: 12,
+    marginTop: 6,
 
-    paddingTop: 10,
+    paddingTop: 6,
 
     borderTop: "1px solid #f3f4f6",
 
     fontSize: 10,
 
-    lineHeight: 1.45,
+    lineHeight: 1.4,
 
     color: "#9ca3af",
 

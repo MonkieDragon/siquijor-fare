@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 
 import type { FareEstimate } from "../../services/fare/fareTypes";
 
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+
 import type { RouteResult } from "../../types/route";
 
 import type { Location as GeoLocation } from "../../types/location";
@@ -74,6 +76,8 @@ export default function TripSheet({
 
   const bottomSummaryRef = useRef<HTMLDivElement>(null);
 
+  const sideBySideFields = useMediaQuery("(min-width: 720px)");
+
   useEffect(() => {
     const reportChromeInsets = onChromeInsetsChange;
 
@@ -113,53 +117,77 @@ export default function TripSheet({
   return (
     <>
       <div ref={topChromeRef} style={styles.topChrome}>
-        <header style={styles.header}>
-          <h1 style={styles.title}>Siquijor Tricycle Fare Calculator</h1>
+        <header
+          style={
+            sideBySideFields
+              ? { ...styles.header, ...styles.headerCompact }
+              : styles.header
+          }
+        >
+          <h1
+            style={
+              sideBySideFields
+                ? { ...styles.title, ...styles.titleCompact }
+                : styles.title
+            }
+          >
+            Siquijor Tricycle Fare Calculator
+          </h1>
           <p style={styles.subtitle}>
             To see official LGU rates, select San Juan or Siquijor as pickup;
             otherwise rates are estimated based on distance.
           </p>
         </header>
 
-        <LocationSearchField
-          key={
-            origin
-              ? `pickup-${origin.lat}-${origin.lon}-${origin.name}`
-              : "pickup-empty"
+        <div
+          style={
+            sideBySideFields
+              ? styles.searchFieldsRow
+              : styles.searchFieldsColumn
           }
-          label="Pickup"
-          placeholder="Where from?"
-          selected={origin}
-          onSelect={onOriginSelect}
-          onFocus={() => onActiveFieldChange("pickup")}
-          mapPickAriaLabel="Select pickup on map"
-          onMapPickClick={() => onActiveFieldChange("pickup")}
-          zoomAriaLabel="Zoom map to pickup"
-          onZoomClick={onZoomToPickup}
-          zoomEnabled={Boolean(origin)}
-          onClear={onClearPickup}
-        />
+        >
+          <div style={styles.searchFieldCell}>
+            <LocationSearchField
+              key={
+                origin
+                  ? `pickup-${origin.lat}-${origin.lon}-${origin.name}`
+                  : "pickup-empty"
+              }
+              label="Pickup"
+              placeholder="Where from?"
+              selected={origin}
+              onSelect={onOriginSelect}
+              onFocus={() => onActiveFieldChange("pickup")}
+              mapPickAriaLabel="Select pickup on map"
+              onMapPickClick={() => onActiveFieldChange("pickup")}
+              zoomAriaLabel="Zoom map to pickup"
+              onZoomClick={onZoomToPickup}
+              zoomEnabled={Boolean(origin)}
+              onClear={onClearPickup}
+            />
+          </div>
 
-        <div style={{ height: 12 }} />
-
-        <LocationSearchField
-          key={
-            destination
-              ? `dest-${destination.lat}-${destination.lon}-${destination.name}`
-              : "dest-empty"
-          }
-          label="Destination"
-          placeholder="Where to?"
-          selected={destination}
-          onSelect={onDestinationSelect}
-          onFocus={() => onActiveFieldChange("destination")}
-          mapPickAriaLabel="Select destination on map"
-          onMapPickClick={() => onActiveFieldChange("destination")}
-          zoomAriaLabel="Zoom map to destination"
-          onZoomClick={onZoomToDestination}
-          zoomEnabled={Boolean(destination)}
-          onClear={onClearDestination}
-        />
+          <div style={styles.searchFieldCell}>
+            <LocationSearchField
+              key={
+                destination
+                  ? `dest-${destination.lat}-${destination.lon}-${destination.name}`
+                  : "dest-empty"
+              }
+              label="Destination"
+              placeholder="Where to?"
+              selected={destination}
+              onSelect={onDestinationSelect}
+              onFocus={() => onActiveFieldChange("destination")}
+              mapPickAriaLabel="Select destination on map"
+              onMapPickClick={() => onActiveFieldChange("destination")}
+              zoomAriaLabel="Zoom map to destination"
+              onZoomClick={onZoomToDestination}
+              zoomEnabled={Boolean(destination)}
+              onClear={onClearDestination}
+            />
+          </div>
+        </div>
       </div>
 
       <div ref={bottomSummaryRef} style={styles.bottomSummary}>
@@ -172,7 +200,9 @@ export default function TripSheet({
           </div>
         )}
 
-        {fareEstimate && <FareEstimateCard estimate={fareEstimate} />}
+        {fareEstimate && (
+          <FareEstimateCard estimate={fareEstimate} compact />
+        )}
 
         {!fareEstimate && (
           <div style={styles.hint} aria-live="polite">
@@ -206,7 +236,7 @@ const styles: Record<string, React.CSSProperties> = {
 
     paddingTop: "calc(22px + env(safe-area-inset-top, 0px))",
 
-    paddingBottom: 12,
+    paddingBottom: 10,
 
     background: "white",
 
@@ -234,9 +264,9 @@ const styles: Record<string, React.CSSProperties> = {
 
     paddingRight: 16,
 
-    paddingBottom: "calc(12px + env(safe-area-inset-bottom, 0px))",
+    paddingBottom: "calc(10px + env(safe-area-inset-bottom, 0px))",
 
-    paddingTop: 12,
+    paddingTop: 8,
 
     background: "white",
 
@@ -255,6 +285,10 @@ const styles: Record<string, React.CSSProperties> = {
     textAlign: "center",
   },
 
+  headerCompact: {
+    marginBottom: 12,
+  },
+
   title: {
     margin: "0 0 9px",
 
@@ -269,6 +303,14 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#111827",
   },
 
+  titleCompact: {
+    margin: "0 0 6px",
+
+    fontSize: 19,
+
+    lineHeight: 1.2,
+  },
+
   subtitle: {
     margin: 0,
 
@@ -279,14 +321,38 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#6b7280",
   },
 
+  searchFieldsRow: {
+    display: "flex",
+
+    flexDirection: "row",
+
+    alignItems: "flex-start",
+
+    gap: 12,
+  },
+
+  searchFieldsColumn: {
+    display: "flex",
+
+    flexDirection: "column",
+
+    gap: 12,
+  },
+
+  searchFieldCell: {
+    flex: 1,
+
+    minWidth: 0,
+  },
+
   routeMeta: {
     marginTop: 0,
 
     paddingTop: 0,
 
-    marginBottom: 8,
+    marginBottom: 4,
 
-    fontSize: 14,
+    fontSize: 13,
 
     fontWeight: 600,
 
@@ -296,7 +362,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   hint: {
-    marginTop: 8,
+    marginTop: 4,
 
     fontSize: 12,
 

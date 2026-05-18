@@ -74,9 +74,9 @@ export default function MapView() {
   const suppressAutoOriginUntilPickRef = useRef(false);
 
   const [chromeOverlayHeights, setChromeOverlayHeights] = useState({
-    top: 260,
+    top: 220,
 
-    bottom: 140,
+    bottom: 118,
   });
 
   const mapChromePadding = useMemo((): MapChromePadding => {
