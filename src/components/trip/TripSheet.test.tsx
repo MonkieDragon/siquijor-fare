@@ -4,6 +4,11 @@ import { describe, expect, it, vi } from "vitest";
 
 import { render, screen, within } from "@testing-library/react";
 
+import {
+  DEFAULT_APP_LOCATION_ID,
+  listAppLocations,
+} from "../../locations";
+
 import TripSheet from "./TripSheet";
 
 import type { FareEstimate } from "../../services/fare/fareTypes";
@@ -14,6 +19,18 @@ const route = {
   durationSeconds: 900,
 
   coordinates: [] as [number, number][],
+};
+
+const placementProps = {
+  appLocations: listAppLocations(),
+
+  appLocationId: DEFAULT_APP_LOCATION_ID,
+
+  onAppLocationChange: vi.fn(),
+
+  mapPlacementMode: null,
+
+  onToggleMapPlacement: vi.fn(),
 };
 
 const officialFare: FareEstimate = {
@@ -32,6 +49,7 @@ describe("TripSheet", () => {
   it("shows route distance and duration", () => {
     render(
       <TripSheet
+        {...placementProps}
         origin={{ name: "A", lat: 1, lon: 2 }}
         destination={{ name: "B", lat: 3, lon: 4 }}
         activeField="destination"
@@ -53,6 +71,7 @@ describe("TripSheet", () => {
   it("shows official fare label and amount", () => {
     render(
       <TripSheet
+        {...placementProps}
         origin={{ name: "San Juan", lat: 9, lon: 123 }}
         destination={{ name: "Lazi", lat: 9.1, lon: 123.1 }}
         activeField="pickup"
@@ -77,7 +96,9 @@ describe("TripSheet", () => {
 
   it("pickup zoom button is disabled without origin and enables when origin is set", () => {
     const common = {
-      destination: null as { name: string; lat: number; lon: number } | null,
+      ...placementProps,
+
+      destination: null,
 
       activeField: "destination" as const,
 
@@ -115,5 +136,28 @@ describe("TripSheet", () => {
     expect(
       within(container).getByRole("button", { name: /zoom map to pickup/i }),
     ).not.toBeDisabled();
+  });
+
+  it("shows placement hint when map placement mode is active", () => {
+    render(
+      <TripSheet
+        {...placementProps}
+        mapPlacementMode="destination"
+        origin={null}
+        destination={null}
+        activeField="destination"
+        onActiveFieldChange={vi.fn()}
+        onOriginSelect={vi.fn()}
+        onDestinationSelect={vi.fn()}
+        onZoomToPickup={vi.fn()}
+        onZoomToDestination={vi.fn()}
+        route={null}
+        fareEstimate={null}
+      />,
+    );
+
+    expect(
+      screen.getByText(/Click the map to select destination/i),
+    ).toBeInTheDocument();
   });
 });

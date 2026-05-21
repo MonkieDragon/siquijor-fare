@@ -1,6 +1,18 @@
-export default function AttributionFooter() {
+type Props = {
+  align?: "left" | "center";
+};
+
+export default function AttributionFooter({ align = "center" }: Props) {
   return (
-    <footer style={styles.footer}>
+    <footer
+      style={{
+        ...styles.footer,
+
+        textAlign: align,
+
+        ...(align === "left" ? styles.footerFlush : {}),
+      }}
+    >
       <span style={styles.line}>
         Map tiles{" "}
         <a
@@ -62,5 +74,13 @@ const styles: Record<string, React.CSSProperties> = {
     textDecoration: "underline",
 
     textUnderlineOffset: 2,
+  },
+
+  footerFlush: {
+    marginTop: 0,
+
+    paddingTop: 0,
+
+    borderTop: "none",
   },
 };

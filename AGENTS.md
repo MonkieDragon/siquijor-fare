@@ -65,11 +65,25 @@ AI agents should avoid introducing cross-layer coupling.
 
 ---
 
+# App locations (multi-area)
+
+Deployable areas (islands, towns, etc.) are registered in `src/locations/registry.ts`. Each entry (`src/locations/<id>.ts`) supplies:
+
+- map center, zoom, and bounds
+- local search dataset + Nominatim query suffix
+- optional fare config (zones, official legs, zone resolver, hub markers)
+
+Default location is **Siquijor** (`siquijor`). The UI exposes a **Location** dropdown above pickup; changing it clears the trip and reframes the map.
+
+To add a new area: create `src/locations/<id>.ts`, push it into `APP_LOCATIONS` in `registry.ts`, and add a searchable JSON under `src/data/` if needed.
+
+---
+
 # Search Methodology
 
 The app intentionally uses:
 
-- local searchable datasets
+- per-location local searchable datasets
 - Fuse.js fuzzy search
 
 rather than:
@@ -81,7 +95,7 @@ Reason:
 - avoids API costs
 - avoids rate limits
 - better mobile UX
-- Siquijor is geographically finite
+- each service area is geographically finite
 
 ---
 
@@ -96,6 +110,12 @@ All fare calculations should be based on:
 - road distance
   NOT:
 - straight-line distance
+
+---
+
+# Fare display
+
+All fares shown to the user are rounded **up** to the nearest **₱10** (`roundFareUpToTen` in `src/services/fare/fareRounding.ts`), including estimates from the fare engine.
 
 ---
 
@@ -130,7 +150,13 @@ Canonical lat/lon per **zone id** (for OSRM `referenceDistanceKm` batching and a
 src/data/fareZoneCanonicals.json
 ```
 
-Keep `fareZoneCanonicals.json` in sync with zone ids used in `officialFareLegs.json` and [`fareZonesData.ts`](src/data/fareZonesData.ts). Run `npm run build:fare-distances` after changing legs or canonical coordinates.
+Cached OSRM driving polylines per official leg (for scaled-fare path similarity) live in:
+
+```txt
+src/data/officialRouteGeometries.json
+```
+
+Keep `fareZoneCanonicals.json` in sync with zone ids used in `officialFareLegs.json` and [`fareZonesData.ts`](src/data/fareZonesData.ts). Run `npm run build:fare-distances` after changing legs or canonical coordinates (updates both `referenceDistanceKm` and `officialRouteGeometries.json`).
 
 This data is incomplete and sparse.
 

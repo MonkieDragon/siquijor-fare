@@ -4,6 +4,10 @@ import { getFlatPerKmRate } from "./calibratedDistanceTariff";
 
 import { calculateFare } from "./fareEngine";
 
+import { roundFareUpToTen } from "./fareRounding";
+
+import { getOfficialRouteGeometry } from "./officialRouteGeometries";
+
 describe("calculateFare", () => {
   it("returns exact special trip for poblacion to Lazi", () => {
     const est = calculateFare(
@@ -81,7 +85,7 @@ describe("calculateFare", () => {
 
     expect(est.method).toBe("corridor_interpolated");
 
-    expect(est.fare).toBe(538);
+    expect(est.fare).toBe(540);
 
     expect(est.officialTable).toBe("special_trip");
 
@@ -107,7 +111,7 @@ describe("calculateFare", () => {
 
     expect(est.method).toBe("corridor_interpolated");
 
-    expect(est.fare).toBe(377);
+    expect(est.fare).toBe(380);
 
     expect(est.explanation).toMatch(/Campalanas|Lazi/i);
 
@@ -127,7 +131,7 @@ describe("calculateFare", () => {
 
     expect(est.method).toBe("corridor_interpolated");
 
-    expect(est.fare).toBe(538);
+    expect(est.fare).toBe(540);
   });
 
   it("skips corridor when route does not pass near Siquijor port", () => {
@@ -169,7 +173,9 @@ describe("calculateFare", () => {
 
     expect(est.method).toBe("corridor_extrapolated");
 
-    expect(est.fare).toBe(Math.round(600 + (35 - 20.14) * rate));
+    expect(est.fare).toBe(
+      roundFareUpToTen(Math.round(600 + (35 - 20.14) * rate)),
+    );
 
     expect(est.officialTable).toBe("special_trip");
   });
@@ -200,5 +206,26 @@ describe("calculateFare", () => {
     expect(est.method).toBe("corridor_interpolated");
 
     expect(est.fare).toBe(300);
+  });
+
+  it("does not scale from poblacion → siquijor for siquijor → larena hub trip", () => {
+    const route = [...getOfficialRouteGeometry("san_juan_poblacion", "larena")!].reverse() as [
+      number,
+      number,
+    ][];
+
+    const est = calculateFare(
+      { zoneId: "siquijor_port", tier: "radius" },
+
+      { zoneId: "larena", tier: "radius" },
+
+      16.5,
+
+      { routeCoordinates: route },
+    );
+
+    expect(est.method).not.toBe("scaled_official");
+    expect(est.method).not.toBe("blended_official_distance");
+    expect(est.explanation).not.toMatch(/san_juan_poblacion → siquijor_port/);
   });
 });

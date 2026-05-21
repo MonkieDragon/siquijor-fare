@@ -1,21 +1,24 @@
+import {
+  DEFAULT_APP_LOCATION_ID,
+  getAppLocationOrDefault,
+  isLatLonInBounds,
+} from "../../locations";
+
 type LatLng = {
   lat: number;
   lon: number;
 };
 
-// Rough bounding box for Siquijor (tight enough for MVP)
-const SIQUIJOR_BOUNDS = {
-  minLat: 9.05,
-  maxLat: 9.3,
-  minLon: 123.45,
-  maxLon: 123.7,
-};
+export function isInAppLocationBounds(
+  { lat, lon }: LatLng,
+  locationId: string = DEFAULT_APP_LOCATION_ID,
+): boolean {
+  const appLocation = getAppLocationOrDefault(locationId);
 
-export function isInSiquijor({ lat, lon }: LatLng): boolean {
-  return (
-    lat >= SIQUIJOR_BOUNDS.minLat &&
-    lat <= SIQUIJOR_BOUNDS.maxLat &&
-    lon >= SIQUIJOR_BOUNDS.minLon &&
-    lon <= SIQUIJOR_BOUNDS.maxLon
-  );
+  return isLatLonInBounds(lat, lon, appLocation.map.bounds);
+}
+
+/** @deprecated Use `isInAppLocationBounds` with a location id. */
+export function isInSiquijor(coords: LatLng): boolean {
+  return isInAppLocationBounds(coords, DEFAULT_APP_LOCATION_ID);
 }

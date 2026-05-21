@@ -4,6 +4,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type CSSProperties,
 } from "react";
 
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
@@ -11,15 +12,17 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import type { LeafletEvent, Marker as LeafletMarker } from "leaflet";
 
 import { useDesktopSession } from "../../hooks/useDesktopSession";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useGeolocation } from "../../hooks/useGeolocation";
+import {
+  DEFAULT_APP_LOCATION_ID,
+  getAppLocationOrDefault,
+  isLatLonInBounds,
+  listAppLocations,
+} from "../../locations";
 import { pickLocationAtCoordinates } from "../../services/geocoding/pickLocationAtCoordinates";
 import { routeStopIcon, userLocationIcon } from "../../services/map/mapIcons";
-import {
-  DEFAULT_ZOOM,
-  ISLAND_OVERVIEW_MAX_ZOOM,
-  SIQUIJOR_CENTER,
-} from "../../services/map/mapConfig";
-import { isLatLonOnSiquijorIsland } from "../../services/map/siquijorIslandBounds";
+import { ISLAND_OVERVIEW_MAX_ZOOM } from "../../services/map/mapConfig";
 import type { Location } from "../../types/location";
 import type { RouteResult } from "../../types/route";
 import {
@@ -27,7 +30,6 @@ import {
   SIQUIJOR_PORT_ZONE_ID,
 } from "../../data/fareZonesData";
 import { calculateFare } from "../../services/fare/fareEngine";
-import { resolveFareZone } from "../../services/fare/resolveFareZone";
 import { calculateRoute } from "../../services/routing/router";
 import TripSheet from "../trip/TripSheet";
 import FitIslandBounds, {
@@ -41,6 +43,16 @@ import RouteLayer from "./RouteLayer";
 
 type ActiveField = "pickup" | "destination";
 
+/** Wide viewport: header + left sidebar + map (no overlapping chrome). */
+const SPLIT_LAYOUT_QUERY = "(min-width: 960px)";
+
+const MAP_EDGE_PADDING = 16;
+
+/** White gutter around the map (parent background shows through). */
+const MAP_SURROUND_GUTTER_PX = 12;
+
+const PLACEMENT_BACKDROP_TRANSITION = "background-color 0.22s ease";
+
 function approxSameCoords(
   a: { lat: number; lon: number },
   b: { lat: number; lng: number },
@@ -53,9 +65,20 @@ function approxSameCoords(
 export default function MapView() {
   const isDesktop = useDesktopSession();
 
+  const useSplitLayout = useMediaQuery(SPLIT_LAYOUT_QUERY);
+
   const geoEnabled = !isDesktop;
 
   const { position } = useGeolocation({ enabled: geoEnabled });
+
+  const appLocations = useMemo(() => listAppLocations(), []);
+
+  const [appLocationId, setAppLocationId] = useState(DEFAULT_APP_LOCATION_ID);
+
+  const appLocation = useMemo(
+    () => getAppLocationOrDefault(appLocationId),
+    [appLocationId],
+  );
 
   const [origin, setOrigin] = useState<Location | null>(null);
 
@@ -64,7 +87,12 @@ export default function MapView() {
   const [activeField, setActiveField] =
     useState<ActiveField>("destination");
 
+  const [mapPlacementMode, setMapPlacementMode] =
+    useState<ActiveField | null>(null);
+
   const [route, setRoute] = useState<RouteResult | null>(null);
+
+  const mapPaneRef = useRef<HTMLDivElement>(null);
 
   const flyToRef = useRef<((lat: number, lon: number) => void) | null>(null);
 
@@ -80,16 +108,32 @@ export default function MapView() {
   });
 
   const mapChromePadding = useMemo((): MapChromePadding => {
+    if (useSplitLayout) {
+      return {
+        top: MAP_EDGE_PADDING,
+
+        bottom: MAP_EDGE_PADDING,
+
+        left: MAP_EDGE_PADDING,
+
+        right: MAP_EDGE_PADDING,
+      };
+    }
+
     return {
       top: chromeOverlayHeights.top,
 
       bottom: chromeOverlayHeights.bottom,
 
-      left: 16,
+      left: MAP_EDGE_PADDING,
 
-      right: 16,
+      right: MAP_EDGE_PADDING,
     };
-  }, [chromeOverlayHeights.top, chromeOverlayHeights.bottom]);
+  }, [
+    useSplitLayout,
+    chromeOverlayHeights.top,
+    chromeOverlayHeights.bottom,
+  ]);
 
   const commitOrigin = useCallback((loc: Location | null) => {
     if (loc) {
@@ -97,6 +141,20 @@ export default function MapView() {
     }
 
     setOrigin(loc);
+  }, []);
+
+  const handleAppLocationChange = useCallback((nextId: string) => {
+    setAppLocationId(nextId);
+
+    setOrigin(null);
+
+    setDestination(null);
+
+    setRoute(null);
+
+    setMapPlacementMode(null);
+
+    suppressAutoOriginUntilPickRef.current = true;
   }, []);
 
   useEffect(() => {
@@ -108,7 +166,7 @@ export default function MapView() {
       return;
     }
 
-    if (!isLatLonOnSiquijorIsland(position.lat, position.lng)) {
+    if (!isLatLonInBounds(position.lat, position.lng, appLocation.map.bounds)) {
       return;
     }
 
@@ -131,7 +189,7 @@ export default function MapView() {
         };
       });
     });
-  }, [isDesktop, position]);
+  }, [isDesktop, position, appLocation.map.bounds]);
 
   useEffect(() => {
     async function loadRoute() {
@@ -157,24 +215,71 @@ export default function MapView() {
     if (
       !isDesktop &&
       position &&
-      isLatLonOnSiquijorIsland(position.lat, position.lng)
+      isLatLonInBounds(position.lat, position.lng, appLocation.map.bounds)
     ) {
       return [position.lat, position.lng];
     }
 
-    return SIQUIJOR_CENTER;
-  }, [origin, position, isDesktop]);
+    return appLocation.map.center;
+  }, [origin, position, isDesktop, appLocation.map.bounds, appLocation.map.center]);
+
+  const handleToggleMapPlacement = useCallback((field: ActiveField) => {
+    setActiveField(field);
+
+    setMapPlacementMode((prev) => (prev === field ? null : field));
+  }, []);
+
+  useEffect(() => {
+    if (mapPlacementMode == null) {
+      return;
+    }
+
+    function handlePointerDown(event: PointerEvent) {
+      const target = event.target;
+
+      if (!(target instanceof Node)) {
+        return;
+      }
+
+      if (mapPaneRef.current?.contains(target)) {
+        return;
+      }
+
+      if (
+        target instanceof Element &&
+        target.closest("[data-map-placement-control]")
+      ) {
+        return;
+      }
+
+      setMapPlacementMode(null);
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown, true);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown, true);
+    };
+  }, [mapPlacementMode]);
 
   const handleMapPick = useCallback(
     (loc: Location) => {
-      if (activeField === "pickup") {
+      const field = mapPlacementMode;
+
+      if (field == null) {
+        return;
+      }
+
+      if (field === "pickup") {
         commitOrigin(loc);
       } else {
         setDestination(loc);
       }
+
+      setMapPlacementMode(null);
     },
 
-    [activeField, commitOrigin],
+    [mapPlacementMode, commitOrigin],
   );
 
   const handleClearPickup = useCallback(() => {
@@ -236,56 +341,82 @@ export default function MapView() {
     Boolean(origin) && origin!.name.toLowerCase() !== "current location";
 
   const fareEstimate = useMemo(() => {
-    if (!route || !origin || !destination) {
+    if (!route || !origin || !destination || !appLocation.fare) {
       return null;
     }
 
     const distanceKm = route.distanceMeters / 1000;
 
-    const startZone = resolveFareZone(origin);
+    const { resolveZone, officialLegs } = appLocation.fare;
 
-    const endZone = resolveFareZone(destination);
+    const startZone = resolveZone(origin);
+
+    const endZone = resolveZone(destination);
 
     return calculateFare(startZone, endZone, distanceKm, {
       routeCoordinates: route.coordinates,
+
+      officialLegs,
     });
-  }, [route, origin, destination]);
+  }, [route, origin, destination, appLocation.fare]);
 
   const showOfficialHubMarkers = useMemo(() => {
-    if (!origin) {
+    if (!origin || !appLocation.fare?.showOfficialHubMarkers) {
       return false;
     }
 
-    const z = resolveFareZone(origin).zoneId;
+    const z = appLocation.fare.resolveZone(origin).zoneId;
 
     return z === POBLACION_ZONE_ID || z === SIQUIJOR_PORT_ZONE_ID;
-  }, [origin]);
+  }, [origin, appLocation.fare]);
 
   const originFareZoneId = useMemo(() => {
-    if (!origin) {
+    if (!origin || !appLocation.fare) {
       return null;
     }
 
-    return resolveFareZone(origin).zoneId;
-  }, [origin]);
+    return appLocation.fare.resolveZone(origin).zoneId;
+  }, [origin, appLocation.fare]);
 
-  return (
-    <div
-      style={{
-        position: "relative",
+  const mapPanePlacementActive = mapPlacementMode != null;
 
-        flex: 1,
+  const placementSurroundStyle = useMemo((): CSSProperties => {
+    return mapPanePlacementActive
+      ? { background: "#d1d5db" }
+      : { background: "#ffffff" };
+  }, [mapPanePlacementActive]);
 
-        minHeight: 0,
+  const overlayMapGutterStyle = useMemo((): CSSProperties => {
+    return {
+      ...styles.overlayMapGutterHost,
 
-        width: "100%",
+      top: chromeOverlayHeights.top + MAP_SURROUND_GUTTER_PX,
 
-        height: "100%",
-      }}
-    >
+      right: MAP_SURROUND_GUTTER_PX,
+
+      bottom: chromeOverlayHeights.bottom + MAP_SURROUND_GUTTER_PX,
+
+      left: MAP_SURROUND_GUTTER_PX,
+    };
+  }, [chromeOverlayHeights.top, chromeOverlayHeights.bottom]);
+
+  const mapFrameStyle = {
+    ...styles.mapFrame,
+
+    ...(mapPanePlacementActive ? styles.mapFramePlacementActive : {}),
+  };
+
+  const mapGutterHostStyle: CSSProperties = useSplitLayout
+    ? { ...styles.splitMapGutterHost, ...placementSurroundStyle }
+    : overlayMapGutterStyle;
+
+  const mapContainer = (
+    <div style={mapGutterHostStyle}>
+      <div ref={mapPaneRef} style={mapFrameStyle}>
       <MapContainer
+        key={appLocationId}
         center={mapCenter}
-        zoom={DEFAULT_ZOOM}
+        zoom={appLocation.map.defaultZoom}
         maxZoom={ISLAND_OVERVIEW_MAX_ZOOM}
         style={{
           position: "absolute",
@@ -297,6 +428,7 @@ export default function MapView() {
           height: "100%",
         }}
         scrollWheelZoom
+        doubleClickZoom={false}
       >
         <MapFlyToBridge
           flyToRef={flyToRef}
@@ -306,6 +438,7 @@ export default function MapView() {
         <FitIslandBounds
           enabled={!route}
           padding={mapChromePadding}
+          bounds={appLocation.map.bounds}
         />
 
         <TileLayer
@@ -315,7 +448,10 @@ export default function MapView() {
           maxNativeZoom={ISLAND_OVERVIEW_MAX_ZOOM}
         />
 
-        <MapClickHandler onPickLocation={handleMapPick} />
+        <MapClickHandler
+          enabled={mapPlacementMode != null}
+          onPickLocation={handleMapPick}
+        />
 
         <OfficialHubMarkers
           visible={showOfficialHubMarkers}
@@ -324,6 +460,8 @@ export default function MapView() {
             setDestination(loc);
 
             setActiveField("destination");
+
+            setMapPlacementMode(null);
           }}
         />
 
@@ -373,22 +511,170 @@ export default function MapView() {
           />
         )}
       </MapContainer>
-
-      <TripSheet
-        origin={origin}
-        destination={destination}
-        activeField={activeField}
-        onActiveFieldChange={setActiveField}
-        onOriginSelect={commitOrigin}
-        onDestinationSelect={setDestination}
-        onZoomToPickup={handleZoomToPickup}
-        onZoomToDestination={handleZoomToDestination}
-        route={route}
-        fareEstimate={fareEstimate}
-        onClearPickup={handleClearPickup}
-        onClearDestination={handleClearDestination}
-        onChromeInsetsChange={setChromeOverlayHeights}
-      />
+      </div>
     </div>
   );
+
+  const tripSheetProps = {
+    appLocations,
+
+    appLocationId,
+
+    onAppLocationChange: handleAppLocationChange,
+
+    origin,
+
+    destination,
+
+    activeField,
+
+    onActiveFieldChange: setActiveField,
+
+    mapPlacementMode,
+
+    onToggleMapPlacement: handleToggleMapPlacement,
+
+    onOriginSelect: commitOrigin,
+
+    onDestinationSelect: setDestination,
+
+    onZoomToPickup: handleZoomToPickup,
+
+    onZoomToDestination: handleZoomToDestination,
+
+    route,
+
+    fareEstimate,
+
+    onClearPickup: handleClearPickup,
+
+    onClearDestination: handleClearDestination,
+
+    onChromeInsetsChange: setChromeOverlayHeights,
+  };
+
+  const tripSheetOverlay = (
+    <TripSheet {...tripSheetProps} layout="overlay" />
+  );
+
+  const mapPane = useSplitLayout ? (
+    mapContainer
+  ) : (
+    <div style={{ ...styles.overlayMapPane, ...placementSurroundStyle }}>
+      {mapContainer}
+
+      {tripSheetOverlay}
+    </div>
+  );
+
+  if (useSplitLayout) {
+    return (
+      <div
+        style={{
+          ...styles.splitShell,
+          ...(mapPanePlacementActive
+            ? { background: "#d1d5db", transition: PLACEMENT_BACKDROP_TRANSITION }
+            : { transition: PLACEMENT_BACKDROP_TRANSITION }),
+        }}
+      >
+        <TripSheet {...tripSheetProps} layout="split" />
+
+        {mapPane}
+      </div>
+    );
+  }
+
+  return mapPane;
 }
+
+const styles: Record<string, React.CSSProperties> = {
+  splitShell: {
+    display: "grid",
+
+    width: "100%",
+
+    height: "100%",
+
+    minHeight: 0,
+
+    flex: 1,
+
+    gridTemplateAreas: '"header header" "sidebar map"',
+
+    gridTemplateColumns: "min(400px, 38vw) 1fr",
+
+    gridTemplateRows: "auto 1fr",
+
+    overflow: "hidden",
+
+    background: "white",
+
+    transition: PLACEMENT_BACKDROP_TRANSITION,
+  },
+
+  splitMapGutterHost: {
+    gridArea: "map",
+
+    display: "flex",
+
+    flexDirection: "column",
+
+    minHeight: 0,
+
+    minWidth: 0,
+
+    padding: MAP_SURROUND_GUTTER_PX,
+
+    boxSizing: "border-box",
+
+    background: "#ffffff",
+
+    transition: PLACEMENT_BACKDROP_TRANSITION,
+  },
+
+  overlayMapPane: {
+    position: "relative",
+
+    flex: 1,
+
+    minHeight: 0,
+
+    width: "100%",
+
+    height: "100%",
+
+    background: "#ffffff",
+
+    transition: PLACEMENT_BACKDROP_TRANSITION,
+  },
+
+  overlayMapGutterHost: {
+    position: "absolute",
+
+    display: "flex",
+
+    flexDirection: "column",
+
+    minHeight: 0,
+
+    boxSizing: "border-box",
+  },
+
+  mapFrame: {
+    position: "relative",
+
+    flex: 1,
+
+    minHeight: 0,
+
+    overflow: "hidden",
+
+    borderRadius: 16,
+  },
+
+  mapFramePlacementActive: {
+    cursor: "crosshair",
+
+    boxShadow: "0 4px 24px rgba(0, 0, 0, 0.18)",
+  },
+};

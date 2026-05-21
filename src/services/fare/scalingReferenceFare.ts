@@ -1,102 +1,200 @@
 import type { OfficialFareLeg } from "./fareTypes";
 
-function endpointOverlapCount(
+import { getOfficialRouteGeometry } from "./officialRouteGeometries";
+
+import {
+  directedLegKey,
+  resamplePolyline,
+  reversePolyline,
+  routeOverlapFraction,
+  tripEndpointsNearReference,
+  type LatLonPolyline,
+} from "./routeGeometrySimilarity";
+
+/** Min share of trip samples within buffer of the official polyline. */
+export const MIN_OVERLAP_FRACTION = 0.75;
+
+/** Per-sample corridor around the published route. */
+export const ROUTE_BUFFER_KM = 1.5;
+
+/** Trip start/end must be within this distance of reference endpoints. */
+export const ENDPOINT_MAX_KM = 2;
+
+/** Max relative gap between trip km and published reference km. */
+export const MAX_DISTANCE_DRIFT_RATIO = 0.4;
+
+const SAMPLE_POINTS = 48;
+
+export type ScalingReferenceDirection = "forward" | "reverse";
+
+export type ScalingReferenceMatch = {
+  leg: OfficialFareLeg;
+
+  direction: ScalingReferenceDirection;
+
+  overlapFraction: number;
+};
+
+type DirectedAlignment = {
+  direction: ScalingReferenceDirection;
+} | null;
+
+function alignsWithLegDirection(
   leg: OfficialFareLeg,
   startZoneId: string,
   endZoneId: string,
-): number {
-  const a = startZoneId === leg.fromZoneId || startZoneId === leg.toZoneId;
+): DirectedAlignment {
+  if (leg.fromZoneId === startZoneId && leg.toZoneId === endZoneId) {
+    return { direction: "forward" };
+  }
 
-  const b = endZoneId === leg.fromZoneId || endZoneId === leg.toZoneId;
+  if (
+    leg.symmetric !== false &&
+    leg.fromZoneId === endZoneId &&
+    leg.toZoneId === startZoneId
+  ) {
+    return { direction: "reverse" };
+  }
 
-  return (a ? 1 : 0) + (b ? 1 : 0);
+  return null;
 }
 
-function legTouchesStart(leg: OfficialFareLeg, startZoneId: string): boolean {
-  return leg.fromZoneId === startZoneId || leg.toZoneId === startZoneId;
+function referencePolylineForDirection(
+  leg: OfficialFareLeg,
+  direction: ScalingReferenceDirection,
+): LatLonPolyline | undefined {
+  const forward = getOfficialRouteGeometry(leg.fromZoneId, leg.toZoneId);
+
+  if (!forward?.length) {
+    return undefined;
+  }
+
+  return direction === "forward" ? forward : reversePolyline(forward);
 }
 
-function legTouchesEnd(leg: OfficialFareLeg, endZoneId: string): boolean {
-  return leg.fromZoneId === endZoneId || leg.toZoneId === endZoneId;
+function passesDistanceSanity(
+  tripDistanceKm: number,
+  referenceDistanceKm: number,
+): boolean {
+  const drift = Math.abs(tripDistanceKm - referenceDistanceKm) / referenceDistanceKm;
+  return drift <= MAX_DISTANCE_DRIFT_RATIO;
+}
+
+function scoreLeg(
+  leg: OfficialFareLeg,
+  direction: ScalingReferenceDirection,
+  tripDistanceKm: number,
+  routeCoordinates: LatLonPolyline,
+): { overlapFraction: number } | null {
+  const refKm = leg.referenceDistanceKm;
+
+  if (refKm == null || refKm <= 0) {
+    return null;
+  }
+
+  if (!passesDistanceSanity(tripDistanceKm, refKm)) {
+    return null;
+  }
+
+  const refLine = referencePolylineForDirection(leg, direction);
+
+  if (!refLine?.length) {
+    return null;
+  }
+
+  const refSampled = resamplePolyline(refLine, SAMPLE_POINTS);
+
+  if (!tripEndpointsNearReference(routeCoordinates, refSampled, ENDPOINT_MAX_KM)) {
+    return null;
+  }
+
+  const overlapFraction = routeOverlapFraction(
+    routeCoordinates,
+    refSampled,
+    ROUTE_BUFFER_KM,
+    SAMPLE_POINTS,
+  );
+
+  if (overlapFraction < MIN_OVERLAP_FRACTION) {
+    return null;
+  }
+
+  return { overlapFraction };
 }
 
 /**
- * Picks a published leg to scale when there is no exact zone pair match.
- * Prefers legs that share the trip start, then end, then closest reference distance.
+ * Picks a published leg to scale only when the user trip matches that leg’s
+ * directed zones and OSRM path is largely the same as the cached official route.
  */
 export function findScalingReferenceLeg(
   legs: OfficialFareLeg[],
   startZoneId: string,
   endZoneId: string,
-  actualDistanceKm: number,
-): OfficialFareLeg | null {
-  type Ranked = {
-    leg: OfficialFareLeg;
-
-    overlap: number;
-
-    startHit: number;
-
-    endHit: number;
-
-    diff: number;
-  };
-
-  const ranked: Ranked[] = [];
-
-  for (const leg of legs) {
-    const ref = leg.referenceDistanceKm;
-
-    if (ref == null || ref <= 0) {
-      continue;
-    }
-
-    const overlap = endpointOverlapCount(leg, startZoneId, endZoneId);
-
-    if (overlap === 0) {
-      continue;
-    }
-
-    if (overlap === 2) {
-      continue;
-    }
-
-    ranked.push({
-      leg,
-
-      overlap,
-
-      startHit: legTouchesStart(leg, startZoneId) ? 1 : 0,
-
-      endHit: legTouchesEnd(leg, endZoneId) ? 1 : 0,
-
-      diff: Math.abs(ref - actualDistanceKm),
-    });
-  }
-
-  if (ranked.length === 0) {
+  tripDistanceKm: number,
+  routeCoordinates: LatLonPolyline,
+): ScalingReferenceMatch | null {
+  if (routeCoordinates.length < 2 || tripDistanceKm <= 0) {
     return null;
   }
 
-  ranked.sort((x, y) => {
-    if (y.startHit !== x.startHit) {
-      return y.startHit - x.startHit;
+  type Candidate = ScalingReferenceMatch & {
+    distanceDrift: number;
+  };
+
+  const candidates: Candidate[] = [];
+
+  for (const leg of legs) {
+    const alignment = alignsWithLegDirection(leg, startZoneId, endZoneId);
+
+    if (!alignment) {
+      continue;
     }
 
-    if (y.endHit !== x.endHit) {
-      return y.endHit - x.endHit;
+    const scored = scoreLeg(
+      leg,
+      alignment.direction,
+      tripDistanceKm,
+      routeCoordinates,
+    );
+
+    if (!scored) {
+      continue;
     }
 
-    if (x.diff !== y.diff) {
-      return x.diff - y.diff;
+    const refKm = leg.referenceDistanceKm!;
+
+    candidates.push({
+      leg,
+      direction: alignment.direction,
+      overlapFraction: scored.overlapFraction,
+      distanceDrift: Math.abs(tripDistanceKm - refKm),
+    });
+  }
+
+  if (candidates.length === 0) {
+    return null;
+  }
+
+  candidates.sort((a, b) => {
+    if (b.overlapFraction !== a.overlapFraction) {
+      return b.overlapFraction - a.overlapFraction;
     }
 
-    if (x.leg.table !== y.leg.table) {
-      return x.leg.table === "drop_off" ? -1 : 1;
+    if (a.distanceDrift !== b.distanceDrift) {
+      return a.distanceDrift - b.distanceDrift;
     }
 
-    return x.leg.farePhp - y.leg.farePhp;
+    const keyA = directedLegKey(a.leg.fromZoneId, a.leg.toZoneId);
+    const keyB = directedLegKey(b.leg.fromZoneId, b.leg.toZoneId);
+
+    return keyA.localeCompare(keyB);
   });
 
-  return ranked[0]!.leg;
+  const best = candidates[0]!;
+
+  return {
+    leg: best.leg,
+    direction: best.direction,
+    overlapFraction: best.overlapFraction,
+  };
 }

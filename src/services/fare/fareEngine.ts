@@ -11,7 +11,9 @@ import {
 
 import { findScalingReferenceLeg } from "./scalingReferenceFare";
 
-import type { FareEstimate } from "./fareTypes";
+import type { FareEstimate, OfficialFareLeg } from "./fareTypes";
+
+import { applyFareRounding } from "./fareRounding";
 
 import type { FareZoneResolution } from "./zoneTypes";
 
@@ -71,7 +73,14 @@ function exactExplanation(match: {
 export type CalculateFareOptions = {
   /** OSRM route as `[lat, lon][]` (see `RouteResult.coordinates`). */
   routeCoordinates?: [number, number][];
+
+  /** Official LGU legs for the active app location; defaults to Siquijor bundle. */
+  officialLegs?: OfficialFareLeg[];
 };
+
+function finalizeEstimate(estimate: FareEstimate): FareEstimate {
+  return applyFareRounding(estimate);
+}
 
 export function calculateFare(
   start: FareZoneResolution,
@@ -79,15 +88,17 @@ export function calculateFare(
   distanceKm: number,
   options?: CalculateFareOptions,
 ): FareEstimate {
+  const officialLegs = options?.officialLegs ?? allOfficialLegsOrdered;
+
   const startId = start.zoneId;
 
   const endId = end.zoneId;
 
   if (startId && endId) {
-    const exact = findExactOfficialLeg(allOfficialLegsOrdered, startId, endId);
+    const exact = findExactOfficialLeg(officialLegs, startId, endId);
 
     if (exact) {
-      return {
+      return finalizeEstimate({
         fare: exact.leg.farePhp,
 
         method: exact.isForward ? "exact" : "reverse_exact",
@@ -97,67 +108,79 @@ export function calculateFare(
         explanation: exactExplanation(exact),
 
         officialTable: exact.leg.table,
-      };
+      });
     }
   }
 
-  if (distanceKm > 0 && startId && endId) {
-    const refLeg = findScalingReferenceLeg(
-      allOfficialLegsOrdered,
+  const routeCoordinates = options?.routeCoordinates ?? [];
+
+  if (distanceKm > 0 && startId && endId && routeCoordinates.length >= 2) {
+    const scaling = findScalingReferenceLeg(
+      officialLegs,
 
       startId,
 
       endId,
 
       distanceKm,
+
+      routeCoordinates,
     );
 
-    if (
-      refLeg != null &&
-      refLeg.referenceDistanceKm != null &&
-      refLeg.referenceDistanceKm > 0
-    ) {
-      const ratio = clamp(
-        distanceKm / refLeg.referenceDistanceKm,
+    if (scaling != null) {
+      const refLeg = scaling.leg;
 
-        RATIO_MIN,
+      const refKm = refLeg.referenceDistanceKm;
 
-        RATIO_MAX,
-      );
+      if (refKm != null && refKm > 0) {
+        const ratio = clamp(distanceKm / refKm, RATIO_MIN, RATIO_MAX);
 
-      const scaled = Math.round(refLeg.farePhp * ratio);
+        const scaled = Math.round(refLeg.farePhp * ratio);
 
-      const tariff = estimateDistanceFare(distanceKm);
+        const tariff = estimateDistanceFare(distanceKm);
 
-      if (shouldUsePureScaledOfficial(start, end)) {
-        return {
-          fare: scaled,
+        const tableLabel =
+          refLeg.table === "drop_off" ? "drop-off" : "special trip";
 
-          method: "scaled_official",
+        const routeLabel =
+          scaling.direction === "forward"
+            ? `${refLeg.fromZoneId} → ${refLeg.toZoneId}`
+            : `${refLeg.toZoneId} → ${refLeg.fromZoneId}`;
 
-          confidence: 0.72,
+        const overlapPct = Math.round(scaling.overlapFraction * 100);
 
-          explanation: `Estimated from official ${refLeg.table === "drop_off" ? "drop-off" : "special trip"} ${refLeg.fromZoneId} → ${refLeg.toZoneId} fare, scaled by road distance`,
+        const pathNote = `your route closely follows the published ${tableLabel} path (${overlapPct}% overlap)`;
+
+        if (shouldUsePureScaledOfficial(start, end)) {
+          return finalizeEstimate({
+            fare: scaled,
+
+            method: "scaled_official",
+
+            confidence: scaling.overlapFraction >= 0.85 ? 0.72 : 0.65,
+
+            explanation: `Estimated from official ${routeLabel} fare, scaled by road distance — ${pathNote}`,
+
+            officialTable: refLeg.table,
+          });
+        }
+
+        const w = blendWeight(start, end);
+
+        const blended = Math.round(w * scaled + (1 - w) * tariff);
+
+        return finalizeEstimate({
+          fare: blended,
+
+          method: "blended_official_distance",
+
+          confidence: scaling.overlapFraction >= 0.85 ? 0.58 : 0.52,
+
+          explanation: `Blend of distance-scaled official ${routeLabel} fare and distance-based estimate (weight ${Math.round(w * 100)}% official) — ${pathNote}`,
 
           officialTable: refLeg.table,
-        };
+        });
       }
-
-      const w = blendWeight(start, end);
-
-      const blended = Math.round(w * scaled + (1 - w) * tariff);
-
-      return {
-        fare: blended,
-
-        method: "blended_official_distance",
-
-        confidence: 0.58,
-
-        explanation: `Blend of distance-scaled official ${refLeg.fromZoneId} → ${refLeg.toZoneId} fare and distance-based estimate (weight ${Math.round(w * 100)}% official)`,
-
-        officialTable: refLeg.table,
-      };
     }
   }
 
@@ -170,11 +193,11 @@ export function calculateFare(
 
     options?.routeCoordinates ?? [],
 
-    allOfficialLegsOrdered,
+    officialLegs,
   );
 
   if (corridor) {
-    return corridor;
+    return finalizeEstimate(corridor);
   }
 
   const extrapolated = tryCorridorExtrapolatedFare(
@@ -186,16 +209,16 @@ export function calculateFare(
 
     options?.routeCoordinates ?? [],
 
-    allOfficialLegsOrdered,
+    officialLegs,
   );
 
   if (extrapolated) {
-    return extrapolated;
+    return finalizeEstimate(extrapolated);
   }
 
   const distanceDetail = computeDistanceFareDetails(distanceKm);
 
-  return {
+  return finalizeEstimate({
     fare: distanceDetail.fare,
 
     method: "distance_estimate",
@@ -205,8 +228,8 @@ export function calculateFare(
     explanation:
       startId && endId
         ? "No matching official route for these zones — estimated using trip distance × median ₱/km from LGU reference routes"
-        : "Estimated using trip distance × median ₱/km from LGU reference routes (one or both stops are outside mapped fare zones)",
+        : "Estimated using trip distance × median ₱/km from LGU reference routes",
 
     distanceDetail,
-  };
+  });
 }

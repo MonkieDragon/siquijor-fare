@@ -4,22 +4,17 @@ import { useMap } from "react-leaflet";
 
 import L from "leaflet";
 
-import {
-  SIQUIJOR_ISLAND_MAX_LAT,
-  SIQUIJOR_ISLAND_MAX_LON,
-  SIQUIJOR_ISLAND_MIN_LAT,
-  SIQUIJOR_ISLAND_MIN_LON,
-} from "../../services/map/siquijorIslandBounds";
+import type { GeoBounds } from "../../locations";
 import {
   ISLAND_FIT_PADDING_SCALE,
   ISLAND_OVERVIEW_MAX_ZOOM,
   ISLAND_OVERVIEW_ZOOM_INSET,
 } from "../../services/map/mapConfig";
 
-function islandOverviewBounds(): L.LatLngBounds {
+function boundsFromConfig(config: GeoBounds): L.LatLngBounds {
   return L.latLngBounds(
-    [SIQUIJOR_ISLAND_MIN_LAT, SIQUIJOR_ISLAND_MIN_LON],
-    [SIQUIJOR_ISLAND_MAX_LAT, SIQUIJOR_ISLAND_MAX_LON],
+    [config.minLat, config.minLon],
+    [config.maxLat, config.maxLon],
   );
 }
 
@@ -38,6 +33,8 @@ type Props = {
   enabled: boolean;
 
   padding: MapChromePadding;
+
+  bounds: GeoBounds;
 };
 
 function scalePadding(p: MapChromePadding): MapChromePadding {
@@ -55,9 +52,9 @@ function scalePadding(p: MapChromePadding): MapChromePadding {
 }
 
 /**
- * Frames the whole island inside the unobstructed map pane (below top / above bottom chrome).
+ * Frames the whole service area inside the unobstructed map pane.
  */
-export default function FitIslandBounds({ enabled, padding }: Props) {
+export default function FitIslandBounds({ enabled, padding, bounds }: Props) {
   const map = useMap();
 
   useEffect(() => {
@@ -65,14 +62,14 @@ export default function FitIslandBounds({ enabled, padding }: Props) {
       return;
     }
 
-    const bounds = islandOverviewBounds();
+    const latLngBounds = boundsFromConfig(bounds);
 
     const pad = scalePadding(padding);
 
     function applyFit() {
       map.invalidateSize({ animate: false });
 
-      map.fitBounds(bounds, {
+      map.fitBounds(latLngBounds, {
         paddingTopLeft: L.point(pad.left, pad.top),
 
         paddingBottomRight: L.point(pad.right, pad.bottom),
@@ -101,7 +98,7 @@ export default function FitIslandBounds({ enabled, padding }: Props) {
     } else {
       runWhenSized();
     }
-  }, [enabled, map, padding]);
+  }, [enabled, map, padding, bounds]);
 
   return null;
 }

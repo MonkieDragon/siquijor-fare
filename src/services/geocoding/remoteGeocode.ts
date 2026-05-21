@@ -1,5 +1,9 @@
+import {
+  DEFAULT_APP_LOCATION_ID,
+  getAppLocationOrDefault,
+} from "../../locations";
 import type { Location } from "../../types/location";
-import { isInSiquijor } from "./siquijorFilter";
+import { isInAppLocationBounds } from "./siquijorFilter";
 import { nominatimGetJson } from "./nominatimClient";
 
 const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
@@ -17,10 +21,16 @@ type NominatimSearchItem = {
 export async function remoteGeocode(
   query: string,
   signal?: AbortSignal,
+  locationId: string = DEFAULT_APP_LOCATION_ID,
 ): Promise<Location[]> {
+  const appLocation = getAppLocationOrDefault(locationId);
+
   const url = new URL(NOMINATIM_URL);
 
-  url.searchParams.set("q", `${query}, Siquijor, Philippines`);
+  url.searchParams.set(
+    "q",
+    `${query}, ${appLocation.geocoding.remoteSearchSuffix}`,
+  );
 
   url.searchParams.set("format", "json");
 
@@ -35,5 +45,5 @@ export async function remoteGeocode(
       lat: parseFloat(item.lat),
       lon: parseFloat(item.lon),
     }))
-    .filter(isInSiquijor);
+    .filter((item) => isInAppLocationBounds(item, locationId));
 }

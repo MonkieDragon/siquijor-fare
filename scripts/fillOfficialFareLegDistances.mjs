@@ -1,6 +1,6 @@
 /**
- * Fills referenceDistanceKm on every leg in src/data/officialFareLegs.json using
- * OSRM driving distance between zone canonical coordinates (see fareZoneCanonicals.json).
+ * Fills referenceDistanceKm on every leg in src/data/officialFareLegs.json and
+ * caches OSRM driving polylines in src/data/officialRouteGeometries.json.
  *
  *   node scripts/fillOfficialFareLegDistances.mjs
  *
@@ -33,14 +33,44 @@ const LEGS_PATH = path.join(
   "officialFareLegs.json",
 );
 
+const GEOM_PATH = path.join(
+  __dirname,
+  "..",
+  "src",
+  "data",
+  "officialRouteGeometries.json",
+);
+
+const MAX_POLYLINE_POINTS = 64;
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function fetchRouteKm(start, end) {
+function directedKey(fromId, toId) {
+  return `${fromId}→${toId}`;
+}
+
+function simplifyPolylineLatLon(coordinatesLonLat, maxPoints) {
+  const latLon = coordinatesLonLat.map(([lon, lat]) => [lat, lon]);
+  const n = latLon.length;
+  if (n <= maxPoints) {
+    return latLon;
+  }
+  const step = Math.max(1, Math.ceil(n / maxPoints));
+  const indices = new Set([0, n - 1]);
+  for (let i = 0; i < n; i += step) {
+    indices.add(i);
+  }
+  return [...indices]
+    .sort((a, b) => a - b)
+    .map((i) => latLon[i]);
+}
+
+async function fetchRoute(start, end) {
   const coordinates = `${start.lon},${start.lat};${end.lon},${end.lat}`;
   const url =
-    `${DEFAULT_OSRM_BASE}/${coordinates}` + "?overview=false&geometries=geojson";
+    `${DEFAULT_OSRM_BASE}/${coordinates}` + "?overview=full&geometries=geojson";
 
   const response = await fetch(url, { signal: AbortSignal.timeout(90_000) });
 
@@ -55,11 +85,9 @@ async function fetchRouteKm(start, end) {
   }
 
   const route = data.routes[0];
-  return route.distance / 1000;
-}
-
-function directedKey(fromId, toId) {
-  return `${fromId}→${toId}`;
+  const km = route.distance / 1000;
+  const polyline = simplifyPolylineLatLon(route.geometry.coordinates, MAX_POLYLINE_POINTS);
+  return { km, polyline };
 }
 
 async function main() {
@@ -85,6 +113,9 @@ async function main() {
     }
   }
 
+  /** @type {Record<string, [number, number][]>} */
+  const geometries = {};
+
   for (const leg of allLegs) {
     const a = canonical[leg.fromZoneId];
     const b = canonical[leg.toZoneId];
@@ -95,18 +126,21 @@ async function main() {
       );
     }
 
-    const km = await fetchRouteKm(a, b);
+    const { km, polyline } = await fetchRoute(a, b);
     leg.referenceDistanceKm = Math.round(km * 100) / 100;
+    geometries[directedKey(leg.fromZoneId, leg.toZoneId)] = polyline;
 
     console.log(
-      `${leg.table} ${leg.fromZoneId} → ${leg.toZoneId}: ${leg.referenceDistanceKm} km`,
+      `${leg.table} ${leg.fromZoneId} → ${leg.toZoneId}: ${leg.referenceDistanceKm} km, ${polyline.length} pts`,
     );
 
     await sleep(600);
   }
 
   fs.writeFileSync(LEGS_PATH, JSON.stringify(data, null, 2) + "\n");
+  fs.writeFileSync(GEOM_PATH, JSON.stringify(geometries, null, 2) + "\n");
   console.log(`Updated ${LEGS_PATH}`);
+  console.log(`Updated ${GEOM_PATH}`);
 }
 
 main().catch((err) => {

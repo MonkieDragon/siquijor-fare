@@ -40,13 +40,14 @@ describe("LocationSearchField", () => {
 
     render(
       <LocationSearchField
+        appLocationId="siquijor"
         label="Destination"
         placeholder="Where to?"
         selected={null}
         onSelect={vi.fn()}
         onFocus={vi.fn()}
         mapPickAriaLabel="Select destination on map"
-        onMapPickClick={vi.fn()}
+        onMapPickToggle={vi.fn()}
         zoomAriaLabel="Zoom map to destination"
         onZoomClick={vi.fn()}
         zoomEnabled={false}
@@ -85,13 +86,14 @@ describe("LocationSearchField", () => {
 
     render(
       <LocationSearchField
+        appLocationId="siquijor"
         label="Destination"
         placeholder="Where to?"
         selected={null}
         onSelect={onSelect}
         onFocus={vi.fn()}
         mapPickAriaLabel="Select destination on map"
-        onMapPickClick={vi.fn()}
+        onMapPickToggle={vi.fn()}
         zoomAriaLabel="Zoom map to destination"
         onZoomClick={vi.fn()}
         zoomEnabled={false}

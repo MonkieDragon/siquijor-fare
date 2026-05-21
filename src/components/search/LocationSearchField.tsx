@@ -5,6 +5,9 @@ import type { Location as GeoLocation } from "../../types/location";
 import { geocode } from "../../services/geocoding/geocode";
 
 type Props = {
+  /** Active app location (island / area) for local + remote search. */
+  appLocationId: string;
+
   label: string;
 
   placeholder: string;
@@ -17,7 +20,12 @@ type Props = {
 
   mapPickAriaLabel: string;
 
-  onMapPickClick?: () => void;
+  cancelMapPickAriaLabel?: string;
+
+  /** Pin button is red with a cross while the user is placing this field on the map. */
+  mapPlacementActive?: boolean;
+
+  onMapPickToggle?: () => void;
 
   zoomAriaLabel: string;
 
@@ -31,6 +39,8 @@ type Props = {
 };
 
 export default function LocationSearchField({
+  appLocationId,
+
   label,
 
   placeholder,
@@ -43,7 +53,11 @@ export default function LocationSearchField({
 
   mapPickAriaLabel,
 
-  onMapPickClick,
+  cancelMapPickAriaLabel = "Cancel map placement",
+
+  mapPlacementActive = false,
+
+  onMapPickToggle,
 
   zoomAriaLabel,
 
@@ -91,7 +105,7 @@ export default function LocationSearchField({
       try {
         setLoading(true);
 
-        const res = await geocode(debouncedQuery, ac.signal);
+        const res = await geocode(debouncedQuery, ac.signal, appLocationId);
 
         setResults(res);
       } catch (err) {
@@ -116,14 +130,14 @@ export default function LocationSearchField({
     return () => {
       ac.abort();
     };
-  }, [debouncedQuery]);
+  }, [debouncedQuery, appLocationId]);
 
-  function handleMapPickClick() {
+  function handleMapPickToggle() {
     setResults([]);
 
     setLoading(false);
 
-    onMapPickClick?.();
+    onMapPickToggle?.();
   }
 
   const showClear =
@@ -189,15 +203,26 @@ export default function LocationSearchField({
         </div>
 
         <div style={styles.trailing}>
-          {onMapPickClick && (
+          {onMapPickToggle && (
             <button
               type="button"
-              style={styles.iconBtn}
-              onClick={handleMapPickClick}
-              aria-label={mapPickAriaLabel}
-              title={mapPickAriaLabel}
+              style={
+                mapPlacementActive
+                  ? { ...styles.iconBtn, ...styles.iconBtnPlacementCancel }
+                  : styles.iconBtn
+              }
+              onPointerDown={(e) => e.stopPropagation()}
+              onClick={handleMapPickToggle}
+              data-map-placement-control=""
+              aria-label={
+                mapPlacementActive ? cancelMapPickAriaLabel : mapPickAriaLabel
+              }
+              title={
+                mapPlacementActive ? cancelMapPickAriaLabel : mapPickAriaLabel
+              }
+              aria-pressed={mapPlacementActive}
             >
-              <PinGlyph />
+              {mapPlacementActive ? <CancelPinGlyph /> : <PinGlyph />}
             </button>
           )}
 
@@ -265,6 +290,26 @@ function PinGlyph() {
       <path
         fill="currentColor"
         d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"
+      />
+    </svg>
+  );
+}
+
+function CancelPinGlyph() {
+  return (
+    <svg
+      width={20}
+      height={20}
+      viewBox="0 0 24 24"
+      aria-hidden
+      style={{ display: "block" }}
+    >
+      <path
+        d="M6 6l12 12M18 6L6 18"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
       />
     </svg>
   );
@@ -462,6 +507,14 @@ const styles: Record<string, React.CSSProperties> = {
     opacity: 0.38,
 
     cursor: "not-allowed",
+  },
+
+  iconBtnPlacementCancel: {
+    background: "#dc2626",
+
+    borderColor: "#dc2626",
+
+    color: "#ffffff",
   },
 
   dropdown: {

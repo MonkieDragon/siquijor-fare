@@ -1,28 +1,48 @@
 import Fuse from "fuse.js";
 
-import rawData from "../../data/siquijorLocations.json";
+import {
+  DEFAULT_APP_LOCATION_ID,
+  getAppLocationOrDefault,
+} from "../../locations";
 import type { Location } from "../../types/location";
 
-const locations = rawData as Location[];
+const fuseByLocationId = new Map<string, Fuse<Location>>();
 
-const fuse = new Fuse(locations, {
-  keys: ["name", "displayName"],
+function fuseForLocation(locationId: string): Fuse<Location> {
+  const cached = fuseByLocationId.get(locationId);
 
-  threshold: 0.35,
+  if (cached) {
+    return cached;
+  }
 
-  ignoreLocation: true,
+  const appLocation = getAppLocationOrDefault(locationId);
 
-  minMatchCharLength: 2,
-});
+  const fuse = new Fuse(appLocation.geocoding.searchableLocations, {
+    keys: ["name", "displayName"],
 
-export function localSearch(query: string): Location[] {
+    threshold: 0.35,
+
+    ignoreLocation: true,
+
+    minMatchCharLength: 2,
+  });
+
+  fuseByLocationId.set(locationId, fuse);
+
+  return fuse;
+}
+
+export function localSearch(
+  query: string,
+  locationId: string = DEFAULT_APP_LOCATION_ID,
+): Location[] {
   const normalized = query.trim();
 
   if (normalized.length < 2) {
     return [];
   }
 
-  const results = fuse.search(normalized);
+  const results = fuseForLocation(locationId).search(normalized);
 
   return results.slice(0, 8).map((result) => result.item);
 }

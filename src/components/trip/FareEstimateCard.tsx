@@ -33,15 +33,9 @@ export default function FareEstimateCard({ estimate, compact }: Props) {
     ? { ...styles.amount, ...styles.amountCompact }
     : styles.amount;
 
-  const explanationStyle = compact
-    ? { ...styles.explanation, ...styles.explanationCompact }
-    : styles.explanation;
+  const detailTextStyle = styles.detailText;
 
-  const breakdownStyle = compact
-    ? { ...styles.breakdown, ...styles.breakdownCompact }
-    : styles.breakdown;
-
-  const hintStyle = compact ? { ...styles.hint, ...styles.hintCompact } : styles.hint;
+  const dividerStyle = compact ? styles.amountDividerCompact : styles.amountDivider;
 
   return (
     <div style={cardStyle}>
@@ -51,10 +45,10 @@ export default function FareEstimateCard({ estimate, compact }: Props) {
 
       <div style={amountStyle}>{formatPhp(estimate.fare)}</div>
 
-      <div style={explanationStyle}>{estimate.explanation}</div>
+      <hr style={dividerStyle} aria-hidden />
 
       {estimate.method === "distance_estimate" && estimate.distanceDetail && (
-        <div style={breakdownStyle}>
+        <div style={{ ...detailTextStyle, ...styles.breakdown }}>
           {formatKm(estimate.distanceDetail.distanceKm)} × ₱
           {estimate.distanceDetail.perKm}/km → {formatPhp(estimate.distanceDetail.linearFarePhp)}
           {estimate.distanceDetail.minimumApplied && (
@@ -66,9 +60,13 @@ export default function FareEstimateCard({ estimate, compact }: Props) {
         </div>
       )}
 
+      <div style={{ ...detailTextStyle, ...styles.explanation }}>
+        {estimate.explanation}
+      </div>
+
       {(estimate.method === "scaled_official" ||
         estimate.method === "blended_official_distance") && (
-        <div style={hintStyle}>
+        <div style={{ ...detailTextStyle, ...styles.hint }}>
           {estimate.method === "scaled_official"
             ? "Scaled from a published LGU route using your trip road distance."
             : "Combines a scaled LGU reference fare with a distance-based estimate."}
@@ -76,22 +74,22 @@ export default function FareEstimateCard({ estimate, compact }: Props) {
       )}
 
       {estimate.method === "corridor_interpolated" && (
-        <div style={hintStyle}>
+        <div style={{ ...detailTextStyle, ...styles.hint }}>
           Uses published LGU trips only as anchors — your destination may not be listed.
         </div>
       )}
 
       {estimate.method === "corridor_extrapolated" && (
-        <div style={hintStyle}>
+        <div style={{ ...detailTextStyle, ...styles.hint }}>
           Adds median ₱/km for distance beyond the furthest published hub your route passed
           through.
         </div>
       )}
 
       {estimate.method === "distance_estimate" && (
-        <div style={hintStyle}>
-          Rate is the median implied ₱/km from published LGU routes that include reference
-          distances — not a negotiated quote.
+        <div style={{ ...detailTextStyle, ...styles.hint }}>
+          Rate is the median implied ₱/km from published LGU routes — not a negotiated
+          quote.
         </div>
       )}
     </div>
@@ -137,26 +135,38 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#111827",
   },
 
-  explanation: {
-    marginTop: 8,
+  amountDivider: {
+    margin: "16px 0",
 
+    border: "none",
+
+    borderTop: "1px solid #e5e7eb",
+
+    width: "100%",
+  },
+
+  amountDividerCompact: {
+    margin: "12px 0",
+
+    border: "none",
+
+    borderTop: "1px solid #e5e7eb",
+
+    width: "100%",
+  },
+
+  detailText: {
     fontSize: 13,
 
-    lineHeight: 1.4,
-
-    color: "#4b5563",
+    lineHeight: 1.45,
   },
 
   breakdown: {
-    marginTop: 6,
-
-    fontSize: 13,
+    marginTop: 0,
 
     fontWeight: 500,
 
     color: "#374151",
-
-    lineHeight: 1.45,
   },
 
   breakdownNote: {
@@ -165,14 +175,16 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#6b7280",
   },
 
-  hint: {
-    marginTop: 6,
+  explanation: {
+    marginTop: 8,
 
-    fontSize: 12,
+    color: "#4b5563",
+  },
+
+  hint: {
+    marginTop: 8,
 
     color: "#9ca3af",
-
-    lineHeight: 1.35,
   },
 
   cardCompact: {
@@ -197,27 +209,4 @@ const styles: Record<string, React.CSSProperties> = {
     letterSpacing: -0.35,
   },
 
-  explanationCompact: {
-    marginTop: 6,
-
-    fontSize: 12,
-
-    lineHeight: 1.35,
-  },
-
-  breakdownCompact: {
-    marginTop: 4,
-
-    fontSize: 12,
-
-    lineHeight: 1.4,
-  },
-
-  hintCompact: {
-    marginTop: 4,
-
-    fontSize: 11,
-
-    lineHeight: 1.3,
-  },
 };
